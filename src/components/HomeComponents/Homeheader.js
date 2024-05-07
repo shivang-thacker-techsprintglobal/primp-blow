@@ -7,6 +7,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-nat
 import Notification from '../../assets/svgs/notification'
 import Cart from '../../assets/svgs/cart'
 import Dropdown from '../../assets/svgs/Dropdown'
+import LocationPin from '../../assets/svgs/LocationPin'
 
 
 
@@ -18,13 +19,18 @@ const Homeheader = () => {
   return (
     <View style={ styles.container}>
       <View style={styles.c1}>
-        <View style={{flexDirection:'row', alignItems:'center'}}> 
-      <Text variant="titleLarge" style={{fontWeight:'700', color:COLOR.Dark}}>Shop</Text>
+      <LocationPin/>
+      <View >
+      
+        <View style={styles.cc1}> 
+        
+      <Text style={styles.textTitle}>Salon</Text>
           <Dropdown size={30}/>
       </View>
-      <Text variant="bodyMedium" style={{fontWeight:'000', color:COLOR.Dark, fontSize:hp(2.5)}}>Let’s pamper you</Text>
+      <Text numberOfLines={1}  style={styles.mediumText}>Austin -  Prime and Blow Austin Tri</Text>
       </View>
-      <View style={{flexDirection:'row', justifyContent:'space-around', flex:0.3, marginTop: hp(1)}}>
+      </View>
+      <View style={styles.c2}>
       
        
         <Imagecontainer_round children={<Notification/>}/>
@@ -40,12 +46,39 @@ const styles = StyleSheet.create({
 
    container:
    {
-      flex:0.13,
+      flex:0.1,
       backgroundColor:COLOR.white,
       flexDirection:'row',
+      gap:12,
+      alignItems:'center'
    },
    c1:
-   {
-      flex:0.7,
-   }
+   
+    {flexDirection:'row', gap:4, flex:0.7}
+   ,
+   cc1:
+   {flexDirection:'row', alignItems:'center', gap:3},
+   c2:
+   {flexDirection:'row', justifyContent:'space-around', flex:0.3, marginTop: hp(1)},
+
+   mediumText:
+    {
+      color:COLOR.Dark,
+        width:'70%',
+        fontWeight:'400',
+        fontFamily:'Agrandir-Regular',
+        fontSize:14,
+        lineHeight:20,
+        textAlign:'center'
+
+    },
+    textTitle:
+    {
+      color:COLOR.Dark,
+     fontWeight:'700',
+     fontSize:14,
+     lineHeight:20,
+     textAlign:'center',
+     fontFamily:'Agrandir-TextBold'
+    }
 })

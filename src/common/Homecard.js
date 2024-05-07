@@ -2,18 +2,18 @@ import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../constants/Colors'
-import { Button, Text } from 'react-native-paper'
+import { Button,Text } from 'react-native-paper'
 
 const HomeCard = ({title,icon}) => {
   return (
     <View style={styles.container}>
       <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-      <Text  numberOfLines={2} variant="titleLarge" style={styles.textTitle}>Blowout</Text>
-      <Text  variant="titleLarge" style={styles.textTitle}>$60.00  </Text>
+      <Text  numberOfLines={2}  style={styles.textTitle}>Blowout</Text>
+      <Text   style={styles.textTitle}>$60.00  </Text>
       </View>
-      <Text  numberOfLines={3} variant="bodySmall" style={[styles.text,{marginTop:hp(0.5)}]}>(No Extensions) (luxurious Shampoo & Blowout style)  </Text>
+      <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(No Extensions) (luxurious Shampoo & Blowout style)  </Text>
       <View style={{flexDirection:'row', alignItems:'center'}}>
-      <Text  variant="bodyMedium" style={styles.mediumText}>45 Min  </Text>
+      <Text   style={styles.mediumText}>45 Min  </Text>
       <Button  mode="outlined" onPress={() => navigation.navigate('Signin')} textColor={COLOR.PrimaryColor} style={styles.buttonstyle}>
     Add
   </Button>
@@ -32,12 +32,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height:null,
         aspectRatio:2.5,
-        borderColor:COLOR.LightGrey,
-        borderWidth:wp(0.2),
-        borderRadius: wp(3),
+        borderColor:COLOR.Grey,
+        borderWidth:1,
+        borderRadius: 10,
         justifyContent:'center',
         marginVertical:hp(2),
-        paddingHorizontal:wp(4),
+        padding:16,
+        gap:8
 
     },
 
@@ -45,12 +46,10 @@ const styles = StyleSheet.create({
     {
       color:COLOR.Dark,
       width:'70%',
-      fontWeight:'700'
-    },
-    text:
-    {
-        color:COLOR.Dark,
-        width:'70%',
+      fontWeight:'700',
+      fontFamily:'Agrandir-TextBold',
+      fontSize:16,
+      lineHeight:22
     },
     buttonstyle:
     {
@@ -68,6 +67,10 @@ const styles = StyleSheet.create({
     {
       color:COLOR.Dark,
         width:'70%',
-        fontWeight:'500'
+        fontWeight:'400',
+        fontFamily:'Agrandir-Regular',
+        fontSize:12,
+        lineHeight:15.6
+
     }
 })

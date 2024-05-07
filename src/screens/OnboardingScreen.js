@@ -66,7 +66,7 @@ const OnboardingScreen = ({ navigation }) => {
       {/* Skip button */}
       {currentIndex !== 2 && (
         <View style={styles.skipButton}>
-          <Button title="Skip" onPress={handleSkip} textColor={COLOR.white}>Skip</Button>
+          <Button  title="Skip" onPress={handleSkip} textColor={COLOR.white}>Skip</Button>
         </View>
       )}
     </View>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     position: 'absolute',
-    top: 20,
+    top: 25,
     right: 20,
   },
   paginationDots: {
@@ -93,20 +93,20 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: wp(3),
     right: 0,
+    gap:5
   },
   dot: {
     backgroundColor: COLOR.white,
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginHorizontal: 5,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+ 
   },
   activeDot: {
     backgroundColor: COLOR.PrimaryColor,
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginHorizontal: 5,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
   },
 });
 

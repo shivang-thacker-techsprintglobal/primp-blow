@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
+import { View, StyleSheet, ImageBackground, Platform, StatusBar, SafeAreaView } from 'react-native';
 import Logo from '../../assets/svgs/Onboardinglogo';
 import LinearGradient from 'react-native-linear-gradient';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
@@ -17,14 +17,15 @@ const OnboardingTwo = () => {
           colors={['rgba(0, 0, 0, 0.7)', 'transparent', 'rgba(0, 0, 0, 0.7)']}
           style={styles.overlay}>
           {/* Content inside the overlay */}
-          <View style={{ marginTop: hp(4), alignSelf:'center' }}>
+          <View style={styles.c1}>
             <Logo />
             
           </View>
-          <View style={{justifyContent:'flex-end', flex:1, marginBottom:hp(5), padding:wp(3)}}>
-          <Text variant="displaySmall" style={{color:COLOR.white}}>Customize Your</Text>
-          <Text variant="displaySmall" style={{fontWeight:'800', color:COLOR.white}}>Experience</Text>
-      <Text variant="bodyLarge" style={{fontWeight:'100', color:COLOR.white, width:'90%', marginTop:hp(1)}}>With just a few taps, you can book your appointments hassle-free. No more waiting on hold or standing in line!</Text>
+          <View style={styles.c2}>
+          <Text style={styles.title1}>No more<Text style={styles.title2}> Call Waiting</Text></Text>
+          
+      <Text style={styles.details}>With just a few taps, you can book your appointments hassle-free. No more waiting on hold or standing in line!</Text>
+     
       </View>
         </LinearGradient>
       </ImageBackground>
@@ -38,14 +39,51 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  c1:
+  { marginTop: hp(4), alignSelf:'center' },
   backgroundImage: {
     width: '100%',
     height: '100%',
     alignItems: 'center',
   },
+  c2:
+  {justifyContent:'flex-end', flex:1, marginBottom:hp(7), padding:wp(3), gap:12},
   overlay: {
     ...StyleSheet.absoluteFillObject,
   },
+  title1:
+  {
+
+    fontFamily:'Agrandir-Regular',
+    fontSize:30,
+    fontWeight:'400',
+    lineHeight:40,
+    textAlign:'left',
+    color:COLOR.white
+
+  },
+  title2:
+  {
+    fontFamily:'Agrandir-TextBold',
+    fontSize:30,
+    fontWeight:'700',
+    lineHeight:40,
+    textAlign:'left',
+    color:COLOR.white
+
+  },
+
+  details:
+  {
+    fontFamily:'Agrandir-Regular',
+    fontSize:16,
+    fontWeight:'400',
+    lineHeight:22,
+    textAlign:'left',
+    color:COLOR.white
+   
+
+  }
 });
 
 export default OnboardingTwo;

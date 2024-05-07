@@ -17,14 +17,14 @@ const OnboardingOne = () => {
           colors={['rgba(0, 0, 0, 0.7)', 'transparent', 'rgba(0, 0, 0, 0.7)']}
           style={styles.overlay}>
           {/* Content inside the overlay */}
-          <View style={{ marginTop: hp(4), alignSelf:'center' }}>
+          <View style={styles.c1}>
             <Logo />
             
           </View>
-          <View style={{justifyContent:'flex-end', flex:1, marginBottom:hp(7), padding:wp(3)}}>
-          <Text variant="displaySmall" style={{color:COLOR.white}}>Discover your</Text>
-          <Text variant="displaySmall" style={{fontWeight:'800', color:COLOR.white}}>Perfect Salon Match!</Text>
-      <Text variant="bodyLarge" style={{fontWeight:'100', color:COLOR.white, width:'90%', marginTop:hp(1)}}>Complete your profile to help you find a salon who will be right for you.</Text>
+          <View style={styles.c2}>
+          <Text style={styles.title1}>Discover your<Text style={styles.title2}> Perfect Salon Match!</Text></Text>
+          
+      <Text style={styles.details}>Complete your profile to help you find a salon who will be right for you.</Text>
      
       </View>
         </LinearGradient>
@@ -39,14 +39,51 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  c1:
+  { marginTop: hp(4), alignSelf:'center' },
   backgroundImage: {
     width: '100%',
     height: '100%',
     alignItems: 'center',
   },
+  c2:
+  {justifyContent:'flex-end', flex:1, marginBottom:hp(7), padding:wp(3), gap:12},
   overlay: {
     ...StyleSheet.absoluteFillObject,
   },
+  title1:
+  {
+
+    fontFamily:'Agrandir-Regular',
+    fontSize:30,
+    fontWeight:'400',
+    lineHeight:40,
+    textAlign:'left',
+    color:COLOR.white
+
+  },
+  title2:
+  {
+    fontFamily:'Agrandir-TextBold',
+    fontSize:30,
+    fontWeight:'700',
+    lineHeight:40,
+    textAlign:'left',
+    color:COLOR.white
+
+  },
+
+  details:
+  {
+    fontFamily:'Agrandir-Regular',
+    fontSize:16,
+    fontWeight:'400',
+    lineHeight:22,
+    textAlign:'left',
+    color:COLOR.white
+   
+
+  }
 });
 
 export default OnboardingOne;

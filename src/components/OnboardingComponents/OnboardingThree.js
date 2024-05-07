@@ -18,14 +18,14 @@ const OnboardingThree = ({navigation}) => {
           colors={['rgba(0, 0, 0, 0.7)', 'transparent', 'rgba(0, 0, 0, 0.7)']}
           style={styles.overlay}>
           {/* Content inside the overlay */}
-          <View style={{ marginTop: hp(4), alignSelf:'center' }}>
+          <View style={styles.c1}>
             <Logo />
             
           </View>
-          <View style={{justifyContent:'flex-end', flex:1, marginBottom:  hp(4), padding:wp(3)}}>
-          <Text variant="displaySmall" style={{color:COLOR.white}}>Customize Your</Text>
-          <Text variant="displaySmall" style={{fontWeight:'800', color:COLOR.white}}>Experience</Text>
-      <Text variant="bodyLarge" style={{fontWeight:'100', color:COLOR.white, width:'90%', marginTop:hp(1)}}>With just a few taps, you can book your appointments hassle-free. No more waiting on hold or standing in line!</Text>
+          <View style={styles.c2}>
+          <Text style={styles.title1}>Bring Your <Text style={styles.title2}> Loved Ones Along</Text></Text>
+          
+      <Text style={styles.details}>With just a few taps, you can book your appointments hassle-free. No more waiting on hold or standing in line!</Text>
       </View>
 
       <View style={styles.buttoncontainer}>
@@ -48,6 +48,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  c1:
+  { marginTop: hp(4), alignSelf:'center' },
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+  },
+  c2:
+  {justifyContent:'flex-end', flex:1, marginBottom:hp(5), padding:wp(3), gap:12},
+
   backgroundImage: {
     width: '100%',
     height: '100%',
@@ -69,7 +79,41 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     marginBottom:hp(6),
     borderColor:COLOR.PrimaryColor
+  },
+  title1:
+  {
+
+    fontFamily:'Agrandir-Regular',
+    fontSize:30,
+    fontWeight:'400',
+    lineHeight:40,
+    textAlign:'left',
+    color:COLOR.white
+
+  },
+  title2:
+  {
+    fontFamily:'Agrandir-TextBold',
+    fontSize:30,
+    fontWeight:'700',
+    lineHeight:40,
+    textAlign:'left',
+    color:COLOR.white
+
+  },
+
+  details:
+  {
+    fontFamily:'Agrandir-Regular',
+    fontSize:16,
+    fontWeight:'400',
+    lineHeight:22,
+    textAlign:'left',
+    color:COLOR.white
+   
+
   }
+
 });
 
 export default OnboardingThree;

@@ -29,6 +29,7 @@ const Bottomnavigation = () => {
           tabBarLabel: 'Home',
           tabBarInactiveTintColor: COLOR.LightGrey,
           tabBarActiveTintColor: COLOR.PrimaryColor,
+         tabBarLabelStyle: styles.labelStyle,
           tabBarIcon: ({color, size}) => (
             <Image
               source={require('../assets/pngs/home.png')} // Adjust the path to your PNG icon
@@ -42,7 +43,7 @@ const Bottomnavigation = () => {
         component={Booking}
         options={{
           tabBarLabel: 'My Booking',
-
+          tabBarLabelStyle: styles.labelStyle,
           tabBarInactiveTintColor: COLOR.LightGrey,
           tabBarActiveTintColor: COLOR.PrimaryColor,
           tabBarIcon: ({color, size}) => (
@@ -58,7 +59,7 @@ const Bottomnavigation = () => {
         component={About}
         options={{
           tabBarLabel: 'About',
-
+          tabBarLabelStyle: styles.labelStyle,
           tabBarInactiveTintColor: COLOR.LightGrey,
           tabBarActiveTintColor: COLOR.PrimaryColor,
           tabBarIcon: ({color, size}) => (
@@ -74,7 +75,7 @@ const Bottomnavigation = () => {
         component={Profile}
         options={{
           tabBarLabel: 'Profile',
-
+          tabBarLabelStyle: styles.labelStyle,
           tabBarInactiveTintColor: COLOR.LightGrey,
           tabBarActiveTintColor: COLOR.PrimaryColor,
           tabBarIcon: ({color, size}) => (
@@ -91,19 +92,29 @@ const Bottomnavigation = () => {
   
 const styles = StyleSheet.create({
   tabBar: {
+    
     bottom: hp(7),
     position: 'absolute',
     backgroundColor: COLOR.bottomNavigation,
     width: '90%',
-    borderRadius: wp(3),
-    height: hp(8),
+    borderRadius: 20,
+    height: hp(7.7),
     left: '5%',
     right: '5%',
-    paddingBottom:hp(1),
+    paddingHorizontal:8,
     elevation:0
 
     
   },
+  labelStyle:
+  {
+    fontWeight:'700',
+    fontSize:10,
+    lineHeight:12,
+    textAlign:'center',
+    fontFamily:'Agrandir-Regular',
+    bottom:8
+  }
 });
 
 export default Bottomnavigation;

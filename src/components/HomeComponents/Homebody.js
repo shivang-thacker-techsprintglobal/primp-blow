@@ -49,18 +49,24 @@ const styles = StyleSheet.create({
   {
 
     borderBottomColor:COLOR.PrimaryColor,
-    borderBottomWidth:wp(0.6),
+    borderBottomWidth:2,
     width:'45%',
     justifyContent:'center',
     alignItems:'center',
-    height:hp(5)
+    height:hp(5),
+    gap:131,
+    paddingHorizontal:12,
+    paddingVertical:8
     
 
   },
   tabText:
   {
      color:COLOR.Dark,
-     fontWeight:'500',
-     fontSize:hp(2.2)
+     fontWeight:'700',
+     fontSize:16,
+     lineHeight:22,
+     textAlign:'center',
+     fontFamily:'Agrandir-TextBold'
   }
 })

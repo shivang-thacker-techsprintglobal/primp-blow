@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Agrandir-Regular.otf",
+      "sha1": "7af321cde7e1ed72082ac7e3d581d2851221c7d3"
+    },
+    {
+      "path": "src/assets/fonts/Agrandir-TextBold.otf",
+      "sha1": "fffdc9a8870a38382736480f3e15de01d47cb92f"
+    }
+  ]
+}
