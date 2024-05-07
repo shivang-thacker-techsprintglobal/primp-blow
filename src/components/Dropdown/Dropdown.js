@@ -33,23 +33,27 @@ import Dropdownlogo from '../../assets/svgs/Dropdown'
        <Text style={styles.text}>{dropdownvalue}</Text>
        <Dropdownlogo/>
        </TouchableOpacity>
-       {isClicked? 
-    <FlatList
-    style={styles.listcontainer}
-    contentContainerStyle={{justifyContent:'center',}}
-    data={data}
-    renderItem={({item,index})=>
-{
-    return(
-            <Text style={styles.itemstyle} onPress={()=>{ setDropdownvalue(item) 
-            setIsClicked(!isClicked)
-            }}> {item}</Text>
-        
-    )
-}}
-    />
-    :null
-    }
+       {isClicked ? (
+        <View style={styles.listcontainer}>
+          {data.map((item, index) => {
+            return (
+              <Text
+                key={index}
+                style={styles.itemstyle}
+                onPress={() => {
+                  setDropdownvalue(item);
+                  setIsClicked(!isClicked);
+                }}
+              >
+                {item}
+              </Text>
+            );
+          })}
+        </View>
+      ) : null}
+      
+
+   
 
       
 </>);

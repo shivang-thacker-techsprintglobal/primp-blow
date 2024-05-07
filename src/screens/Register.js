@@ -1,5 +1,5 @@
 import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Logo from '../assets/svgs/Logo';
 import Closeeye from '../assets/svgs/Closeeye';
 import {Text, TextInput, Button, List, TextInputMask} from 'react-native-paper';
@@ -12,8 +12,18 @@ import Navigation from '../navigation/Navigation';
 import {useNavigation} from '@react-navigation/native';
 import CustomKeyboardView from '../components/CustomKeyboardView';
 import DropDown from '../components/Dropdown/Dropdown';
+import { useDispatch } from 'react-redux';
+import { useraccesstoken } from '../../redux/actions/userActions';
 
 const Register = () => {
+
+  const dispatch= useDispatch()
+
+  useEffect(()=>
+{
+  dispatch(useraccesstoken('Register'))
+},[])
+
   const navigation = useNavigation();
 
   const [firstName, setFirstname] = useState('');
