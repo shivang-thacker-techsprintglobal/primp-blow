@@ -1,14 +1,26 @@
 import React, {useEffect} from 'react';
 import { View, StyleSheet, Image, ImageBackground } from 'react-native';
 import Logo from '../assets/svgs/Splashscreenlogo'
+import { useSelector } from 'react-redux';
 
 const SplashScreen = ({ navigation }) => {
+
+  const {user_access_token} = useSelector((state) => state.token);
 
     useEffect(() => {
        
         const timer = setTimeout(() => {
+         if(user_access_token === 'three')
+          
+           { navigation.replace('OnboardingThree') }
 
-          navigation.replace('OnboardingScreen'); 
+           else if(user_access_token === 'Register')
+           {
+            navigation.replace('Signin')
+           }
+           
+           else{navigation.replace('OnboardingScreen');}
+          
         }, 1500); 
     
         return () => clearTimeout(timer);

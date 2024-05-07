@@ -7,8 +7,12 @@ import { COLOR } from '../constants/Colors';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import OnboardingTwo from '../components/OnboardingComponents/OnboardingTwo';
 import OnboardingThree from '../components/OnboardingComponents/OnboardingThree';
+import { useDispatch } from 'react-redux';
+import { useraccesstoken } from '../../redux/actions/userActions';
 
 const OnboardingScreen = ({ navigation }) => {
+const dispatch = useDispatch()
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [paginationDotBottom, setPaginationDotBottom] = useState(new Animated.Value(hp(30))); // Initialize animated value
   const [hideDots,setHideDots] =useState(true)
@@ -25,6 +29,7 @@ const OnboardingScreen = ({ navigation }) => {
   const handleSkip = () => {
     setCurrentIndex(2);
     setHideDots(false)
+    dispatch(useraccesstoken('three'))
   };
 
 

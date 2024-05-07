@@ -17,12 +17,14 @@ import { useraccesstoken } from '../../redux/actions/userActions';
 
 const Register = () => {
 
-  const dispatch= useDispatch()
+ 
+
+  const dispatch = useDispatch()
 
   useEffect(()=>
-{
+  {
   dispatch(useraccesstoken('Register'))
-},[])
+  },[])
 
   const navigation = useNavigation();
 

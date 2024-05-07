@@ -1,5 +1,5 @@
 import { StyleSheet, TouchableOpacity, View,Image } from 'react-native'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Logo from '../assets/svgs/Logo'
 import Closeeye from '../assets/svgs/Closeeye'
 
@@ -7,9 +7,18 @@ import { Text, TextInput , Button} from 'react-native-paper';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import { COLOR } from '../constants/Colors';
 import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux';
+import { useraccesstoken } from '../../redux/actions/userActions';
 
 
 const Signin = () => {
+
+  const dispatch = useDispatch()
+
+useEffect(()=>
+{
+dispatch(useraccesstoken('Register'))
+},[])
 
     const navigation = useNavigation()
 

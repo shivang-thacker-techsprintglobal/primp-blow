@@ -10,27 +10,27 @@ import Splashscreen from '../screens/Splashscreen';
 import OnboardingScreen from '../screens/OnboardingScreen';
 import Salon from '../screens/Salon';
 import Cart from '../screens/Cart';
+import OnboardingThree from '../components/OnboardingComponents/OnboardingThree';
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
-    const {user_access_token} = useSelector((state) => state.token);
+    
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
-        {user_access_token === 'Register' ?
-        <Stack.Screen name="Register" component={Register} />
-        :
-        <>
+       
+        
          <Stack.Screen name="Splashscreen" component={Splashscreen} />
          <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+      <Stack.Screen name="OnboardingThree" component={OnboardingThree} />
       <Stack.Screen name="Signin" component={Signin} />
       
       <Stack.Screen name="Signinin" component={Signin} />
       <Stack.Screen name="Bottomnavigation" component={Bottomnavigation} />
       <Stack.Screen name="Salon" component={Salon} />
-      <Stack.Screen name="Cart" component={Cart} /></>
-      }
+      <Stack.Screen name="Cart" component={Cart} />
+      
      
       
       
