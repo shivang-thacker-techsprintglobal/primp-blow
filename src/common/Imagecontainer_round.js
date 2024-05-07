@@ -3,9 +3,9 @@ import React from 'react'
 import { COLOR } from '../constants/Colors'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import Notification from '../assets/svgs/notification'
-const Imagecontainer_round = ({children}) => {
+const Imagecontainer_round = ({children,onPress}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       {children}
     </TouchableOpacity>
   )

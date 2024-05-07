@@ -1,18 +1,17 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import React, {useState} from 'react';
-import Logo from '../../assets/svgs/Logo';
-import Closeeye from '../../assets/svgs/Closeeye';
-import {styles} from './Styles';
+import Logo from '../assets/svgs/Logo';
+import Closeeye from '../assets/svgs/Closeeye';
 import {Text, TextInput, Button, List, TextInputMask} from 'react-native-paper';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import {COLOR} from '../../constants/Colors';
-import Navigation from '../../navigation/Navigation';
+import {COLOR} from '../constants/Colors';
+import Navigation from '../navigation/Navigation';
 import {useNavigation} from '@react-navigation/native';
-import CustomKeyboardView from '../../components/CustomKeyboardView';
-import DropDown from '../../components/Dropdown/Dropdown';
+import CustomKeyboardView from '../components/CustomKeyboardView';
+import DropDown from '../components/Dropdown/Dropdown';
 
 const Register = () => {
   const navigation = useNavigation();
@@ -25,29 +24,26 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [textSecure, setTexeSecure] = useState(true);
+  const [textSecureConfirm, setTexeSecureConfirm] = useState(true);
   return (
     <CustomKeyboardView>
       <View style={styles.container}>
         <Logo />
         <View
-          style={{
-            width: '100%',
-            justifyContent: 'space-between',
-            height: '100%',
-          }}>
-          <View style={{width: '100%', marginTop: hp(4)}}>
-            <Text
-              variant="headlineLarge"
-              style={{fontWeight: '800', color: COLOR.Dark}}>
+          style={styles.container1}>
+          <View style={styles.c1}>
+            <View style={{gap:8}}>
+            <Text style={styles.header}
+              >
               Register
             </Text>
-            <Text
-              variant="titleMedium"
-              style={{fontWeight: '100', color: COLOR.DarkGrey, width: '80%'}}>
-              Create account so you can explore all the salons
+            <Text style={styles.subheader}
+              >
+              Create an account to explore all nearby locations & services.
             </Text>
+            </View>
 
-            <View style={{gap: hp(3), marginTop: hp(6)}}>
+            <View style={styles.cc1}>
               <View
                 style={{justifyContent: 'space-between', flexDirection: 'row'}}>
                 <TextInput
@@ -121,12 +117,15 @@ const Register = () => {
                 <TouchableOpacity
                   style={{position: 'absolute', right: wp(3), top: hp(2), zIndex:-1}}
                   onPress={() => setTexeSecure(!textSecure)}>
-                  <Closeeye />
+                   {textSecure?<Closeeye/>: <Image
+        style={{width:20, height:20, tintColor:COLOR.Dark}}
+        source={require('../assets/pngs/eye.png')}
+        /> }
                 </TouchableOpacity>
               </View>
               <View>
                 <TextInput
-                  secureTextEntry={textSecure}
+                  secureTextEntry={textSecureConfirm}
                   label="Confirm Password"
                   value={confirmPassword}
                   onChangeText={text => setConfirmPassword(text)}
@@ -139,19 +138,13 @@ const Register = () => {
                 />
                 <TouchableOpacity
                   style={{position: 'absolute', right: wp(3), top: hp(2)}}
-                  onPress={() => setTexeSecure(!textSecure)}>
-                  <Closeeye />
+                  onPress={() => setTexeSecureConfirm(!textSecureConfirm)}>
+                  {textSecureConfirm?<Closeeye/>: <Image
+        style={{width:20, height:20, tintColor:COLOR.Dark}}
+        source={require('../assets/pngs/eye.png')}
+        /> }
                 </TouchableOpacity>
               </View>
-              <Text
-                variant="bodyLarge"
-                style={{
-                  fontWeight: '100',
-                  alignSelf: 'flex-end',
-                  color: COLOR.Dark,
-                }}>
-                Forget Password?
-              </Text>
 
               <Button
                 mode="contained"
@@ -165,37 +158,104 @@ const Register = () => {
                 }
                 onPress={() => console.log('Pressed')}
                 buttonColor={COLOR.PrimaryColor}
-                textColor={COLOR.white}>
+                textColor={COLOR.white}
+                style={styles.buttonStyle}>
+                  
                 Register
               </Button>
             </View>
           </View>
 
-          <View style={{flexDirection: 'row', alignSelf: 'center', gap: wp(2)}}>
-            <Text
-              variant="bodyLarge"
-              style={{
-                fontWeight: '100',
-                color: COLOR.Dark,
-                alignSelf: 'center',
-              }}>
-              Forget Password?
+         
+            <Text style={styles.account}
+             >
+              Have an account?  <Text style={styles.signup} onPress={()=> navigation.navigate('Signin')}
+             >
+               Sign In
             </Text>
-            <Text
-              variant="bodyLarge"
-              onPress={() => navigation.navigate('Signin')}
-              style={{
-                fontWeight: '100',
-                color: COLOR.PrimaryColor,
-                alignSelf: 'center',
-              }}>
-              Sign In
             </Text>
-          </View>
+            
+       
         </View>
       </View>
-    </CustomKeyboardView>
+      </CustomKeyboardView>
   );
 };
 
 export default Register;
+
+const styles = StyleSheet.create({
+
+  container:
+  {
+    flex:1,
+        alignItems:'center',
+        paddingHorizontal: wp(4),
+        paddingVertical:hp(8),
+        backgroundColor:COLOR.white,
+  },
+  container1:
+  {width:'100%', justifyContent:'space-between', height:'100%'},
+  c1:{width: '100%', marginTop: hp(4), gap:20},
+  cc1:{gap: 16, marginTop: hp(4)},
+
+
+  header:{
+
+    fontFamily:'Agrandir-TextBold',
+    fontSize:30,
+    fontWeight:'700',
+    lineHeight:40,
+    textAlign:'left',
+    color:COLOR.Dark
+
+  },
+  subheader:{
+    fontFamily:'Agrandir-Regular',
+    fontSize:16,
+    fontWeight:'400',
+    lineHeight:22,
+    textAlign:'left',
+    color:COLOR.Dark
+
+  },
+  forgot:{
+    fontFamily:'Agrandir-Regular',
+    fontSize:12,
+    fontWeight:'400',
+    lineHeight:15.6,
+    textAlign:'right',
+    color:COLOR.Dark
+
+  },
+  account:{
+    ontFamily:'Agrandir-Regular',
+    fontSize:14,
+    fontWeight:'400',
+    lineHeight:20,
+    textAlign:'center',
+    color:COLOR.Dark,
+    marginTop:hp(1)
+
+  },
+  signup:{
+    ntFamily:'Agrandir-TextBold',
+    fontSize:14,
+    fontWeight:'700',
+    lineHeight:20,
+    textAlign:'left',
+    color:COLOR.PrimaryColor
+
+  },
+
+  iconstyle:{position:'absolute', right:wp(3), top:hp(2)},
+
+  buttonStyle:
+  {
+     height:hp(6),
+     borderRadius:10
+  }
+
+})
+
+

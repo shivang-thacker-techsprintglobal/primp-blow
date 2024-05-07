@@ -2,34 +2,36 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../../constants/Colors'
-import BlowOut from './BlowOut'
-import Makeup from './Makeup'
-import Modal from "react-native-modal";
+import Nearme from './Nearme'
+import Alllocations from './Alllocations'
 
-const Homebody = () => {
 
-  const [activeTab,setActiveTab]=useState('Blow Out')
+const SalonTab = () => {
+
+  const [activeTab,setActiveTab]=useState('Near me')
   return (
     <View style={styles.bodycontainer}>
       <View style={styles.tabBar}>
-        <TouchableOpacity style={[styles.tabContainer, {borderBottomColor : activeTab == 'Blow Out' ? COLOR.PrimaryColor : 'transparent'}]} onPress={()=> setActiveTab('Blow Out')}>
-          <Text style={[styles.tabText, {color : activeTab == 'Blow Out' ? COLOR.black : COLOR.LightGrey}]}>Blow Out</Text>
+        <TouchableOpacity style={[styles.tabContainer, {borderBottomColor : activeTab == 'Near me' ? COLOR.PrimaryColor : 'transparent'}]} onPress={()=> setActiveTab('Near me')}>
+          <Text style={[styles.tabText, {color : activeTab == 'Near me' ? COLOR.black : COLOR.LightGrey}]}>Near me</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.tabContainer,{borderBottomColor : activeTab == 'Make Up' ? COLOR.PrimaryColor : 'transparent'} ]} onPress={()=> setActiveTab('Make Up')}>
-        <Text style={[styles.tabText, {color : activeTab == 'Make Up' ? COLOR.black : COLOR.LightGrey}]}>Make Up</Text>
+        <TouchableOpacity style={[styles.tabContainer,{borderBottomColor : activeTab == 'All Locations' ? COLOR.PrimaryColor : 'transparent'} ]} onPress={()=> setActiveTab('All Locations')}>
+        <Text style={[styles.tabText, {color : activeTab == 'All Locations' ? COLOR.black : COLOR.LightGrey}]}>All Locations</Text>
         </TouchableOpacity>
       </View>
 
-      {activeTab === 'Blow Out' ?
-        <BlowOut/>
+      {activeTab === 'Near me' ?
+        <Nearme/>
         :
-        <Makeup/>  
+       <Alllocations/>
     }
+
+      
     </View>
   )
 }
 
-export default Homebody
+export default SalonTab
 
 const styles = StyleSheet.create({
 

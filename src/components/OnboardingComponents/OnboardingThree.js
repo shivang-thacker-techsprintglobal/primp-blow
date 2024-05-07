@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     marginBottom:hp(6),
-    borderColor:COLOR.PrimaryColor
+    borderColor:COLOR.PrimaryColor,
+    borderRadius:10
   },
   title1:
   {

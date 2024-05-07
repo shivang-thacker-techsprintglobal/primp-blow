@@ -8,7 +8,7 @@ const SplashScreen = ({ navigation }) => {
        
         const timer = setTimeout(() => {
 
-          navigation.replace('Signin'); 
+          navigation.replace('OnboardingScreen'); 
         }, 1500); 
     
         return () => clearTimeout(timer);

@@ -36,7 +36,7 @@ import Dropdownlogo from '../../assets/svgs/Dropdown'
        {isClicked? 
     <FlatList
     style={styles.listcontainer}
-    
+    contentContainerStyle={{justifyContent:'center',}}
     data={data}
     renderItem={({item,index})=>
 {
@@ -86,12 +86,12 @@ import Dropdownlogo from '../../assets/svgs/Dropdown'
       borderColor:COLOR.LightGrey,
       position:'absolute',
       top:hp(5),
-      zIndex:1
+      zIndex:1,
         
     },
     itemstyle:
     {
        color:COLOR.black,
-       paddingVertical:hp(0.5)
+       paddingVertical:hp(0.7)
     }
   });

@@ -10,6 +10,8 @@ export const COLOR =
     Grey:'#EAEAEA',
     LightGrey:'#B2B2B2',
     greyDisabled:'#B2B2B2',
-    bottomNavigation:'rgba(6, 16, 16,0.7)'
+    bottomNavigation:'rgba(6, 16, 16,0.7)',
+    titlecolor:'#1B1B1E'
+
 
 }

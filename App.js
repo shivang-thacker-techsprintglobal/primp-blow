@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { PaperProvider } from 'react-native-paper';
-import Signin from './src/screens/signin/Signin';
+import Signin from './src/screens/Signin';
 import Navigation from './src/navigation/Navigation';
 
 

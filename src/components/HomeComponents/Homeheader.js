@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { COLOR } from '../../constants/Colors';
 import { Text } from 'react-native-paper';
@@ -8,17 +8,20 @@ import Notification from '../../assets/svgs/notification'
 import Cart from '../../assets/svgs/cart'
 import Dropdown from '../../assets/svgs/Dropdown'
 import LocationPin from '../../assets/svgs/LocationPin'
+import { useNavigation } from '@react-navigation/native';
 
 
 
 
 
 const Homeheader = () => {
+
+  const navigation= useNavigation()
   
     
   return (
     <View style={ styles.container}>
-      <View style={styles.c1}>
+      <TouchableOpacity style={styles.c1} onPress={()=> navigation.navigate('Salon')}>
       <LocationPin/>
       <View >
       
@@ -29,12 +32,13 @@ const Homeheader = () => {
       </View>
       <Text numberOfLines={1}  style={styles.mediumText}>Austin -  Prime and Blow Austin Tri</Text>
       </View>
-      </View>
+      </TouchableOpacity>
       <View style={styles.c2}>
       
        
         <Imagecontainer_round children={<Notification/>}/>
-        <Imagecontainer_round children={<Cart/>}/>
+       
+        <Imagecontainer_round children={<Cart/>} onPress={()=> navigation.navigate('Cart')}/>
       </View>
     </View>
   )
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
 
    container:
    {
-      flex:0.1,
+      flex:0.13,
       backgroundColor:COLOR.white,
       flexDirection:'row',
       gap:12,

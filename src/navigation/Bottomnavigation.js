@@ -1,16 +1,11 @@
-import {Alert, StyleSheet, View, Image} from 'react-native';
-import React, {useState} from 'react';
+import { StyleSheet,  Image} from 'react-native';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import {COLOR} from '../constants/Colors';
-import Homeicon from '../assets/svgs/home';
-import Homedisabled from '../assets/svgs/homegrey';
-import Calendericon from '../assets/svgs/Calendar';
 import Booking from '../screens/Booking';
 import About from '../screens/About';
 import Profile from '../screens/Profile';
-import Usericon from '../assets/svgs/user';
-import Informationicon from '../assets/svgs/information';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,

@@ -1,30 +1,28 @@
-import {  StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Homeheader from '../components/HomeComponents/Homeheader'
+
 import { COLOR } from '../constants/Colors'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import HomeSearchBar from '../components/HomeComponents/HomeSearchBar'
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import Homebody from '../components/HomeComponents/Homebody';
-import CustomKeyboardView from '../components/CustomKeyboardView';
 
-const Home = () => {
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+
+import Header from '../common/Header';
+import { useNavigation } from '@react-navigation/native';
+
+const Cart = () => {
+    const navigation =useNavigation()
   const ios = Platform.OS == "ios";
   const { top } = useSafeAreaInsets();
   return (
-   
     <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
-   
-      <Homeheader />
-      <HomeSearchBar />
-      <Homebody/>
+     <Header title={'Cart'} navigation={navigation}/>
      
+
     </View>
-   
   )
 }
 
-export default Home
+export default Cart
 
 const styles = StyleSheet.create({
   container:{

@@ -4,16 +4,16 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-nat
 import { COLOR } from '../constants/Colors'
 import { Button,Text } from 'react-native-paper'
 
-const HomeCard = ({title,icon}) => {
+const Makeupdummy = ({title,icon}) => {
   return (
     <View style={styles.container}>
       <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-      <Text  numberOfLines={2}  style={styles.textTitle}>Blowout</Text>
-      <Text   style={styles.textTitle}>$60.00  </Text>
+      <Text  numberOfLines={2}  style={styles.textTitle}>False Lash Application</Text>
+      <Text   style={styles.textTitle}>$20.00  </Text>
       </View>
-      <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(No Extensions) (luxurious Shampoo & Blowout style)  </Text>
+      <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(Add to Any Makeup or Come in With Makeup On and We Will Apply Them for You) </Text>
       <View style={{flexDirection:'row', alignItems:'center'}}>
-      <Text   style={styles.mediumText}>45 Min  </Text>
+      <Text   style={styles.mediumText}>10 Min  </Text>
       <Button  mode="outlined" onPress={() => navigation.navigate('Signin')} textColor={COLOR.PrimaryColor} style={styles.buttonstyle}>
     Add
   </Button>
@@ -22,7 +22,7 @@ const HomeCard = ({title,icon}) => {
   )
 }
 
-export default HomeCard
+export default Makeupdummy
 
 const styles = StyleSheet.create({
 

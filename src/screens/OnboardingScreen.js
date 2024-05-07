@@ -17,7 +17,7 @@ const OnboardingScreen = ({ navigation }) => {
     // Animate pagination dots when index changes
     Animated.timing(paginationDotBottom, {
       toValue: currentIndex === 2 ? hp(42) : hp(30), // Change bottom position based on current index
-      duration: 300, // Duration of the animation in milliseconds
+      duration: 100, // Duration of the animation in milliseconds
       useNativeDriver: false, // Make sure to set useNativeDriver to false for bottom style animations
     }).start();
   }, [currentIndex]); // Run the effect whenever currentIndex changes
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   },
   activeDot: {
     backgroundColor: COLOR.PrimaryColor,
-    width: 8,
+    width: 20,
     height: 8,
     borderRadius: 4,
   },
