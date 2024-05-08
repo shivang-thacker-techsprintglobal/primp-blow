@@ -18,7 +18,7 @@ import Dropdownlogo from '../../assets/svgs/Dropdown'
     const [isClicked, setIsClicked ] = useState(false);
     const [dropdownvalue, setDropdownvalue]= useState('+91')
     const [data, setData] = useState([
-        '+91', '+07', '+31' ,'+91', '+07', '+31' 
+        '+91', '+1', '+31' , '+07', '+31' 
          
       ]);
   

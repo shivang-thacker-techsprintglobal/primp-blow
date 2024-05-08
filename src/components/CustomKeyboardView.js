@@ -25,9 +25,9 @@ import { COLOR } from "../constants/Colors";
   
     return (
       <KeyboardAvoidingView
-        behavior={ios ? "padding" : "height"}
+        behavior='height'
         style={{ flex: 1, backgroundColor: COLOR.white }}
-        {...kavConfig}
+        keyboardVerticalOffset={40}
       >
         <ScrollView
           style={{ flex: 1 }}
