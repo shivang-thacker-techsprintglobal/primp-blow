@@ -14,6 +14,7 @@ import CustomKeyboardView from '../components/CustomKeyboardView';
 import DropDown from '../components/Dropdown/Dropdown';
 import { useDispatch } from 'react-redux';
 import { useraccesstoken } from '../../redux/actions/userActions';
+import TextInputcommon from '../common/TextInputcommon';
 
 const Register = () => {
 
@@ -58,28 +59,9 @@ const Register = () => {
             <View style={styles.cc1}>
               <View
                 style={{justifyContent: 'space-between', flexDirection: 'row'}}>
-                <TextInput
-                  label="First Name"
-                  value={firstName}
-                  onChangeText={text => setFirstname(text)}
-                  mode="outlined"
-                  outlineColor={COLOR.greyborderColor}
-                  activeOutlineColor={COLOR.PrimaryColor}
-                  placeholderTextColor={COLOR.LightGrey}
-                  textColor={COLOR.Dark}
-                  style={{backgroundColor: COLOR.white, width: '45%'}}
-                />
-                <TextInput
-                  label="Last Name"
-                  value={lastName}
-                  onChangeText={text => setLastName(text)}
-                  mode="outlined"
-                  outlineColor={COLOR.greyborderColor}
-                  activeOutlineColor={COLOR.PrimaryColor}
-                  placeholderTextColor={COLOR.LightGrey}
-                  textColor={COLOR.Dark}
-                  style={{backgroundColor: COLOR.white, width: '45%'}}
-                />
+                <TextInputcommon label={'First Name'}  value={firstName} setValue={setFirstname} style={{width:'45%'}}/>
+                <TextInputcommon label={'Last Name'}  value={lastName} setValue={setLastName} style={{width:'45%'}}/>
+                
               </View>
 
               <View
@@ -89,43 +71,12 @@ const Register = () => {
                   alignItems: 'center',
                 }}>
                 <DropDown />
-                <TextInput
-                  label="Phone Number"
-                  value={phoneNumber}
-                  onChangeText={text => setPhoneNumber(text)}
-                  mode="outlined"
-                  outlineColor={COLOR.greyborderColor}
-                  activeOutlineColor={COLOR.PrimaryColor}
-                  placeholderTextColor={COLOR.LightGrey}
-                  textColor={COLOR.Dark}
-                  style={{backgroundColor: COLOR.white, width: '83%'}}
-                />
+                <TextInputcommon label={'Phone Number'}  value={phoneNumber} setValue={setPhoneNumber} style={{width:'83%'}}/>
               </View>
 
-              <TextInput
-                label="Email Address"
-                value={email}
-                onChangeText={text => setEmail(text)}
-                mode="outlined"
-                outlineColor={COLOR.greyborderColor}
-                activeOutlineColor={COLOR.PrimaryColor}
-                placeholderTextColor={COLOR.LightGrey}
-                textColor={COLOR.Dark}
-                style={{backgroundColor: COLOR.white, zIndex:-1}}
-              />
+              <TextInputcommon label={'Email Address'}  value={email} setValue={setEmail} style={{ zIndex:-1}}/>
               <View>
-                <TextInput
-                  secureTextEntry={textSecure}
-                  label="Password"
-                  value={password}
-                  onChangeText={text => setPassword(text)}
-                  mode="outlined"
-                  outlineColor={COLOR.greyborderColor}
-                  activeOutlineColor={COLOR.PrimaryColor}
-                  placeholderTextColor={COLOR.LightGrey}
-                  textColor={COLOR.Dark}
-                  style={{backgroundColor: COLOR.white, zIndex:-1}}
-                />
+              <TextInputcommon secureTextEntry={textSecure} label={'Password'}  value={password} setValue={setPassword} style={{ zIndex:-1}}/>
                 <TouchableOpacity
                   style={{position: 'absolute', right: wp(3), top: hp(2), zIndex:-1}}
                   onPress={() => setTexeSecure(!textSecure)}>
@@ -136,18 +87,7 @@ const Register = () => {
                 </TouchableOpacity>
               </View>
               <View>
-                <TextInput
-                  secureTextEntry={textSecureConfirm}
-                  label="Confirm Password"
-                  value={confirmPassword}
-                  onChangeText={text => setConfirmPassword(text)}
-                  mode="outlined"
-                  outlineColor={COLOR.greyborderColor}
-                  activeOutlineColor={COLOR.PrimaryColor}
-                  placeholderTextColor={COLOR.LightGrey}
-                  textColor={COLOR.Dark}
-                  style={{backgroundColor: COLOR.white}}
-                />
+              <TextInputcommon secureTextEntry={textSecureConfirm} label={'Confirm Password'}  value={confirmPassword} setValue={setConfirmPassword} style={{ zIndex:-1}}/>
                 <TouchableOpacity
                   style={{position: 'absolute', right: wp(3), top: hp(2)}}
                   onPress={() => setTexeSecureConfirm(!textSecureConfirm)}>

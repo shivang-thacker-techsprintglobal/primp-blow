@@ -9,6 +9,7 @@ import { COLOR } from '../constants/Colors';
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux';
 import { useraccesstoken } from '../../redux/actions/userActions';
+import TextInputcommon from '../common/TextInputcommon';
 
 
 const Signin = () => {
@@ -37,28 +38,9 @@ dispatch(useraccesstoken('Register'))
         </View>
 
         <View style={styles.cc1}> 
-        <TextInput
-      label="Email Address"
-      value={email}
-      onChangeText={text => setEmail(text)}
-      mode='outlined'
-      outlineColor={COLOR.greyborderColor}
-      activeOutlineColor={COLOR.PrimaryColor}
-      placeholderTextColor={COLOR.LightGrey}
-      textColor={COLOR.Dark}
-      style={{backgroundColor:COLOR.white}}/>
+        <TextInputcommon label={'Email Adress'}  value={email} setValue={setEmail}/>
       <View >
-    <TextInput
-    secureTextEntry={textSecure}
-      label="Password"
-      value={password}
-      onChangeText={text => setPassword(text)}
-      mode='outlined'
-      outlineColor={COLOR.greyborderColor}
-      activeOutlineColor={COLOR.PrimaryColor}
-      placeholderTextColor={COLOR.LightGrey}
-      textColor={COLOR.Dark}
-      style={{backgroundColor:COLOR.white}}/> 
+    <TextInputcommon label={'Password'} secureTextEntry={textSecure} value={password} setValue={setPassword}/>
       <TouchableOpacity style={styles.iconstyle} onPress={()=>setTexeSecure(!textSecure)}>
         {textSecure?<Closeeye/>: <Image
         style={{width:20, height:20, tintColor:COLOR.Dark}}
