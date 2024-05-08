@@ -20,7 +20,7 @@ const dispatch = useDispatch()
   useEffect(() => {
     // Animate pagination dots when index changes
     Animated.timing(paginationDotBottom, {
-      toValue: currentIndex === 2 ? hp(42) : hp(30), // Change bottom position based on current index
+      toValue: currentIndex === 2 ? hp(42) : hp(32), // Change bottom position based on current index
       duration: 100, // Duration of the animation in milliseconds
       useNativeDriver: false, // Make sure to set useNativeDriver to false for bottom style animations
     }).start();

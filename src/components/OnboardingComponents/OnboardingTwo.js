@@ -22,9 +22,9 @@ const OnboardingTwo = () => {
             
           </View>
           <View style={styles.c2}>
-          <Text style={styles.title1}>No more<Text style={styles.title2}> Call Waiting</Text></Text>
+          <Text style={styles.title1}>Meet your new beauty bestie! <Text style={styles.title2}> We’re here to help you shine!  </Text></Text>
           
-      <Text style={styles.details}>With just a few taps, you can book your appointments hassle-free. No more waiting on hold or standing in line!</Text>
+      <Text style={styles.details}>Book your appointments hassle-free with just a few taps!</Text>
      
       </View>
         </LinearGradient>

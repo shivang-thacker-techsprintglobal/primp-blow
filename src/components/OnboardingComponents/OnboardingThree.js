@@ -25,7 +25,7 @@ const OnboardingThree = ({navigation}) => {
           <View style={styles.c2}>
           <Text style={styles.title1}>Bring Your <Text style={styles.title2}> Loved Ones Along</Text></Text>
           
-      <Text style={styles.details}>With just a few taps, you can book your appointments hassle-free. No more waiting on hold or standing in line!</Text>
+      <Text style={styles.details}>At Primp & Blow, We believe indulgence is better together. Book appointments for yourself and your loved ones with ease.</Text>
       </View>
 
       <View style={styles.buttoncontainer}>

@@ -10,16 +10,16 @@ const SplashScreen = ({ navigation }) => {
     useEffect(() => {
        
         const timer = setTimeout(() => {
-         if(user_access_token === 'three')
+        //  if(user_access_token === 'three')
           
-           { navigation.replace('OnboardingThree') }
+        //    { navigation.replace('OnboardingThree') }
 
-           else if(user_access_token === 'Register')
-           {
-            navigation.replace('Signin')
-           }
+        //    else if(user_access_token === 'Register')
+        //    {
+        //     navigation.replace('Signin')
+        //    }
            
-           else{navigation.replace('OnboardingScreen');}
+           navigation.replace('OnboardingScreen');
           
         }, 1500); 
     

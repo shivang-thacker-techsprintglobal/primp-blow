@@ -34,7 +34,7 @@ dispatch(useraccesstoken('Register'))
         <View style={styles.c1}>
           <View style={{gap:8}}>
         <Text style={styles.header} >Hello, Welcome back</Text>
-        <Text style={styles.subheader} >Welcome back you’ve been missed!</Text>
+        <Text style={styles.subheader} >You were missed!</Text>
         </View>
 
         <View style={styles.cc1}> 

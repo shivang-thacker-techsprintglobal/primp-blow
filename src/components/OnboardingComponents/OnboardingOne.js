@@ -22,9 +22,9 @@ const OnboardingOne = () => {
             
           </View>
           <View style={styles.c2}>
-          <Text style={styles.title1}>Discover your<Text style={styles.title2}> Perfect Salon Match!</Text></Text>
+          <Text style={styles.title1}>Beauty at your fingertips -<Text style={styles.title2}> Let’s Get Started</Text></Text>
           
-      <Text style={styles.details}>Complete your profile to help you find a salon who will be right for you.</Text>
+      <Text style={styles.details}>Complete your profile & we will help you find a salon nearest to you.</Text>
      
       </View>
         </LinearGradient>
@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     lineHeight:40,
     textAlign:'left',
-    color:COLOR.white
+    color:COLOR.white,
+    width:'80%'
 
   },
   title2:

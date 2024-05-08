@@ -19,7 +19,7 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
        
-        
+      
          <Stack.Screen name="Splashscreen" component={Splashscreen} />
          <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
@@ -27,9 +27,10 @@ const Navigation = () => {
       <Stack.Screen name="Signin" component={Signin} />
       
       <Stack.Screen name="Signinin" component={Signin} />
-      <Stack.Screen name="Bottomnavigation" component={Bottomnavigation} />
+      
       <Stack.Screen name="Salon" component={Salon} />
       <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen name="Bottomnavigation" component={Bottomnavigation} />
       
      
       

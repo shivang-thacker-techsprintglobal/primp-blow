@@ -1,12 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,Modal } from 'react-native'
+import React,{useState} from 'react'
 import HomeCard from '../../common/Homecard'
-import Makeupdummy from '../../common/makeupdummy'
+import Addonsmodal from './Addonsmodal'
 
 const Makeup = () => {
+  const [openModal,setOpenModal]=useState(false)
+
+const renderModal =()=>
+{
+  return(
+    <Modal visible={openModal} animationType='slide' transparent={true} >
+       <Addonsmodal onPress={()=> setOpenModal(false)}/>
+
+    </Modal>
+  )
+
+}
   return (
     <View>
-      <Makeupdummy/>
+      <HomeCard onPress={()=> setOpenModal(true)}/>
+      {renderModal()}
     </View>
   )
 }

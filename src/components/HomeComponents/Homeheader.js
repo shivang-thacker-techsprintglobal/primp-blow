@@ -30,7 +30,7 @@ const Homeheader = () => {
       <Text style={styles.textTitle}>Salon</Text>
           <Dropdown size={30}/>
       </View>
-      <Text numberOfLines={1}  style={styles.mediumText}>Austin -  Prime and Blow Austin Tri</Text>
+      <Text numberOfLines={1}  style={styles.mediumText}>Austin -  Primp and Blow Austin Tri</Text>
       </View>
       </TouchableOpacity>
       <View style={styles.c2}>

@@ -14,7 +14,7 @@ const Makeupdummy = ({title,icon}) => {
       <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(Add to Any Makeup or Come in With Makeup On and We Will Apply Them for You) </Text>
       <View style={{flexDirection:'row', alignItems:'center'}}>
       <Text   style={styles.mediumText}>10 Min  </Text>
-      <Button  mode="outlined" onPress={() => navigation.navigate('Signin')} textColor={COLOR.PrimaryColor} style={styles.buttonstyle}>
+      <Button  mode="outlined" onPress={() => }</View>} textColor={COLOR.PrimaryColor} style={styles.buttonstyle}>
     Add
   </Button>
       </View>

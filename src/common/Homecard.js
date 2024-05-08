@@ -3,8 +3,11 @@ import React from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../constants/Colors'
 import { Button,Text } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
 
-const HomeCard = ({title,icon}) => {
+const HomeCard = ({title,icon,onPress}) => {
+
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
@@ -14,7 +17,7 @@ const HomeCard = ({title,icon}) => {
       <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(No Extensions) (luxurious Shampoo & Blowout style)  </Text>
       <View style={{flexDirection:'row', alignItems:'center'}}>
       <Text   style={styles.mediumText}>45 Min  </Text>
-      <Button  mode="outlined" onPress={() => navigation.navigate('Signin')} textColor={COLOR.PrimaryColor} style={styles.buttonstyle}>
+      <Button  mode="outlined" onPress={onPress} textColor={COLOR.PrimaryColor} style={styles.buttonstyle}>
     Add
   </Button>
       </View>

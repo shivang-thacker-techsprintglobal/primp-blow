@@ -11,7 +11,10 @@ export const COLOR =
     LightGrey:'#B2B2B2',
     greyDisabled:'#B2B2B2',
     bottomNavigation:'rgba(6, 16, 16,0.7)',
-    titlecolor:'#1B1B1E'
+    titlecolor:'#1B1B1E',
+    Primaryiconcontainer:' rgba(102, 204, 204, 0.7)',
+    CheckboxColor:'#8B9191'
+
 
 
 }
