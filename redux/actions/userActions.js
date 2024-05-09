@@ -3,6 +3,9 @@ import { BASE_URL } from "../store";
 import { Alert } from "react-native";
 
 
+
+
+
 export const navigationPath = value => dispatch => {
   dispatch({
     type: 'NAVIGATION_PATH',
@@ -57,6 +60,7 @@ export const fetchaccessToken = () => async dispatch => {
 
 export const createCustomerAndUserAccount = (Firstname,Lastname,Email,Password,phonenumber,fetchedtoken,navigation) => async dispatch => {
   try {
+    dispatch({ type: 'START_LOADING' });
     const response = await axios.post(
       `${BASE_URL}/v4.1/customer/customer/account`,
       {
@@ -76,10 +80,11 @@ export const createCustomerAndUserAccount = (Firstname,Lastname,Email,Password,p
       }
     );
     if (response?.status === 200 ) {
+      dispatch({ type: 'STOP_LOADING' }); 
 
       if(response?.data.ErrorCode === 0)
       {
-        Alert.alert('Registered Successfully')
+        Alert.alert('Register','Registered Successfully')
 
         navigation.navigate('Signin')
 
@@ -89,20 +94,22 @@ export const createCustomerAndUserAccount = (Firstname,Lastname,Email,Password,p
       });}
 
       else if (response?.data.ErrorCode === 13){
-        Alert.alert(`${response.data.ErrorMessage}`,)
+        Alert.alert('Register',`${response.data.ErrorMessage}`)
       }
 
       else{
-        Alert.alert(`${response.data.ErrorMessage}`,`${response?.data?.ArgumentErrors[0]?.ErrorMessage}`)
+        Alert.alert('Register',`${response.data.ErrorMessage} :${response?.data?.ArgumentErrors[0]?.ErrorMessage} `)
       }
       
     }
   } catch (error) {
+    dispatch({ type: 'STOP_LOADING' }); 
     console.error('Error fetching access token:', error);
   }
 };
 
 export const Login = (Email,Password,navigation) => async dispatch => {
+  dispatch({ type: 'START_LOADING' });
   try {
     const response = await axios.post(
       `${BASE_URL}/v4.1/customer/customer/login`,
@@ -121,11 +128,13 @@ export const Login = (Email,Password,navigation) => async dispatch => {
         },
       }
     );
-    if (response?.status === 200 ) {
+    if (response?.data.error === null ) {
+      dispatch({ type: 'STOP_LOADING' }); 
+
       console.log(response?.data)
 
      
-        Alert.alert('Login Successfully')
+        Alert.alert('Sign in','Sign in Successfully')
 
         navigation.navigate('Bottomnavigation')
 
@@ -142,8 +151,18 @@ export const Login = (Email,Password,navigation) => async dispatch => {
       
       
     }
+    else{
+      dispatch({ type: 'STOP_LOADING' }); 
+      Alert.alert('Sign in','Your email or password is incorrect')
+    }
   } catch (error) {
+    dispatch({ type: 'STOP_LOADING' }); 
     console.error('Error fetching access token:', error);
   }
 };
+
+
+
+
+
 

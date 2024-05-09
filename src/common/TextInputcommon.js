@@ -16,6 +16,8 @@ const TextInputcommon = ({secureTextEntry, label,value,setValue,style}) => {
       activeOutlineColor={COLOR.PrimaryColor}
       placeholderTextColor={COLOR.LightGrey}
       textColor={COLOR.Dark}
+      
+      
       style={[{backgroundColor:COLOR.white}, style]}/> 
     
   )

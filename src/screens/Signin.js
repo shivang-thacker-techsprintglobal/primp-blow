@@ -1,18 +1,20 @@
-import { StyleSheet, TouchableOpacity, View,Image } from 'react-native'
+import { StyleSheet, TouchableOpacity, View,Image,Alert } from 'react-native'
 import React,{useEffect, useState} from 'react'
 import Logo from '../assets/svgs/Logo'
 import Closeeye from '../assets/svgs/Closeeye'
 
-import { Text, TextInput , Button} from 'react-native-paper';
+import { Text, TextInput , Button, ActivityIndicator} from 'react-native-paper';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import { COLOR } from '../constants/Colors';
 import { useNavigation } from '@react-navigation/native'
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { navigationPath,Login } from '../../redux/actions/userActions';
 import TextInputcommon from '../common/TextInputcommon';
 
 
 const Signin = () => {
+
+  const {loading} = useSelector(state => state.customer);
 
   const dispatch = useDispatch()
 
@@ -27,6 +29,23 @@ dispatch(navigationPath('Register'))
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [textSecure,setTexeSecure]= useState(true)
+
+
+    const validateAndSubmit = () => {
+      // Email validation
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return Alert.alert('Invalid Email', 'Please enter a valid email address.');
+      }
+  
+    
+  
+     
+  
+    
+  
+    
+      {dispatch(Login(email,password,navigation))}
+    };
   return (
     <View style={styles.container} >
       <Logo/>
@@ -38,7 +57,7 @@ dispatch(navigationPath('Register'))
         </View>
 
         <View style={styles.cc1}> 
-        <TextInputcommon label={'Email Adress'}  value={email} setValue={setEmail}/>
+        <TextInputcommon label={'Email Adress'}  value={email} setValue={setEmail} />
       <View >
     <TextInputcommon label={'Password'} secureTextEntry={textSecure} value={password} setValue={setPassword}/>
       <TouchableOpacity style={styles.iconstyle} onPress={()=>setTexeSecure(!textSecure)}>
@@ -54,9 +73,10 @@ dispatch(navigationPath('Register'))
   
         </View>
 
-        <Button  mode="contained" disabled={email.trim() === '' || password.trim() === ''} onPress={() => {dispatch(Login(email,password,navigation))}} buttonColor={ COLOR.PrimaryColor} textColor={COLOR.white} style={styles.buttonStyle} >
+{loading? <ActivityIndicator color={COLOR.PrimaryColor} size={'small'}/>: <Button  mode="contained" disabled={email.trim() === '' || password.trim() === ''} onPress={() => validateAndSubmit() } buttonColor={ COLOR.PrimaryColor} textColor={COLOR.white} style={styles.buttonStyle} >
     Sign In
-  </Button>
+  </Button>}
+        
         </View>
 
      

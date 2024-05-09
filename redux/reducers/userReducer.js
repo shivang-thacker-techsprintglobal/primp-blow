@@ -2,6 +2,7 @@ import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
+  loading:false
 };
 
 export const customerReducer = createReducer({}, builder => {
@@ -9,6 +10,12 @@ export const customerReducer = createReducer({}, builder => {
 
   .addCase('CUSTOMER_ID', (state, action) => {
     state.customer_id = action.payload;
+  })
+  .addCase('START_LOADING', (state) => {
+    state.loading = true;
+  })
+  .addCase('STOP_LOADING', (state) => {
+    state.loading = false;
   })
   
 

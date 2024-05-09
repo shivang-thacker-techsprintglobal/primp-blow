@@ -16,23 +16,23 @@ import Dropdownlogo from '../../assets/svgs/Dropdown'
   } from "react-native-responsive-screen";
   const DropDown = () => {
     const [isClicked, setIsClicked ] = useState(false);
-    const [dropdownvalue, setDropdownvalue]= useState('+91')
+    const [dropdownvalue, setDropdownvalue]= useState('+1')
     const [data, setData] = useState([
-        '+91', '+1', '+31' , '+07', '+31' 
+        '+1', 
          
       ]);
   
     return (
       <>
-      <TouchableOpacity
+      <View
         style={styles.dropdownselector}
         onPress={() => {
           setIsClicked(!isClicked);
         }}
       >
        <Text style={styles.text}>{dropdownvalue}</Text>
-       <Dropdownlogo/>
-       </TouchableOpacity>
+      
+       </View>
        {isClicked ? (
         <View style={styles.listcontainer}>
           {data.map((item, index) => {

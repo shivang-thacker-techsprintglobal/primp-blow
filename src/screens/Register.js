@@ -2,7 +2,7 @@ import {StyleSheet, TouchableOpacity, View, Image, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Logo from '../assets/svgs/Logo';
 import Closeeye from '../assets/svgs/Closeeye';
-import {Text, TextInput, Button, List, TextInputMask} from 'react-native-paper';
+import {Text, TextInput, Button, List, TextInputMask, ActivityIndicator} from 'react-native-paper';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -20,6 +20,8 @@ const Register = () => {
 
   const {token_fetch}=useSelector(state => state.token)
   const {customer_id}=useSelector(state => state.customer)
+
+  const {loading} = useSelector(state => state.customer);
 
   const dispatch = useDispatch()
 
@@ -41,6 +43,37 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [textSecure, setTexeSecure] = useState(true);
   const [textSecureConfirm, setTexeSecureConfirm] = useState(true);
+
+
+  const validateAndSubmit = () => {
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return Alert.alert('Invalid Email', 'Please enter a valid email address.');
+    }
+
+    // Password validation
+    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,25}$/.test(password)) {
+      return Alert.alert(
+        'Invalid Password',
+        'Password must be between 8 and 25 characters long and contain at least one number, one uppercase letter, and one lowercase letter.'
+      );
+    }
+
+    // Phone number validation
+    if (!/^\d{10}$/.test(phoneNumber)) {
+      return Alert.alert('Invalid Phone Number', 'Please enter a 10-digit phone number.');
+    }
+
+    // Password and Confirm Password validation
+    if (password !== confirmPassword) {
+      return Alert.alert('Passwords Mismatch', 'Password and Confirm Password must match.');
+    }
+
+    // If all validations pass, submit the form or perform other actions
+    // You can dispatch an action here, or navigate to another screen, etc.
+    // For now, just displaying a success alert
+    {dispatch(createCustomerAndUserAccount(firstName,lastName,email,password,phoneNumber,token_fetch,navigation))}
+  };
   return (
     <CustomKeyboardView>
       <View style={styles.container}>
@@ -100,8 +133,7 @@ const Register = () => {
         /> }
                 </TouchableOpacity>
               </View>
-
-              <Button
+{loading ? <ActivityIndicator color={COLOR.PrimaryColor} size={'small'}/>: <Button
                 mode="contained"
                 disabled={
                   email.trim() === '' ||
@@ -111,13 +143,14 @@ const Register = () => {
                   phoneNumber.trim() === '' ||
                   confirmPassword === ''
                 }
-                onPress={() => {dispatch(createCustomerAndUserAccount(firstName,lastName,email,password,phoneNumber,token_fetch,navigation))}}
+                onPress={() => validateAndSubmit() }
                 buttonColor={COLOR.PrimaryColor}
                 textColor={COLOR.white}
                 style={styles.buttonStyle}>
                   
                 Register
-              </Button>
+              </Button>}
+              
             </View>
           </View>
 
