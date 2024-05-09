@@ -1,26 +1,21 @@
-import { Alert, StyleSheet, View, TouchableOpacity} from 'react-native'
+import { StyleSheet, TouchableOpacity, View} from 'react-native'
 import React, { useState } from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../constants/Colors'
-import { Button,Text } from 'react-native-paper'
+import { Text } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
-import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../../redux/actions/userActions'
-import ButtonCommon from './ButtonCommon'
+import { useDispatch } from 'react-redux'
+import { removeFromCart } from '../../redux/actions/userActions'
+import Deleteicon from '../assets/svgs/delete'
 
 
-const HomeCard = ({onPress, item}) => {
+const CartCard = ({onPress, item}) => {
 
-  
-
-
-  const {items} = useSelector(state => state.cart);
+  const [itemAdded,setItemAdded] = useState(false)
 
   const dispatch = useDispatch()
 
-  const isItemAdded = items.some(cartItem => cartItem.title === item.title);
-
- 
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
@@ -30,32 +25,24 @@ const HomeCard = ({onPress, item}) => {
       <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(No Extensions) (luxurious Shampoo & Blowout style)  </Text>
       <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
       <Text   style={styles.mediumText}>{item.time}  </Text>
-      {!isItemAdded?<ButtonCommon title={'Add'} onPress={()=>
-          {dispatch(addToCart(item))
-          }
-         
-          }/> : <ButtonCommon title={'Added'} buttonstyle={{backgroundColor:COLOR.PrimaryColor}} textstyle={{color:COLOR.white}} onPress={()=> Alert.alert('already added')}/> }
+      <TouchableOpacity onPress={()=>dispatch(removeFromCart(item.id))}>
+      <Deleteicon/>
+      </TouchableOpacity>
       </View>
     </View>
   )
 }
 
-export default HomeCard
+export default CartCard
 
 const styles = StyleSheet.create({
 
     container:
     {
-        
         width: '100%',
-        borderColor:COLOR.Grey,
-        borderWidth:1,
-        borderRadius: 10,
         justifyContent:'center',
-        marginVertical:hp(2),
         padding:16,
         gap:8
-
     },
 
     textTitle:
@@ -73,8 +60,6 @@ const styles = StyleSheet.create({
       width:wp(20),
       height:hp(5.5),
       alignContent:'center',
-     
-
     },
     addedbuttonstyle:
     {

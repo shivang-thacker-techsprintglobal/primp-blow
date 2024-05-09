@@ -1,5 +1,5 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
-import {userReducer, tokenReducer} from './reducers/userReducer';
+import {userReducer, tokenReducer, cartReducer} from './reducers/userReducer';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -21,7 +21,7 @@ const persistedReducer = persistReducer(persistConfig, tokenReducer);
 
 // Create the Redux store
 const store = configureStore({
-    reducer:{token : persistedReducer} ,
+    reducer:{token : persistedReducer, cart : cartReducer} ,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {

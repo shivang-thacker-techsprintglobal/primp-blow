@@ -1,33 +1,80 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
-import { COLOR } from '../constants/Colors'
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-
+import React from 'react';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../../redux/actions/userActions';
 import Header from '../common/Header';
 import { useNavigation } from '@react-navigation/native';
+import { COLOR } from '../constants/Colors';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import CartCard from '../common/CartCard';
 
 const Cart = () => {
-    const navigation =useNavigation()
-  const ios = Platform.OS == "ios";
-  const { top } = useSafeAreaInsets();
+
+  
+  const {items} = useSelector(state => state.cart);
+  console.log(items)
+  const dispatch = useDispatch();
+  const navigation = useNavigation()
+
+  const handleRemoveFromCart = (itemId) => {
+    dispatch(removeFromCart(itemId));
+  };
+
+  const renderItem = ({ item }) => (
+   
+      <CartCard item={item}/>
+      
+ 
+  );
+
   return (
-    <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
-     <Header title={'Cart'} navigation={navigation}/>
+    <View style={styles.container}>
+      <Header title={'Cart'} navigation={navigation}/>
+
+
+      <View style={styles.c1}>
+        
+        
+      {items.length === 0 ? (
+        <Text>Your cart is empty.</Text>
+      ) : (
+        <View style={styles.itemsContainer}>
+        <FlatList
+          data={items}
+          renderItem={renderItem}
+          keyExtractor={(item,index)=> index.toString()}
+        />
+        </View>
+       
+      )}
+      </View>
      
-
     </View>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
+
+  container:
+  {  flex:1,
     backgroundColor:COLOR.white,
-    padding:wp(4)
+    padding:16 },
+
+    c1:
+    {
+        gap:24,
+        marginTop:hp(3),
+        width:'100%', 
+    },
+
+  itemsContainer:
+  {
+     borderRadius:10,
+     borderWidth:1,
+     padding:16,
+     gap:12,
+     borderColor:COLOR.Grey
   }
 })

@@ -2,6 +2,7 @@ import { StyleSheet, Text, View,Modal } from 'react-native'
 import React,{useState} from 'react'
 import HomeCard from '../../common/Homecard'
 import Addonsmodal from './Addonsmodal'
+import { Dummyitems } from '../../assets/Dummyitems'
 
 const Makeup = () => {
   const [openModal,setOpenModal]=useState(false)
@@ -18,7 +19,10 @@ const renderModal =()=>
 }
   return (
     <View>
-      <HomeCard onPress={()=> setOpenModal(true)}/>
+      {Dummyitems.map((item,index)=>(
+        <HomeCard  item={item} key={item.id} />
+      ))}
+      
       {renderModal()}
     </View>
   )

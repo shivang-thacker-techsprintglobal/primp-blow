@@ -1,22 +1,26 @@
-import { StyleSheet, Text, View,Modal, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View,Modal, TouchableOpacity, ScrollView } from 'react-native'
 import React,{useState} from 'react'
 import HomeCard from '../../common/Homecard'
-import { COLOR } from '../../constants/Colors'
-import Closeicon from '../../assets/svgs/close'
-import Imagecontainer_round from '../../common/Imagecontainer_round'
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
-import Addonsmodal from './Addonsmodal'
-
+import { useDispatch } from 'react-redux'
+import { Dummyitems } from '../../assets/Dummyitems'
 
 
 const BlowOut = () => {
 
+  const dispatch = useDispatch()
+
 
   return (
-    <View style={{flex:1}}>
-      <HomeCard />
+    <ScrollView style={{flex:1}}
+    showsVerticalScrollIndicator={false}
+    >
+
+      {Dummyitems.map((item,index)=>(
+        <HomeCard  item={item} key={item.id} />
+      ))}
       
-    </View>
+      
+    </ScrollView>
   )
 }
 
