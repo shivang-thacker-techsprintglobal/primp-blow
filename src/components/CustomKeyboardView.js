@@ -25,7 +25,7 @@ import { COLOR } from "../constants/Colors";
   
     return (
       <KeyboardAvoidingView
-        behavior='padding'
+        behavior={ios? 'padding':'height'}
         style={{ flex: 1, backgroundColor: COLOR.white }}
         keyboardVerticalOffset={ios? 40:0}
       >
