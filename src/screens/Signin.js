@@ -8,7 +8,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-nati
 import { COLOR } from '../constants/Colors';
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux';
-import { useraccesstoken } from '../../redux/actions/userActions';
+import { navigationPath,Login } from '../../redux/actions/userActions';
 import TextInputcommon from '../common/TextInputcommon';
 
 
@@ -18,7 +18,7 @@ const Signin = () => {
 
 useEffect(()=>
 {
-dispatch(useraccesstoken('Register'))
+dispatch(navigationPath('Register'))
 },[])
 
     const navigation = useNavigation()
@@ -54,7 +54,7 @@ dispatch(useraccesstoken('Register'))
   
         </View>
 
-        <Button  mode="contained" disabled={email.trim() === '' || password.trim() === ''} onPress={() => navigation.navigate('Bottomnavigation')} buttonColor={ COLOR.PrimaryColor} textColor={COLOR.white} style={styles.buttonStyle} >
+        <Button  mode="contained" disabled={email.trim() === '' || password.trim() === ''} onPress={() => {dispatch(Login(email,password,navigation))}} buttonColor={ COLOR.PrimaryColor} textColor={COLOR.white} style={styles.buttonStyle} >
     Sign In
   </Button>
         </View>

@@ -1,4 +1,4 @@
-import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, Image, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Logo from '../assets/svgs/Logo';
 import Closeeye from '../assets/svgs/Closeeye';
@@ -8,24 +8,27 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import {COLOR} from '../constants/Colors';
-import Navigation from '../navigation/Navigation';
 import {useNavigation} from '@react-navigation/native';
 import CustomKeyboardView from '../components/CustomKeyboardView';
 import DropDown from '../components/Dropdown/Dropdown';
-import { useDispatch } from 'react-redux';
-import { useraccesstoken } from '../../redux/actions/userActions';
+import { useDispatch,useSelector } from 'react-redux';
+import { navigationPath, createCustomerAndUserAccount } from '../../redux/actions/userActions';
 import TextInputcommon from '../common/TextInputcommon';
+
 
 const Register = () => {
 
- 
+  const {token_fetch}=useSelector(state => state.token)
+  const {customer_id}=useSelector(state => state.customer)
 
   const dispatch = useDispatch()
 
   useEffect(()=>
   {
-  dispatch(useraccesstoken('Register'))
+  dispatch(navigationPath('Register'))
   },[])
+
+
 
   const navigation = useNavigation();
 
@@ -108,7 +111,7 @@ const Register = () => {
                   phoneNumber.trim() === '' ||
                   confirmPassword === ''
                 }
-                onPress={() => console.log('Pressed')}
+                onPress={() => {dispatch(createCustomerAndUserAccount(firstName,lastName,email,password,phoneNumber,token_fetch,navigation))}}
                 buttonColor={COLOR.PrimaryColor}
                 textColor={COLOR.white}
                 style={styles.buttonStyle}>

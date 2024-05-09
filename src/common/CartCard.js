@@ -4,12 +4,14 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-nat
 import { COLOR } from '../constants/Colors'
 import { Text } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { removeFromCart } from '../../redux/actions/userActions'
 import Deleteicon from '../assets/svgs/delete'
 
 
-const CartCard = ({onPress, item}) => {
+const CartCard = ({onPress, item,index}) => {
+
+    const { items } = useSelector(state => state.cart);
 
   const [itemAdded,setItemAdded] = useState(false)
 
@@ -18,6 +20,7 @@ const CartCard = ({onPress, item}) => {
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
+       
       <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
       <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item.title}</Text>
       <Text   style={styles.textTitle}>{item.price}  </Text>
@@ -29,6 +32,8 @@ const CartCard = ({onPress, item}) => {
       <Deleteicon/>
       </TouchableOpacity>
       </View>
+    
+      {index !== items.length - 1 && <View style={styles.greyLine} />}
     </View>
   )
 }
@@ -39,9 +44,6 @@ const styles = StyleSheet.create({
 
     container:
     {
-        width: '100%',
-        justifyContent:'center',
-        padding:16,
         gap:8
     },
 
@@ -79,6 +81,13 @@ const styles = StyleSheet.create({
         fontFamily:'Agrandir-Regular',
         fontSize:12,
         lineHeight:15.6
+
+    },
+    greyLine:
+    {
+        borderWidth:1,
+        borderColor:COLOR.Grey,
+        marginVertical:hp(1)
 
     }
 })

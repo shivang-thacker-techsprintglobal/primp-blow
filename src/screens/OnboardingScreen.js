@@ -8,7 +8,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-nat
 import OnboardingTwo from '../components/OnboardingComponents/OnboardingTwo';
 import OnboardingThree from '../components/OnboardingComponents/OnboardingThree';
 import { useDispatch } from 'react-redux';
-import { useraccesstoken } from '../../redux/actions/userActions';
+import { navigationPath } from '../../redux/actions/userActions';
 
 const OnboardingScreen = ({ navigation }) => {
 const dispatch = useDispatch()
@@ -29,7 +29,7 @@ const dispatch = useDispatch()
   const handleSkip = () => {
     setCurrentIndex(2);
     setHideDots(false)
-    dispatch(useraccesstoken('three'))
+    dispatch(navigationPath('three'))
   };
 
 

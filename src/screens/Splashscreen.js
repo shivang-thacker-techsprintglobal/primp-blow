@@ -2,24 +2,37 @@ import React, {useEffect} from 'react';
 import { View, StyleSheet, Image, ImageBackground } from 'react-native';
 import Logo from '../assets/svgs/Splashscreenlogo'
 import { useSelector } from 'react-redux';
+import { fetchaccessToken } from '../../redux/actions/userActions';
+import { useDispatch } from 'react-redux';
 
 const SplashScreen = ({ navigation }) => {
 
-  const {user_access_token} = useSelector((state) => state.token);
+  const dispatch = useDispatch()
+
+  useEffect(()=>
+{
+  dispatch(fetchaccessToken())
+  
+},[])
+
+  
+
+  const {navigation_path} = useSelector((state) => state.token);
 
     useEffect(() => {
        
         const timer = setTimeout(() => {
-        //  if(user_access_token === 'three')
+         if(navigation_path === 'three')
           
-        //    { navigation.replace('OnboardingThree') }
+           { navigation.replace('OnboardingThree') }
 
-        //    else if(user_access_token === 'Register')
-        //    {
-        //     navigation.replace('Signin')
-        //    }
+           else if(navigation_path === 'Register')
+           {
+            navigation.replace('Signin')
+           }
+           else{navigation.replace('OnboardingScreen');}
            
-           navigation.replace('OnboardingScreen');
+           
           
         }, 1500); 
     

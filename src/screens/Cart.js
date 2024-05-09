@@ -20,9 +20,9 @@ const Cart = () => {
     dispatch(removeFromCart(itemId));
   };
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item,index }) => (
    
-      <CartCard item={item}/>
+      <CartCard item={item} index={index}/>
       
  
   );
@@ -34,7 +34,7 @@ const Cart = () => {
 
       <View style={styles.c1}>
         
-        
+        <>
       {items.length === 0 ? (
         <Text>Your cart is empty.</Text>
       ) : (
@@ -47,7 +47,13 @@ const Cart = () => {
         </View>
        
       )}
+      </>
+
+      <View style={styles.note}>
+        <Text >Add a Note</Text>
       </View>
+      </View>
+
      
     </View>
   );
@@ -76,5 +82,16 @@ const styles = StyleSheet.create({
      padding:16,
      gap:12,
      borderColor:COLOR.Grey
+  },
+  note:
+  {
+fontFamily:''
+
+//     font-family: Agrandir;
+// font-size: 12px;
+// font-weight: 400;
+// line-height: 15.6px;
+// text-align: left;
+
   }
 })

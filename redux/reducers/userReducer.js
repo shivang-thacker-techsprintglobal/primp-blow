@@ -4,21 +4,27 @@ const initialState = {
   items: [],
 };
 
-export const userReducer = createReducer({}, builder => {
+export const customerReducer = createReducer({}, builder => {
   builder
 
-    //toast
-    .addCase('TOAST_MESSAGE', (state, action) => {
-      state.toast_message = action.payload;
-    })
+  .addCase('CUSTOMER_ID', (state, action) => {
+    state.customer_id = action.payload;
+  })
+  
 
 
 });
 
 export const tokenReducer = createReducer({}, builder => {
-  builder.addCase('USER_ACCESS_TOKEN', (state, action) => {
-    state.user_access_token = action.payload;
-  });
+  builder
+  
+  .addCase('NAVIGATION_PATH', (state, action) => {
+    state.navigation_path = action.payload;
+  })
+
+  .addCase('TOKEN_FETCH', (state, action) => {
+    state.token_fetch = action.payload;
+  })
 });
 
 export const cartReducer = createReducer(initialState, (builder) => {
