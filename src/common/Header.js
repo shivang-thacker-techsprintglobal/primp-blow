@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     container:
     {
        backgroundColor:COLOR.white,
-       marginTop:hp(1)
 
     },
     iconContainer:

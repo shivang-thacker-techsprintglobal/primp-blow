@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const ButtonCommon = ({onPress,buttonstyle, textstyle, title}) => {
   return (
-    <TouchableOpacity style={[styles.buttonStyles,buttonstyle]} onPress={onPress}>
+    <TouchableOpacity style={[styles.buttonStyles,buttonstyle]} onPress={onPress} >
       <Text style={[styles.buttonTitle, textstyle]}>{title}</Text>
     </TouchableOpacity>
   )
@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         gap:12,
         paddingVertical:10,
         paddingHorizontal:12,
-        borderColor:COLOR.PrimaryColor
+        borderColor:COLOR.PrimaryColor,
+        justifyContent:'center'
         
     },
     buttonTitle:
