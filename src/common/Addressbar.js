@@ -4,16 +4,28 @@ import Location from '../assets/svgs/LocationPin'
 import { COLOR } from '../constants/Colors'
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux'
+import { homeAddress } from '../../redux/actions/userActions'
 
-const Addressbar = ({show}) => {
-const navigate = useNavigation()
+
+const Addressbar = ({show, item}) => {
+const navigation = useNavigation()
+
+const dispatch = useDispatch()
+
+
+
+
+
 
   return (
     <>
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={()=>{
+        dispatch(homeAddress(`${item?.Address?.City} - ${item?.BusinessName}, ${item?.Address.State}`))
+        navigation.navigate('Bottomnavigation',{item: item})}} style={styles.container}>
         <Location/>
         <View style={styles.c1}>
-      <Text numberOfLines={2} style={styles.address}>Glendale - Primp and Blow Arrowhead Shops, AZ</Text>
+      <Text numberOfLines={2} style={styles.address}>{item?.Address?.City} - {item?.BusinessName}, {item?.Address.State}</Text>
       {show?  <Text style={styles.miles}>5 Miles</Text> : null}
       </View>
       

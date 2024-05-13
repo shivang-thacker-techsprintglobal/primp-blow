@@ -16,6 +16,7 @@ const DateandTime = () => {
     const disabledDatesArray = [
         '2024-05-10', // Example disabled date in format 'YYYY-MM-DD'
         '2024-05-15',
+        '2024-05-13'
         // Add more disabled dates as needed
       ];
     const navigation = useNavigation()
@@ -26,7 +27,7 @@ const DateandTime = () => {
     <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
       <Header title={'Pick a Date & Time'} navigation={navigation}/>
       <View style={styles.c1}>
-        <View style={{height:hp(37)}}>
+        <View style={{flex:1}}>
              <CalendarPicker 
       textStyle={styles.textStyle}
       height={400}
@@ -88,7 +89,7 @@ const DateandTime = () => {
       <View style={styles.line}>
 
       </View>
-      <View>
+      <View style={{flex:1}}> 
         <Text style={styles.selecttime}> Select Time</Text>
         <TimeTab/>
       </View>
@@ -114,10 +115,11 @@ const styles = StyleSheet.create({
     c1:
     {
         gap:16,
-        marginTop:10
+        marginTop:10,
+        flex:1,
     },
     line:
-    {   marginTop:30,
+    {   
         borderWidth:1,
         borderColor:COLOR.Grey
     },

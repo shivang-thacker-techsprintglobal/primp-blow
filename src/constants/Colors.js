@@ -13,7 +13,8 @@ export const COLOR =
     bottomNavigation:'rgba(6, 16, 16,0.7)',
     titlecolor:'#1B1B1E',
     Primaryiconcontainer:' rgba(102, 204, 204, 0.7)',
-    CheckboxColor:'#8B9191'
+    CheckboxColor:'#8B9191',
+    fontGrey:'#8B9191'
 
 
 

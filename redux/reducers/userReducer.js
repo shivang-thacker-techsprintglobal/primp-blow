@@ -2,11 +2,20 @@ import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
-  loading:false
+  loading:false,
+  homeaddress: 'Austin -  Prime and Blow Austin Tri'
 };
 
 export const customerReducer = createReducer({}, builder => {
   builder
+
+  
+
+  .addCase('CUSTOMER_DETAILS', (state, action) => {
+    state.customer_details = action.payload;
+  })
+
+ 
 
   .addCase('CUSTOMER_ID', (state, action) => {
     state.customer_id = action.payload;
@@ -17,9 +26,18 @@ export const customerReducer = createReducer({}, builder => {
   .addCase('STOP_LOADING', (state) => {
     state.loading = false;
   })
+  .addCase('HOME_ADDRESS', (state,action) => {
+    state.homeaddress = action.payload;
+  })
+  .addCase('GET_NEAR_LOCATIONS', (state,action) => {
+    state.get_near_locations = action.payload;
+  })
+  .addCase('GET_ALL_LOCATIONS', (state,action) => {
+    state.get_all_locations = action.payload;
+  })
   
 
-
+  
 });
 
 export const tokenReducer = createReducer({}, builder => {
@@ -31,6 +49,9 @@ export const tokenReducer = createReducer({}, builder => {
 
   .addCase('TOKEN_FETCH', (state, action) => {
     state.token_fetch = action.payload;
+  })
+  .addCase('ACCESS_TOKEN', (state, action) => {
+    state.access_token = action.payload;
   })
 });
 

@@ -6,9 +6,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import HomeSearchBar from '../components/HomeComponents/HomeSearchBar'
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Homebody from '../components/HomeComponents/Homebody';
-import CustomKeyboardView from '../components/CustomKeyboardView';
+
+
 
 const Home = () => {
+  
   const ios = Platform.OS == "ios";
   const { top } = useSafeAreaInsets();
   return (

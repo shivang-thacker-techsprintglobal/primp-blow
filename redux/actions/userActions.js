@@ -6,6 +6,9 @@ import { Alert } from "react-native";
 
 
 
+
+
+
 export const navigationPath = value => dispatch => {
   dispatch({
     type: 'NAVIGATION_PATH',
@@ -159,6 +162,108 @@ export const Login = (Email,Password,navigation) => async dispatch => {
     dispatch({ type: 'STOP_LOADING' }); 
     console.error('Error fetching access token:', error);
   }
+};
+
+export const GetNearLocations = (access_token) => async dispatch => {
+  dispatch({ type: 'START_LOADING' });
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/v4.1/customer/location/3749?access_token=${access_token}`,
+      
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Ocp-Apim-Subscription-Key': '180ce46c75d942b0a46bb8a5e8a92275'
+        },
+      }
+    );
+    if (response?.data.ErrorCode === 0 ) {
+      dispatch({ type: 'STOP_LOADING' }); 
+
+      console.log(response?.data)
+
+     
+        Alert.alert('Location fetched successfully')
+
+        
+
+      dispatch({
+        type: 'GET_NEAR_LOCATIONS',
+        payload: response?.data
+      });
+      
+
+      
+      
+      
+    }
+    else{
+      dispatch({ type: 'STOP_LOADING' }); 
+      Alert.alert('Location is not fetched')
+    }
+  } catch (error) {
+    dispatch({ type: 'STOP_LOADING' }); 
+    console.error('Error fetching access token:', error);
+  }
+};
+
+export const GetALlLocations = (access_token) => async dispatch => {
+  dispatch({ type: 'START_LOADING' });
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/v4.1/customer/locations`,
+      {
+        BrandAccountName: "",
+        access_token: access_token
+       
+      },
+      
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Ocp-Apim-Subscription-Key': '180ce46c75d942b0a46bb8a5e8a92275'
+        },
+      }
+    );
+    if (response?.data.ErrorCode === 0 ) {
+      dispatch({ type: 'STOP_LOADING' }); 
+
+      console.log('alllocations',response?.data)
+
+     
+        Alert.alert('ALl Location fetched successfully')
+
+        
+
+      dispatch({
+        type: 'GET_ALL_LOCATIONS',
+        payload: response?.data
+      });
+      
+
+      
+      
+      
+    }
+    else{
+      dispatch({ type: 'STOP_LOADING' }); 
+      Alert.alert('Location is not fetched')
+    }
+  } catch (error) {
+    dispatch({ type: 'STOP_LOADING' }); 
+    console.error('Error fetching access token:', error);
+  }
+};
+
+
+
+//custom states
+
+export const homeAddress = value => dispatch => {
+  dispatch({
+    type: 'HOME_ADDRESS',
+    payload: value,
+  });
 };
 
 

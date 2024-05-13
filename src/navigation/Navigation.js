@@ -12,6 +12,9 @@ import Salon from '../screens/Salon';
 import Cart from '../screens/Cart';
 import OnboardingThree from '../components/OnboardingComponents/OnboardingThree';
 import DateandTime from '../screens/DateandTime';
+import Pay from '../screens/Pay';
+import Success from '../screens/Success';
+import AddCard from '../screens/AddCard';
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
@@ -19,8 +22,20 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="DateandTime" component={DateandTime} />
       <Stack.Screen name="Bottomnavigation" component={Bottomnavigation} />
+      <Stack.Screen name="Signin" component={Signin} />
+      
+      
+      
+      
+      
+     
+      <Stack.Screen name="Pay" component={Pay} />
+      <Stack.Screen name="AddCard" component={AddCard} />
+      <Stack.Screen name="Success" component={Success} />
+      
+      <Stack.Screen name="DateandTime" component={DateandTime} />
+      
       
       
       <Stack.Screen name="Splashscreen" component={Splashscreen} />
@@ -29,12 +44,13 @@ const Navigation = () => {
          <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
       <Stack.Screen name="OnboardingThree" component={OnboardingThree} />
-      <Stack.Screen name="Signin" component={Signin} />
+     
       
       <Stack.Screen name="Signinin" component={Signin} />
       
       <Stack.Screen name="Salon" component={Salon} />
       <Stack.Screen name="Cart" component={Cart} />
+      
       
      
       

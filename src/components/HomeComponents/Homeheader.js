@@ -1,5 +1,5 @@
 import { StyleSheet, View, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { COLOR } from '../../constants/Colors';
 import { Text } from 'react-native-paper';
 import Imagecontainer_round from '../../common/Imagecontainer_round';
@@ -9,15 +9,21 @@ import Cart from '../../assets/svgs/cart'
 import Dropdown from '../../assets/svgs/Dropdown'
 import LocationPin from '../../assets/svgs/LocationPin'
 import { useNavigation } from '@react-navigation/native';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { homeAddress } from '../../../redux/actions/userActions';
 
 
 
 
 const Homeheader = () => {
 
+  const dispatch=useDispatch()
+
   const navigation= useNavigation()
+
   
+  
+const {homeaddress} = useSelector(state=>state.customer)
     
   return (
     <View style={ styles.container}>
@@ -30,7 +36,7 @@ const Homeheader = () => {
       <Text style={styles.textTitle}>Salon</Text>
           <Dropdown size={30}/>
       </View>
-      <Text numberOfLines={1}  style={styles.mediumText}>Austin -  Primp and Blow Austin Tri</Text>
+      <Text numberOfLines={1}  style={styles.mediumText}>{homeaddress}</Text>
       </View>
       </TouchableOpacity>
       <View style={styles.c2}>

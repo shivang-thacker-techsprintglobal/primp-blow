@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   bodycontainer:
   {
      marginTop:hp(2),
+     flex:0.83,
   },
 
   tabBar:
