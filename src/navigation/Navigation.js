@@ -23,8 +23,9 @@ const Navigation = () => {
     <NavigationContainer>
       
       <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="Register" component={Register} />
+      
       <Stack.Screen name="Splashscreen" component={Splashscreen} />
+      <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Signin" component={Signin} />
       <Stack.Screen name="Bottomnavigation" component={Bottomnavigation} />
       
