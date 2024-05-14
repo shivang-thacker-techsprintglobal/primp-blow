@@ -1,9 +1,10 @@
-import { StyleSheet, TouchableOpacity, View,Image,Alert } from 'react-native'
+import { StyleSheet, TouchableOpacity, View,Image,Alert,KeyboardAvoidingView,
+  ScrollView, } from 'react-native'
 import React,{useEffect, useState} from 'react'
 import Logo from '../assets/svgs/Logo'
 import Closeeye from '../assets/svgs/Closeeye'
 
-import { Text, TextInput , Button, ActivityIndicator} from 'react-native-paper';
+import { Text , Button, ActivityIndicator} from 'react-native-paper';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import { COLOR } from '../constants/Colors';
 import { useNavigation } from '@react-navigation/native'
@@ -46,7 +47,7 @@ dispatch(navigationPath('Register'))
     
       {dispatch(Login(email,password,navigation))}
     };
-  return (
+return(
     <View style={styles.container} >
       <Logo/>
       <View style={styles.container1}> 
@@ -79,12 +80,17 @@ dispatch(navigationPath('Register'))
         
         </View>
 
-     
-        <Text style={styles.account} >Don’t have an account? <Text onPress={()=> navigation.navigate('Register')}    style={styles.signup}>  Sign Up</Text></Text>
+      
+    <Text style={styles.account} >Don’t have an account? <Text onPress={()=> navigation.navigate('Register')}    style={styles.signup}>  Sign Up</Text></Text>
+        
        
        
       </View>
     </View>
+
+
+    
+
   )
 }
 
@@ -140,7 +146,8 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     lineHeight:20,
     textAlign:'center',
-    color:COLOR.Dark
+    color:COLOR.Dark,
+    
 
   },
   signup:{

@@ -5,6 +5,9 @@ import { useDispatch } from 'react-redux'
 
 import { useSelector } from 'react-redux'
 import { GetNearLocations } from '../../../redux/actions/userActions'
+import { ActivityIndicator } from 'react-native-paper'
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import { COLOR } from '../../constants/Colors'
 
 
 
@@ -13,7 +16,7 @@ const Nearme = () => {
  
 
   const {access_token}= useSelector(state=> state.token)
-  const { get_near_locations}= useSelector(state=> state.customer)
+  const { get_near_locations,loading}= useSelector(state=> state.customer)
 
   const dispatch = useDispatch()
 
@@ -31,8 +34,8 @@ useEffect(()=>
   return (
     <View style={styles.container}>
 
-
-          <Addressbar item={get_near_locations} show={true}/>
+{loading? <ActivityIndicator color={COLOR.PrimaryColor} style={{marginTop:hp(2)}}/> :<Addressbar item={get_near_locations} show={true}/> }
+          
      
       
     </View>

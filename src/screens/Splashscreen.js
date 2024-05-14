@@ -17,11 +17,17 @@ const SplashScreen = ({ navigation }) => {
 
   
 
-  const {navigation_path} = useSelector((state) => state.token);
+  const {navigation_path,access_token} = useSelector((state) => state.token);
 
     useEffect(() => {
        
         const timer = setTimeout(() => {
+
+
+          if(access_token === undefined)
+          {
+          
+          
          if(navigation_path === 'three')
           
            { navigation.replace('OnboardingThree') }
@@ -31,6 +37,10 @@ const SplashScreen = ({ navigation }) => {
             navigation.replace('Signin')
            }
            else{navigation.replace('OnboardingScreen');}
+          }
+          else{
+            navigation.replace('Bottomnavigation');
+          }
            
            
           

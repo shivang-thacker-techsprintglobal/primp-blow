@@ -197,6 +197,11 @@ export const GetNearLocations = (access_token) => async dispatch => {
       
       
     }
+    else if(ErrorMessage=='invalid access token')
+    {
+      Alert.alert('Sign in','Session expired, please Sign in again')
+       navigation.navigate('Signin')
+    }
     else{
       dispatch({ type: 'STOP_LOADING' }); 
       Alert.alert('Location is not fetched')
@@ -207,7 +212,7 @@ export const GetNearLocations = (access_token) => async dispatch => {
   }
 };
 
-export const GetALlLocations = (access_token) => async dispatch => {
+export const GetALlLocations = (access_token,navigation) => async dispatch => {
   dispatch({ type: 'START_LOADING' });
   try {
     const response = await axios.post(
@@ -244,6 +249,12 @@ export const GetALlLocations = (access_token) => async dispatch => {
       
       
       
+    }
+
+    else if(ErrorMessage=='invalid access token')
+    {
+      Alert.alert('Sign in','Session expired, please Sign in again')
+       navigation.navigate('Signin')
     }
     else{
       dispatch({ type: 'STOP_LOADING' }); 

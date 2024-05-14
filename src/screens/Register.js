@@ -1,4 +1,5 @@
-import {StyleSheet, TouchableOpacity, View, Image, Alert} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, Image, Alert,KeyboardAvoidingView,
+  ScrollView,} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Logo from '../assets/svgs/Logo';
 import Closeeye from '../assets/svgs/Closeeye';
@@ -75,7 +76,9 @@ const Register = () => {
     {dispatch(createCustomerAndUserAccount(firstName,lastName,email,password,phoneNumber,token_fetch,navigation))}
   };
   return (
-    <CustomKeyboardView>
+    
+    <ScrollView style = {{flex:1, backgroundColor: 'white'}} >
+    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: 'white', flex: 1}}>
       <View style={styles.container}>
         <Logo />
         <View
@@ -155,18 +158,24 @@ const Register = () => {
           </View>
 
          
-            <Text style={styles.account}
+          <Text style={styles.account}
              >
               Have an account?  <Text style={styles.signup} onPress={()=> navigation.navigate('Signin')}
              >
                Sign In
             </Text>
             </Text>
-            
        
         </View>
+       
+            
       </View>
-      </CustomKeyboardView>
+      </KeyboardAvoidingView>
+      
+            </ScrollView>
+           
+    
+     
   );
 };
 
@@ -181,6 +190,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: wp(4),
         paddingVertical:hp(8),
         backgroundColor:COLOR.white,
+        justifyContent:'space-between',
+        
   },
   container1:
   {width:'100%', justifyContent:'space-between', height:'100%'},
@@ -223,7 +234,6 @@ const styles = StyleSheet.create({
     lineHeight:20,
     textAlign:'center',
     color:COLOR.Dark,
-    marginTop:hp(1)
 
   },
   signup:{

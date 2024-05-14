@@ -3,7 +3,8 @@ import {createReducer} from '@reduxjs/toolkit';
 const initialState = {
   items: [],
   loading:false,
-  homeaddress: 'Austin -  Prime and Blow Austin Tri'
+  homeaddress: 'Austin -  Prime and Blow Austin Tri',
+  access_token:''
 };
 
 export const customerReducer = createReducer({}, builder => {
