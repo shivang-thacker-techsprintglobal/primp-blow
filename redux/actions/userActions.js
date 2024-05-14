@@ -197,8 +197,9 @@ export const GetNearLocations = (access_token) => async dispatch => {
       
       
     }
-    else if(ErrorMessage=='invalid access token')
+    else if(response?.data?.ErrorMessage=='invalid access token')
     {
+      dispatch({ type: 'STOP_LOADING' }); 
       Alert.alert('Sign in','Session expired, please Sign in again')
        navigation.navigate('Signin')
     }
@@ -251,8 +252,9 @@ export const GetALlLocations = (access_token,navigation) => async dispatch => {
       
     }
 
-    else if(ErrorMessage=='invalid access token')
+    else if(response?.data?.ErrorMessage=='invalid access token')
     {
+      dispatch({ type: 'STOP_LOADING' }); 
       Alert.alert('Sign in','Session expired, please Sign in again')
        navigation.navigate('Signin')
     }

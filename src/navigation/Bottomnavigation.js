@@ -3,13 +3,14 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import {COLOR} from '../constants/Colors';
-import Booking from '../screens/Booking';
+
 import About from '../screens/About';
 import Profile from '../screens/Profile';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import Orders from '../screens/Orders';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,10 +35,10 @@ const Bottomnavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Booking"
-        component={Booking}
+        name="Orders"
+        component={Orders}
         options={{
-          tabBarLabel: 'My Booking',
+          tabBarLabel: 'My Orders',
           tabBarLabelStyle: styles.labelStyle,
           tabBarInactiveTintColor: COLOR.LightGrey,
           tabBarActiveTintColor: COLOR.PrimaryColor,

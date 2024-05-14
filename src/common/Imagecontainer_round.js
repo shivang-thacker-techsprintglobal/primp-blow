@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
         borderColor:COLOR.LightGrey,
         height:44,
         width:44,
-        borderWidth:wp(0.2),
         borderRadius: wp(9),
         backgroundColor:COLOR.white,
         justifyContent:'center',

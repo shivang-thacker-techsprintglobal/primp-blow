@@ -15,6 +15,9 @@ import DateandTime from '../screens/DateandTime';
 import Pay from '../screens/Pay';
 import Success from '../screens/Success';
 import AddCard from '../screens/AddCard';
+import Personalinformation from '../components/Profile/Personalinformation';
+import ChangePassword from '../components/Profile/ChangePassword';
+import EditProfile from '../components/Profile/EditProfile';
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
@@ -57,6 +60,9 @@ const Navigation = () => {
       
       <Stack.Screen name="Salon" component={Salon} />
       <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen name="Personalinformation" component={Personalinformation} />
+      <Stack.Screen name="ChangePassword" component={ChangePassword} />
+      <Stack.Screen name="EditProfile" component={EditProfile} />
       
       
      
