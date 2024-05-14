@@ -27,10 +27,7 @@ const Nearme = () => {
   
 },[])
 
-useEffect(()=>
-{
-  console.log('get near locations', get_near_locations)
-},[get_near_locations])
+
   return (
     <View style={styles.container}>
 

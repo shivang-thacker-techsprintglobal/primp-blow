@@ -19,3 +19,7 @@ export const COLOR =
 
 
 }
+
+
+// wp = figmawidth/3.94
+//hp = figmaheight/8

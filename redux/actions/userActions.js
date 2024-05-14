@@ -134,7 +134,7 @@ export const Login = (Email,Password,navigation) => async dispatch => {
     if (response?.data.error === null ) {
       dispatch({ type: 'STOP_LOADING' }); 
 
-      console.log(response?.data)
+    
 
      
         Alert.alert('Sign in','Sign in Successfully')
@@ -180,7 +180,7 @@ export const GetNearLocations = (access_token) => async dispatch => {
     if (response?.data.ErrorCode === 0 ) {
       dispatch({ type: 'STOP_LOADING' }); 
 
-      console.log(response?.data)
+    
 
      
         Alert.alert('Location fetched successfully')
@@ -233,7 +233,7 @@ export const GetALlLocations = (access_token,navigation) => async dispatch => {
     if (response?.data.ErrorCode === 0 ) {
       dispatch({ type: 'STOP_LOADING' }); 
 
-      console.log('alllocations',response?.data)
+   
 
      
         Alert.alert('ALl Location fetched successfully')

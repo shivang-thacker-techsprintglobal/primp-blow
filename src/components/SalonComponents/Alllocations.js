@@ -27,10 +27,7 @@ const Alllocations = () => {
   
 },[])
 
-useEffect(()=>
-{
-  console.log('get all locations', get_all_locations)
-},[get_all_locations])
+
   return (
     <View style={styles.container}>
 

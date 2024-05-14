@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     container:
     {
         borderColor:COLOR.LightGrey,
-        height:wp(8),
-        width:wp(8),
+        height:44,
+        width:44,
         borderWidth:wp(0.2),
         borderRadius: wp(9),
         backgroundColor:COLOR.white,

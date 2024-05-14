@@ -9,6 +9,7 @@ import Homebody from '../components/HomeComponents/Homebody';
 
 
 
+
 const Home = () => {
   
   const ios = Platform.OS == "ios";
@@ -20,6 +21,7 @@ const Home = () => {
       <Homeheader />
       <HomeSearchBar />
       <Homebody/>
+      
      
     </View>
    

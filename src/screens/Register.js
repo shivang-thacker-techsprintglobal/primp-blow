@@ -15,6 +15,7 @@ import DropDown from '../components/Dropdown/Dropdown';
 import { useDispatch,useSelector } from 'react-redux';
 import { navigationPath, createCustomerAndUserAccount } from '../../redux/actions/userActions';
 import TextInputcommon from '../common/TextInputcommon';
+import AlertModal from '../common/AlertModal';
 
 
 const Register = () => {
@@ -44,6 +45,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [textSecure, setTexeSecure] = useState(true);
   const [textSecureConfirm, setTexeSecureConfirm] = useState(true);
+
+  const [showmodal,setshowmodal] = useState(false)
 
 
   const validateAndSubmit = () => {
@@ -78,8 +81,10 @@ const Register = () => {
   return (
     
     <ScrollView style = {{flex:1, backgroundColor: 'white'}} >
+      <AlertModal show={showmodal} setshow={setshowmodal}/>
     <KeyboardAvoidingView behavior='position' style = {{backgroundColor: 'white', flex: 1}}>
       <View style={styles.container}>
+        
         <Logo />
         <View
           style={styles.container1}>
