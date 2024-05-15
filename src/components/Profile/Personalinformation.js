@@ -8,16 +8,17 @@ import Imagecontainer_round from '../../common/Imagecontainer_round'
 import CameraIcon from '../../assets/svgs/Camera'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import TextInputcommon from '../../common/TextInputcommon'
+import DropDown from '../Dropdown/Dropdown'
 
 const Personalinformation = () => {
     const ios = Platform.OS == "ios";
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation()
 
-  const [firstName,setFirstName] = useState()
-  const [lastName,setLastName] = useState()
-  const [phoneNumber,setPhoneNumber] = useState()
-  const [email,setEmail] = useState()
+  const [firstName,setFirstName] = useState('Ravi')
+  const [lastName,setLastName] = useState('Talajiya')
+  const [phoneNumber,setPhoneNumber] = useState('99999 77777')
+  const [email,setEmail] = useState('ravitalajiya@example.com')
 
   return (
     <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
@@ -32,10 +33,19 @@ const Personalinformation = () => {
       </View>
       <View style={styles.c2}>
 
-        <TextInputcommon label={'First Name'}/>
-        <TextInputcommon label={'Last Name'}/>
-        <TextInputcommon label={'Phone Number'}/>
-        <TextInputcommon label={'Email'}/>
+        <TextInputcommon editable={false} label={'First Name'} value={firstName}/>
+        <TextInputcommon editable={false} label={'Last Name'} value={lastName}/>
+        <View
+                style={{
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <DropDown />
+                <TextInputcommon value={phoneNumber} editable={false} label={'Phone Number'}   setValue={setPhoneNumber} style={{width:'83%'}} />
+              </View>
+        <TextInputcommon value={email} editable={false} label={'Email'}/>
+       
 
       </View>
     </View>

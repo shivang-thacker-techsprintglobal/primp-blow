@@ -1,29 +1,29 @@
-import { Alert, StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, View,ActivityIndicator } from 'react-native'
 import React,{useEffect} from 'react'
 import Addressbar from '../../common/Addressbar'
 import { useDispatch } from 'react-redux'
-
+import { GetALlLocations } from '../../../redux/actions/userActions'
 import { useSelector } from 'react-redux'
-import { GetNearLocations } from '../../../redux/actions/userActions'
-import { ActivityIndicator } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { COLOR } from '../../constants/Colors'
 
 
-
 const Nearme = () => {
+
+  const navigation = useNavigation()
 
  
 
   const {access_token}= useSelector(state=> state.token)
-  const { get_near_locations,loading}= useSelector(state=> state.customer)
+  const { get_all_locations, loading}= useSelector(state=> state.customer)
 
   const dispatch = useDispatch()
 
   useEffect(()=>
 {
-  Alert.alert(`${access_token}`)
-  dispatch(GetNearLocations(access_token))
+  
+  dispatch(GetALlLocations(access_token, navigation))
   
 },[])
 
@@ -31,8 +31,7 @@ const Nearme = () => {
   return (
     <View style={styles.container}>
 
-{loading? <ActivityIndicator color={COLOR.PrimaryColor} style={{marginTop:hp(2)}}/> :<Addressbar item={get_near_locations} show={true}/> }
-          
+{loading? <ActivityIndicator color={COLOR.PrimaryColor} style={{marginTop:hp(2)}}/> :<Addressbar item={get_all_locations?.Results[0]} show={true}/> }
      
       
     </View>

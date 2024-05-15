@@ -22,7 +22,7 @@ const Alllocations = () => {
 
   useEffect(()=>
 {
-  Alert.alert(`${access_token}`)
+  
   dispatch(GetALlLocations(access_token, navigation))
   
 },[])

@@ -6,10 +6,13 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
 import { homeAddress } from '../../redux/actions/userActions'
+import { useSelector } from 'react-redux'
 
 
 const Addressbar = ({show, item}) => {
 const navigation = useNavigation()
+
+const { currentlocation}= useSelector(state=> state.customer)
 
 const dispatch = useDispatch()
 
@@ -20,6 +23,8 @@ const dispatch = useDispatch()
 
   return (
     <>
+    <Text>{currentlocation.latitude}</Text>
+    <Text>{currentlocation.longitude}</Text>
     <TouchableOpacity onPress={()=>{
         dispatch(homeAddress(`${item?.Address?.City} - ${item?.BusinessName}, ${item?.Address.State}`))
         navigation.navigate('Bottomnavigation',{item: item})}} style={styles.container}>

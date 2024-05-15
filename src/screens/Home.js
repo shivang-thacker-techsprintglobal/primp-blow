@@ -1,5 +1,5 @@
-import {  StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {  StyleSheet, Text, View,PermissionsAndroid } from 'react-native'
+import React, { useEffect,useState } from 'react'
 import Homeheader from '../components/HomeComponents/Homeheader'
 import { COLOR } from '../constants/Colors'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -7,10 +7,32 @@ import HomeSearchBar from '../components/HomeComponents/HomeSearchBar'
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Homebody from '../components/HomeComponents/Homebody';
 
+import { GetCurrentLocation } from '../../redux/actions/userActions';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+
+
+
+
 
 
 
 const Home = () => {
+
+  const dispatch= useDispatch()
+
+
+
+  useEffect(()=>
+{
+    dispatch(GetCurrentLocation())
+},[])
+ 
+
+  const {currentlocation} = useSelector(state => state.customer)
+
+
   
   const ios = Platform.OS == "ios";
   const { top } = useSafeAreaInsets();
@@ -18,7 +40,7 @@ const Home = () => {
    
     <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
    
-      <Homeheader />
+      <Homeheader />     
       <HomeSearchBar />
       <Homebody/>
       

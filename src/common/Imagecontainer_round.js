@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         borderRadius: wp(9),
         backgroundColor:COLOR.white,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        borderWidth:1
 
 
     }

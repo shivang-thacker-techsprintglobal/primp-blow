@@ -30,9 +30,11 @@ export const customerReducer = createReducer({}, builder => {
   .addCase('HOME_ADDRESS', (state,action) => {
     state.homeaddress = action.payload;
   })
-  .addCase('GET_NEAR_LOCATIONS', (state,action) => {
-    state.get_near_locations = action.payload;
+  .addCase('CURRENT_LOCATION', (state,action) => {
+    state.currentlocation = action.payload;
   })
+  
+  
   .addCase('GET_ALL_LOCATIONS', (state,action) => {
     state.get_all_locations = action.payload;
   })

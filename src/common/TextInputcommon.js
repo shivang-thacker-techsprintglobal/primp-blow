@@ -3,10 +3,11 @@ import React from 'react'
 import { TextInput } from 'react-native-paper'
 import { COLOR } from '../constants/Colors'
 
-const TextInputcommon = ({secureTextEntry, label,value,setValue,style,numberOfLines,multiline}) => {
+const TextInputcommon = ({secureTextEntry, label,value,setValue,style,numberOfLines,multiline,editable}) => {
   return (
     
       <TextInput
+     
     secureTextEntry={secureTextEntry}
       label={label}
       value={value}
@@ -18,9 +19,17 @@ const TextInputcommon = ({secureTextEntry, label,value,setValue,style,numberOfLi
       textColor={COLOR.Dark}
       numberOfLines={numberOfLines}
       multiline={multiline}
+      editable={editable}
       
+      //styleName: Sub-headline Regular;
+// font-family: Agrandir;
+// font-size: 16px;
+// font-weight: 400;
+// line-height: 22px;
+// text-align: left;
+
       
-      style={[{backgroundColor:COLOR.white, borderRadius:10}, style]}/> 
+      style={[{backgroundColor:COLOR.white, borderRadius:10, fontFamily:'Agrandir-Regular', fontSize:16,fontWeight:'400',lineHeight:22}, style]}/> 
     
   )
 }
