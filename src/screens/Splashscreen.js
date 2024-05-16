@@ -20,6 +20,9 @@ const SplashScreen = ({ navigation }) => {
   const {navigation_path,access_token} = useSelector((state) => state.token);
 
     useEffect(() => {
+
+
+      console.log('accesstoken in sign in',access_token)
        
         const timer = setTimeout(() => {
 

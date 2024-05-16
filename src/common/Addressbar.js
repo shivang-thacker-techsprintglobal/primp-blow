@@ -23,8 +23,8 @@ const dispatch = useDispatch()
 
   return (
     <>
-    <Text>{currentlocation.latitude}</Text>
-    <Text>{currentlocation.longitude}</Text>
+    {/* <Text>{currentlocation.latitude}</Text>
+    <Text>{currentlocation.longitude}</Text> */}
     <TouchableOpacity onPress={()=>{
         dispatch(homeAddress(`${item?.Address?.City} - ${item?.BusinessName}, ${item?.Address.State}`))
         navigation.navigate('Bottomnavigation',{item: item})}} style={styles.container}>

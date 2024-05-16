@@ -15,13 +15,13 @@ import DropDown from '../components/Dropdown/Dropdown';
 import { useDispatch,useSelector } from 'react-redux';
 import { navigationPath, createCustomerAndUserAccount } from '../../redux/actions/userActions';
 import TextInputcommon from '../common/TextInputcommon';
-import AlertModal from '../common/AlertModal';
+
 
 
 const Register = () => {
 
   const {token_fetch}=useSelector(state => state.token)
-  const {customer_id}=useSelector(state => state.customer)
+ 
 
   const {loading} = useSelector(state => state.customer);
 
@@ -46,7 +46,7 @@ const Register = () => {
   const [textSecure, setTexeSecure] = useState(true);
   const [textSecureConfirm, setTexeSecureConfirm] = useState(true);
 
-  const [showmodal,setshowmodal] = useState(false)
+
 
 
   const validateAndSubmit = () => {
@@ -81,7 +81,7 @@ const Register = () => {
   return (
     
     <ScrollView style = {{flex:1, backgroundColor: 'white'}} >
-      <AlertModal show={showmodal} setshow={setshowmodal}/>
+     
     <KeyboardAvoidingView behavior='position' style = {{backgroundColor: 'white', flex: 1}}>
       <View style={styles.container}>
         

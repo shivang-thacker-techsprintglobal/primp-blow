@@ -10,7 +10,7 @@ import Dropdown from '../../assets/svgs/Dropdown'
 import LocationPin from '../../assets/svgs/LocationPin'
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { homeAddress } from '../../../redux/actions/userActions';
+
 
 
 
@@ -42,7 +42,7 @@ const {homeaddress} = useSelector(state=>state.customer)
       <View style={styles.c2}>
       
        
-        <Imagecontainer_round children={<Notification/>}/>
+        <Imagecontainer_round children={<Notification/>} onPress={()=> navigation.navigate('Cart')}/>
        
         <Imagecontainer_round children={<Cart/>} onPress={()=> navigation.navigate('Cart')}/>
       </View>

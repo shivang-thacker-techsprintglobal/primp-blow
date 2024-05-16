@@ -1,95 +1,189 @@
-import { StyleSheet, Text, View , Platform,ImageBackground} from 'react-native'
-import React, { useState } from 'react'
-import { COLOR } from '../../constants/Colors'
-import { useNavigation } from '@react-navigation/native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import Header from '../../common/Header'
-import Imagecontainer_round from '../../common/Imagecontainer_round'
-import CameraIcon from '../../assets/svgs/Camera'
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
-import TextInputcommon from '../../common/TextInputcommon'
-import DropDown from '../Dropdown/Dropdown'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useEffect, useCallback} from 'react';
+import {COLOR} from '../../constants/Colors';
+import {useNavigation} from '@react-navigation/native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import Header from '../../common/Header';
+import Imagecontainer_round from '../../common/Imagecontainer_round';
+import CameraIcon from '../../assets/svgs/Camera';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import TextInputcommon from '../../common/TextInputcommon';
+import DropDown from '../Dropdown/Dropdown';
+import {useDispatch, useSelector} from 'react-redux';
+import {GetCustomer} from '../../../redux/actions/userActions';
+import {ActivityIndicator} from 'react-native-paper';
+import EditIcon from '../../assets/svgs/edit';
+import { useFocusEffect } from '@react-navigation/native';
+
 
 const Personalinformation = () => {
-    const ios = Platform.OS == "ios";
-  const { top } = useSafeAreaInsets();
-  const navigation = useNavigation()
 
-  const [firstName,setFirstName] = useState('Ravi')
-  const [lastName,setLastName] = useState('Talajiya')
-  const [phoneNumber,setPhoneNumber] = useState('99999 77777')
-  const [email,setEmail] = useState('ravitalajiya@example.com')
+  
+
+  const {get_customer, loading} = useSelector(
+    state => state.customer,
+  );
+  const {access_token,customer_id} = useSelector(state => state.token);
+ 
+
+  const dispatch = useDispatch();
+  const ios = Platform.OS == 'ios';
+  const {top} = useSafeAreaInsets();
+  const navigation = useNavigation();
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(GetCustomer(customer_id, access_token,navigation));
+    }, [])
+  );
+
+//   useEffect(()=>
+// {dispatch(GetCustomer(customer_id, access_token,navigation));
+   
+
+// },[])
+
+
+
 
   return (
-    <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
-     <Header navigation={navigation} title={'Personal Information'}/>
-     <View style={styles.c1}>
-            <ImageBackground source={require('../../assets/pngs/Profile_image.png')} style={styles.imageBackground}>
-              <Imagecontainer_round style={styles.iconContainer}>
-                <CameraIcon/>
-              </Imagecontainer_round>
-            </ImageBackground>
-         <Text style={styles.profileName}>Ravi Talajiya</Text>   
-      </View>
-      <View style={styles.c2}>
 
-        <TextInputcommon editable={false} label={'First Name'} value={firstName}/>
-        <TextInputcommon editable={false} label={'Last Name'} value={lastName}/>
-        <View
+          <View style={[styles.container, {paddingTop: ios ? top : top + 10}]}>
+            <View>
+              <Header
+                navigation={navigation}
+                title={ 'Personal Information'}
+              />
+              <TouchableOpacity
+                onPress={() => navigation.navigate('EditProfile',{sfirstname:get_customer?.FirstName,slastname:get_customer?.LastName,sphonenumber:get_customer?.HomePhone,semail:get_customer?.Email})}
+                style={{position: 'absolute', zIndex: 100, right: 20}}>
+                <EditIcon />
+              </TouchableOpacity>
+            </View>
+
+            {loading ? (
+              <View
                 style={{
-                  justifyContent: 'space-between',
-                  flexDirection: 'row',
+                  flex: 1,
                   alignItems: 'center',
+                  justifyContent: 'center',
                 }}>
-                <DropDown />
-                <TextInputcommon value={phoneNumber} editable={false} label={'Phone Number'}   setValue={setPhoneNumber} style={{width:'83%'}} />
+                <ActivityIndicator size={'small'} color={COLOR.PrimaryColor} />
               </View>
-        <TextInputcommon value={email} editable={false} label={'Email'}/>
+            ) : (
+              <>
+                <View style={styles.c1}>
+                  <ImageBackground
+                    source={require('../../assets/pngs/Profile_image.png')}
+                    style={styles.imageBackground}>
+                    <Imagecontainer_round style={styles.iconContainer}>
+                      <CameraIcon />
+                    </Imagecontainer_round>
+                  </ImageBackground>
+                  <Text style={styles.profileName}>
+                    {get_customer?.FirstName} {get_customer?.LastName}
+                  </Text>
+                </View>
+                <View style={styles.c2}>
+                  <TextInputcommon
+                    editable={false}
+                    label={'First Name'}
+                    value={ get_customer?.FirstName}
+                   
+                  />
+                  <TextInputcommon
+                    editable={false}
+                    label={'Last Name'}
+                    value={get_customer?.LastName}
+                  
+                  />
+                  <View
+                    style={{
+                      justifyContent: 'space-between',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                    }}>
+                    <DropDown />
+                    <TextInputcommon
+                      value={ get_customer?.HomePhone}
+                      editable={false}
+                      label={'Phone Number'}
+                     
+                      style={{width: '83%'}}
+                    />
+                  </View>
+                  <TextInputcommon
+                    value={get_customer?.Email}
+                    editable={false}
+                    label={'Email'}
+                   
+                  />
+                </View>
+              </>
+            )}
+          </View>
        
+   
+  );
+};
 
-      </View>
-    </View>
-  )
-}
-
-export default Personalinformation
+export default Personalinformation;
 
 const styles = StyleSheet.create({
-    container:
-  {
- flex:1,
- backgroundColor:COLOR.white,
- padding:16
+  container: {
+    flex: 1,
+    backgroundColor: COLOR.white,
+    padding: 16,
   },
-  c1:
-  {width: wp(32.99), height:hp(15.5),  alignSelf:'center',justifyContent:'center',alignItems:'center', marginTop:hp(4), gap:12},
-  profileName:
-  {
-    fontFamily:'Agrandir-Regular',
-    fontWeight:'400',
-    fontSize:24,
-    lineHeight:32,
-    color:COLOR.black
+  c1: {
+    height: hp(15.5),
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: hp(4),
+    gap: 12,
   },
-  imageBackground:
-  {height:80,width:80, justifyContent:'flex-end', alignItems:'flex-end'},
-  iconContainer:
-  {height:30, width:30, backgroundColor:COLOR.PrimaryColor},
-  c2:
-  {
-    alignSelf:'center',
-    width:wp(87.3),
-    gap:16,
-    marginTop:hp(5)
+  profileName: {
+    fontFamily: 'Agrandir-Regular',
+    fontWeight: '400',
+    fontSize: 24,
+    lineHeight: 32,
+    color: COLOR.black,
+    textTransform: 'capitalize',
+  },
+  imageBackground: {
+    height: 80,
+    width: 80,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
+  iconContainer: {height: 30, width: 30, backgroundColor: COLOR.PrimaryColor},
+  c2: {
+    alignSelf: 'center',
+    width: wp(87.3),
+    gap: 16,
+    marginTop: hp(5),
 
-
-//     width: Fixed (344px)px;
-// height: Hug (320px)px;
-// top: 248px;
-// left: 16px;
-// gap: 16px;
-// opacity: 0px;
-
-
-  }
-})
+    //     width: Fixed (344px)px;
+    // height: Hug (320px)px;
+    // top: 248px;
+    // left: 16px;
+    // gap: 16px;
+    // opacity: 0px;
+  },
+  buttonStyle: {
+    height: hp(6),
+    borderRadius: 15,
+    width: '100%',
+    marginVertical: hp(1),
+  },
+});

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View,Alert } from 'react-native'
 import React from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import UserIcon from '../assets/svgs/userprofile'
@@ -6,8 +6,36 @@ import ArrowRight from '../assets/svgs/Arrow_right'
 import { COLOR } from '../constants/Colors'
 import LockIcon from '../assets/svgs/lock'
 import LogoutIcon from '../assets/svgs/Logout'
+import { useDispatch, useSelector } from 'react-redux'
+import { Logout } from '../../redux/actions/userActions'
+
 
 const ProfileCard = ({navigation}) => {
+
+  const dispatch = useDispatch()
+
+  const {access_token} = useSelector(state=>state.token)
+
+  const handleLogout = () => {
+    Alert.alert(
+      'Logout',
+      'Are you sure you want to logout?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => {
+           dispatch(Logout(access_token,navigation))
+            console.log('User confirmed logout');
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
     
   return (
     <>
@@ -23,7 +51,7 @@ const ProfileCard = ({navigation}) => {
       <ArrowRight/>
     </TouchableOpacity>
     <View style={{borderWidth:1, borderColor:COLOR.Grey}}></View>
-    <TouchableOpacity style={styles.container} >
+    <TouchableOpacity style={styles.container} onPress={()=> handleLogout()} >
       <LogoutIcon/>
       <Text style={styles.textStyle}>Log Out</Text>
       <ArrowRight/>

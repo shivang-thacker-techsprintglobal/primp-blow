@@ -5,7 +5,7 @@ import { COLOR } from '../constants/Colors'
 import { Button,Text } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../../redux/actions/userActions'
+import { addToCart, removeFromCart } from '../../redux/actions/userActions'
 import ButtonCommon from './ButtonCommon'
 
 
@@ -34,7 +34,7 @@ const HomeCard = ({onPress, item}) => {
           {dispatch(addToCart(item))
           }
          
-          }/> : <ButtonCommon title={'Added'} buttonstyle={{backgroundColor:COLOR.PrimaryColor}} textstyle={{color:COLOR.white}} onPress={()=> Alert.alert('already added')}/> }
+          }/> : <ButtonCommon title={'Added'} buttonstyle={{backgroundColor:COLOR.PrimaryColor}} textstyle={{color:COLOR.white}} onPress={()=>dispatch(removeFromCart(item.id)) }/> }
       </View>
     </View>
   )

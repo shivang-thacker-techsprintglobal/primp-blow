@@ -15,18 +15,14 @@ export const customerReducer = createReducer({}, builder => {
   .addCase('CUSTOMER_DETAILS', (state, action) => {
     state.customer_details = action.payload;
   })
-
- 
-
-  .addCase('CUSTOMER_ID', (state, action) => {
-    state.customer_id = action.payload;
-  })
+  
   .addCase('START_LOADING', (state) => {
     state.loading = true;
   })
   .addCase('STOP_LOADING', (state) => {
     state.loading = false;
   })
+  
   .addCase('HOME_ADDRESS', (state,action) => {
     state.homeaddress = action.payload;
   })
@@ -38,6 +34,19 @@ export const customerReducer = createReducer({}, builder => {
   .addCase('GET_ALL_LOCATIONS', (state,action) => {
     state.get_all_locations = action.payload;
   })
+
+  
+  .addCase('GET_CUSTOMER', (state,action) => {
+    state.get_customer = action.payload;
+  })
+
+  .addCase('TOAST_MESSAGE', (state,action) => {
+    state.toast_message = action.payload;
+  })
+  .addCase('TOAST_VISIBLE', (state,action) => {
+    state.toast_visible = action.payload;
+  })
+  
   
 
   
@@ -55,6 +64,9 @@ export const tokenReducer = createReducer({}, builder => {
   })
   .addCase('ACCESS_TOKEN', (state, action) => {
     state.access_token = action.payload;
+  })
+  .addCase('CUSTOMER_ID', (state, action) => {
+    state.customer_id = action.payload;
   })
 });
 
