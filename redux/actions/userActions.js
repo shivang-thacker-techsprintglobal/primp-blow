@@ -420,7 +420,7 @@ export const UpdateCustomerPassword = (CustomerID,Email,NewPassword,OldPassword,
       
   
       Snackbar.show({
-        text: 'Password Chnaged SUccessfully',
+        text: 'Password Changed Successfully',
         duration: Snackbar.LENGTH_SHORT,
       });
 
