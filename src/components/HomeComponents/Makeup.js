@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Modal } from 'react-native'
+import { StyleSheet, Text, View,Modal,ScrollView } from 'react-native'
 import React,{useState} from 'react'
 import HomeCard from '../../common/Homecard'
 import Addonsmodal from './Addonsmodal'
@@ -18,13 +18,18 @@ const renderModal =()=>
 
 }
   return (
-    <View>
+    <ScrollView style={{flex:1}}
+    showsVerticalScrollIndicator={false}
+    >
+       
       {item.map((item,index)=>(
-        <HomeCard  item={item} key={item.ID}  />
+        <HomeCard  item={item} key={item?.ID} onPress={()=>setOpenModal(true)}  />
       ))}
-      
+
       {renderModal()}
-    </View>
+      
+      
+    </ScrollView>
   )
 }
 

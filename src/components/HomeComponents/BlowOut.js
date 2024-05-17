@@ -1,17 +1,30 @@
-import { StyleSheet, Text, View,Modal, TouchableOpacity, ScrollView } from 'react-native'
-import React,{useEffect, useState} from 'react'
+import { StyleSheet, Text, View,Modal,ScrollView } from 'react-native'
+import React,{useState} from 'react'
 import HomeCard from '../../common/Homecard'
-import { useDispatch, useSelector } from 'react-redux'
-import { Dummyitems } from '../../assets/Dummyitems'
-import { useNavigation } from '@react-navigation/native'
-import { FindTreatments } from '../../../redux/actions/userActions'
+import Addonsmodal from './Addonsmodal'
+
+
 
 
 const BlowOut = ({item}) => {
 
+  const [openModal,setOpenModal]=useState(false)
 
 
- 
+
+
+
+
+  const renderModal =()=>
+  {
+    return(
+      <Modal visible={openModal} animationType='slide' transparent={true} >
+         <Addonsmodal onPress={()=>setOpenModal(false) }/>
+  
+      </Modal>
+    )
+  
+  }
 
   
 
@@ -22,8 +35,10 @@ const BlowOut = ({item}) => {
     >
        
       {item.map((item,index)=>(
-        <HomeCard  item={item} key={item.ID} />
+        <HomeCard  item={item} key={item?.ID}  />
       ))}
+
+      {renderModal()}
       
       
     </ScrollView>

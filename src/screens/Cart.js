@@ -22,9 +22,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation()
 
-  const handleRemoveFromCart = (itemId) => {
-    dispatch(removeFromCart(itemId));
-  };
+  
 
   const renderItem = ({ item,index }) => (
    

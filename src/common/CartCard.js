@@ -20,13 +20,15 @@ const CartCard = ({onPress, item,index}) => {
     <View style={styles.container}>
        
       <View style={styles.c1}>
-      <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item.title}</Text>
-      <Text   style={styles.textTitle}>{item.price}  </Text>
+      <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item?.Name}</Text>
+      <Text   style={styles.textTitle}>${item?.Price?.Amount}  </Text>
       </View>
-      <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(No Extensions) (luxurious Shampoo & Blowout style)  </Text>
+
+      {item?.Description && <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>{item?.Description} </Text>}
+      
       <View style={styles.c2}>
-      <Text   style={styles.mediumText}>{item.time}  </Text>
-      <TouchableOpacity onPress={()=>dispatch(removeFromCart(item.id))}>
+      <Text   style={styles.mediumText}>{item?.TotalDuration} Min</Text>
+      <TouchableOpacity onPress={()=>dispatch(removeFromCart(item?.ID))}>
       <Deleteicon/>
       </TouchableOpacity>
       </View>

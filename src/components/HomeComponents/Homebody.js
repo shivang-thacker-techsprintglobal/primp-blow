@@ -19,7 +19,7 @@ const Homebody = () => {
 
 
 
-  const blowupTreatments = find_treatments && find_treatments.filter(treatment => treatment.Category.ID === 29);
+  const blowupTreatments = find_treatments && find_treatments.filter(treatment => treatment.Category.ID === 52);
   const makeupTreatments = find_treatments && find_treatments.filter(treatment => treatment.Category.ID === 104);
  
     

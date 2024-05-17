@@ -84,6 +84,6 @@ export const cartReducer = createReducer(initialState, (builder) => {
       state.items.push(action.payload);
     })
     .addCase('REMOVE_FROM_CART', (state, action) => {
-      state.items = state.items.filter(item => item.id !== action.payload);
+      state.items = state.items.filter(item => item.ID !== action.payload);
     });
 });

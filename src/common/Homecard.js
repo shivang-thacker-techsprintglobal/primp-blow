@@ -5,7 +5,7 @@ import { COLOR } from '../constants/Colors'
 import { Button,Text } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart } from '../../redux/actions/userActions'
+import { FetchAddOns, addToCart, removeFromCart } from '../../redux/actions/userActions'
 import ButtonCommon from './ButtonCommon'
 
 
@@ -18,7 +18,9 @@ const HomeCard = ({onPress, item}) => {
 
   const dispatch = useDispatch()
 
-  const isItemAdded = items.some(cartItem => cartItem.title === item.title);
+  const isItemAdded = items.some(cartItem => cartItem.Name === item.Name);
+
+  const {access_token} = useSelector(state => state.token)
 
  
   return (
@@ -26,17 +28,18 @@ const HomeCard = ({onPress, item}) => {
       <View style={styles.c1}>
       <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item?.Name}</Text>
       <Text   style={styles.textTitle}>${item?.Price?.Amount}  </Text>
+     
       </View>
       <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>{item?.Description} </Text>
       <View style={styles.c2}>
       <Text   style={styles.mediumText}>{item?.TotalDuration} Min </Text>
-      {!isItemAdded?<ButtonCommon title={'Add'} onPress={ onPress}/>
-          // {
+      {!isItemAdded?<ButtonCommon title={'Add'} onPress={ ()=> {
             
-          //   dispatch(addToCart(item))
-          // }
+            dispatch(FetchAddOns(item,access_token))
+          }}/>
+          
          
-           : <ButtonCommon title={'Added'} buttonstyle={{backgroundColor:COLOR.PrimaryColor}} textstyle={{color:COLOR.white}} onPress={()=>dispatch(removeFromCart(item.id)) }/> }
+           : <ButtonCommon title={'Added'} buttonstyle={{backgroundColor:COLOR.PrimaryColor}} textstyle={{color:COLOR.white}} onPress={()=>dispatch(removeFromCart(item?.ID)) }/> }
       </View>
     </View>
   )

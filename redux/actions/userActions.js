@@ -331,6 +331,50 @@ export const GetCustomer = (id,access_token,navigation) => async dispatch => {
   }
 };
 
+export const FetchAddOns = (item,access_token)=> async dispatch=>
+{
+try{
+
+  const response = await axios.get(`${BASE_URL}/v4.1/customer/treatment/${item?.ID}/addons?access_token=${access_token}`,
+{
+  headers : {
+    'Ocp-Apim-Subscription-Key': '180ce46c75d942b0a46bb8a5e8a92275',
+},});
+
+if(response?.data?.IsSuccess ===  true)
+{
+
+  Snackbar.show({
+    text:'api working'
+  })
+  if(response?.data?.Treatments.length > 0)
+  {
+    
+  }
+  else{
+      dispatch(addToCart(item))
+  }
+}
+
+else if(response?.data?.ErrorMessage=='invalid access token')
+    {
+   
+      Alert.alert('Sign In','Session expired, please Sign in again')
+       navigation.navigate('Signin')
+       console.log('error',response?.data)
+    }
+else
+{
+
+  console.log('error',response?.data)
+}
+}
+catch(error){
+
+  console.log('error',error)
+}
+}
+
 export const UpdateUser = (CustomerID,LocationID,Firstname,Lastname,Homephone,Email,access_token,navigation) => async dispatch => {
   dispatch({ type: 'START_LOADING' });
   try {
