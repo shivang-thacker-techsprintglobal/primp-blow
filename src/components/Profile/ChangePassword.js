@@ -129,7 +129,7 @@ dispatch(UpdateCustomerPassword(customer_id,Email,newPassword,password,access_to
           <TouchableOpacity
             style={styles.iconContainer}
             onPress={() => setConfirmTexeSecure(!confirmTextSecure)}>
-            {textSecure ? (
+            {confirmTextSecure ? (
               <Closeeye />
             ) : (
               <Image
@@ -140,7 +140,7 @@ dispatch(UpdateCustomerPassword(customer_id,Email,newPassword,password,access_to
           </TouchableOpacity>
         </View>
       </View>
-      {loading?<ActivityIndicator size={'small'} color={COLOR.PrimaryColor}/> :  <Button
+      {loading? <View ><ActivityIndicator size={'small'} color={COLOR.PrimaryColor}/></View> :  <Button
             mode="contained"
             disabled={
               (password && password.trim()) === '' ||

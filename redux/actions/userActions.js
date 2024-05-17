@@ -7,12 +7,6 @@ import Snackbar from "react-native-snackbar";
 
 
 
-
-
-
-
-
-
 export const navigationPath = value => dispatch => {
   dispatch({
     type: 'NAVIGATION_PATH',
@@ -93,10 +87,7 @@ export const createCustomerAndUserAccount = (Firstname,Lastname,Email,Password,p
       if(response?.data.ErrorCode === 0)
       {
        
-        Snackbar.show({
-          text: 'Registered Successfully',
-          duration: Snackbar.LENGTH_SHORT,
-        });
+        
 
         navigation.navigate('Signin')
 
@@ -143,13 +134,10 @@ export const Login = (Email,Password,navigation) => async dispatch => {
     
 
      
-        Snackbar.show({
-          text: 'Sign in Successfully',
-          duration: Snackbar.LENGTH_SHORT,
-        });
+       
         
 
-        navigation.navigate('Bottomnavigation')
+        
 
       dispatch({
         type: 'CUSTOMER_DETAILS',
@@ -163,7 +151,7 @@ export const Login = (Email,Password,navigation) => async dispatch => {
         type: 'CUSTOMER_ID',
         payload: response?.data?.Customer?.CustomerID
       });
-
+      navigation.navigate('Bottomnavigation')
       
       
       
@@ -230,6 +218,63 @@ export const GetALlLocations = (access_token,navigation) => async dispatch => {
   } catch (error) {
     dispatch({ type: 'STOP_LOADING' }); 
     console.error('Error fetching access token:', error);
+  }
+};
+export const FindTreatments = (access_token,navigation) => async dispatch => {
+  dispatch({ type: 'START_LOADING' });
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/v4.1/customer/treatments`,
+      {
+
+        
+          LocationID: 3749,
+          access_token: access_token,
+        
+      
+      },
+     
+      
+      {
+        headers: {
+          'Content-Type':'application/json',
+          'Ocp-Apim-Subscription-Key': '180ce46c75d942b0a46bb8a5e8a92275'
+        },
+      }
+    );
+    if (response?.data?.IsSuccess === true ) {
+      dispatch({ type: 'STOP_LOADING' }); 
+
+      dispatch({
+        type: 'FIND_TREATMENTS',
+        payload: response?.data?.Treatments
+      });
+
+      
+
+     
+    }
+    else if(response?.data?.ErrorMessage=='invalid access token')
+    {
+      dispatch({ type: 'STOP_LOADING' }); 
+      // Alert.alert('Sign in','Session expired, please Sign in again')
+      //  navigation.navigate('Signin')
+       console.log('error', response?.data)
+    }
+    else{
+      dispatch({ type: 'STOP_LOADING' }); 
+      Snackbar.show({
+        text: response?.data?.ErrorMessage,
+        duration: Snackbar.LENGTH_SHORT,
+      });
+      console.log(response?.data)
+      
+      
+    }
+  } catch (error) {
+    dispatch({ type: 'STOP_LOADING' }); 
+    console.error('Error fetching access token:', error);
+   
   }
 };
 
@@ -390,7 +435,7 @@ export const UpdateCustomerPassword = (CustomerID,Email,NewPassword,OldPassword,
     else{
       dispatch({ type: 'STOP_LOADING' }); 
       Snackbar.show({
-        text: 'Something went wrong',
+        text: response?.data?.ErrorMessage,
         duration: Snackbar.LENGTH_SHORT,
       });
       console.log(response?.data)
@@ -404,7 +449,7 @@ export const UpdateCustomerPassword = (CustomerID,Email,NewPassword,OldPassword,
   }
 };
 export const Logout = (access_token,navigation) => async dispatch => {
-  dispatch({ type: 'START_LOADING' });
+
   try {
     const response = await axios.post(
       `${BASE_URL}/v4.1/customer/logout?access_token=${access_token}`,
@@ -432,17 +477,13 @@ export const Logout = (access_token,navigation) => async dispatch => {
       navigation.navigate('Signin')
       
       
-      Snackbar.show({
-        text: 'User Logout',
-        duration: Snackbar.LENGTH_SHORT,
-      });
+     
     }
 
     else if(response?.data?.ErrorMessage=='invalid access token')
     {
       dispatch({ type: 'STOP_LOADING' }); 
-      Alert.alert('Sign in','Session expired, please Sign in again')
-       navigation.navigate('Signin')
+
     }
     else{
       dispatch({ type: 'STOP_LOADING' }); 

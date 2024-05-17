@@ -3,12 +3,24 @@ import React from 'react'
 import { COLOR } from '../../constants/Colors'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
-const AboutButtons = ({children, onPress, buttonstyle, textstyle, title}) => {
+const AboutButtons = ({children, onPress, buttonstyle, textstyle, title,right}) => {
   return (
     <TouchableOpacity style={[styles.buttonContainer, buttonstyle]} onPress={onPress}>
       <View style={styles.content}>
+
+        {right === 'right'?
+        <>
+         <Text style={[styles.buttonTitle, textstyle]}>{title}</Text>
+         {children}
+         </>
+        :
+        <>
         {children}
         <Text style={[styles.buttonTitle, textstyle]}>{title}</Text>
+        </>
+        }
+        
+       
       </View>
     </TouchableOpacity>
   )

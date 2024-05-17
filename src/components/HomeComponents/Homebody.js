@@ -1,14 +1,35 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../../constants/Colors'
 import BlowOut from './BlowOut'
 import Makeup from './Makeup'
-import Modal from "react-native-modal";
+import { useDispatch, useSelector } from 'react-redux'
+import { FindTreatments } from '../../../redux/actions/userActions'
+import { useNavigation } from '@react-navigation/native'
 
 const Homebody = () => {
 
   const [activeTab,setActiveTab]=useState('Blow Out')
+  const dispatch = useDispatch()
+  const navigation = useNavigation()
+
+  const {access_token,find_treatments} = useSelector(state=>state.token)
+
+
+
+
+
+  const makeupTreatments = find_treatments && find_treatments.filter(treatment => treatment.Category.ID === 104);
+ 
+    
+  
+
+  
+  useEffect(()=>
+  {
+     dispatch(FindTreatments(access_token,navigation))
+  },[])
   return (
     <View style={styles.bodycontainer}>
       <View style={styles.tabBar}>
@@ -21,9 +42,13 @@ const Homebody = () => {
       </View>
 
       {activeTab === 'Blow Out' ?
-        <BlowOut/>
+      <>
+        { find_treatments && <BlowOut item={find_treatments} key={find_treatments}/> } 
+        </>
         :
-        <Makeup/>  
+       <>
+        { makeupTreatments && <Makeup item={makeupTreatments} key={makeupTreatments} /> }
+        </>
     }
     </View>
   )

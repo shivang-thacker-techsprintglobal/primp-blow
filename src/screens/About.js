@@ -7,7 +7,12 @@ import Header from '../common/Header';
 import About_LOGO from '../assets/svgs/About_Logo'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import FacebookIcon from '../assets/svgs/Facebook'
+import TwitterIcon from '../assets/svgs/Twitter'
+import InstagramIcon from '../assets/svgs/Instagram'
+import Pinterest from '../assets/svgs/Pinterest'
+import ArrowRightIcon from '../assets/svgs/Sharp_arrow_right'
 import AboutButtons from '../components/About/AboutButtons';
+
 
 
 const About = () => {
@@ -23,11 +28,11 @@ const About = () => {
       <Text style={styles.textStyle}>Join us on social media!</Text>
       </View>
       <View style={styles.cc2}>
-      <AboutButtons title={'Facebook'}/>
-      <AboutButtons title={'Twitter'}/>
-      <AboutButtons title={'Instagram'}/>
-      <AboutButtons title={'Pinterest'}/>
-      <AboutButtons title={'Our Blogs'}/>
+      <AboutButtons children={<FacebookIcon/>} title={'Facebook'}/>
+      <AboutButtons children={<TwitterIcon/>}  title={'Twitter'}/>
+      <AboutButtons children={<InstagramIcon/>} title={'Instagram'}/>
+      <AboutButtons children={<Pinterest/>} title={'Pinterest'}/>
+      <AboutButtons children={<ArrowRightIcon/>} title={'Our Blogs'} right={'right'} textstyle={{paddingRight:wp(3)}}/>
       </View>
       </View>
     </View>

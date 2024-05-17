@@ -4,7 +4,7 @@ import HomeCard from '../../common/Homecard'
 import Addonsmodal from './Addonsmodal'
 import { Dummyitems } from '../../assets/Dummyitems'
 
-const Makeup = () => {
+const Makeup = ({item}) => {
   const [openModal,setOpenModal]=useState(false)
 
 const renderModal =()=>
@@ -19,8 +19,8 @@ const renderModal =()=>
 }
   return (
     <View>
-      {Dummyitems.map((item,index)=>(
-        <HomeCard  item={item} key={item.id} />
+      {item.map((item,index)=>(
+        <HomeCard  item={item} key={item.ID}  />
       ))}
       
       {renderModal()}

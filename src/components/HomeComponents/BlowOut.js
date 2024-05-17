@@ -1,22 +1,28 @@
 import { StyleSheet, Text, View,Modal, TouchableOpacity, ScrollView } from 'react-native'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import HomeCard from '../../common/Homecard'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Dummyitems } from '../../assets/Dummyitems'
+import { useNavigation } from '@react-navigation/native'
+import { FindTreatments } from '../../../redux/actions/userActions'
 
 
-const BlowOut = () => {
+const BlowOut = ({item}) => {
 
-  const dispatch = useDispatch()
+
+
+ 
+
+  
 
 
   return (
     <ScrollView style={{flex:1}}
     showsVerticalScrollIndicator={false}
     >
-
-      {Dummyitems.map((item,index)=>(
-        <HomeCard  item={item} key={item.id} />
+       
+      {item.map((item,index)=>(
+        <HomeCard  item={item} key={item.ID} />
       ))}
       
       

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background image -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop" />
+
+    <!-- Overlay color -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66101010" /> <!-- Use the desired color and opacity -->
+
+    <!-- Progress bar -->
+    <ImageView
+        android:layout_width='300dp'
+        android:layout_height='300dp'
+        android:src="@drawable/logo"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

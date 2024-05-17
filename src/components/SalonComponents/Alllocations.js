@@ -31,7 +31,7 @@ const Alllocations = () => {
   return (
     <View style={styles.container}>
 
-{loading? <ActivityIndicator color={COLOR.PrimaryColor} style={{marginTop:hp(2)}}/> :<Addressbar item={get_all_locations?.Results[0]} show={true}/> }
+{loading? <ActivityIndicator color={COLOR.PrimaryColor} style={{marginTop:hp(2)}}/> :<Addressbar item={get_all_locations?.Results[0]} show={false}/> }
      
       
     </View>

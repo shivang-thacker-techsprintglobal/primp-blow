@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, View, TouchableOpacity} from 'react-native'
+import { StyleSheet, View} from 'react-native'
 import React, { useState } from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../constants/Colors'
@@ -24,17 +24,19 @@ const HomeCard = ({onPress, item}) => {
   return (
     <View style={styles.container}>
       <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-      <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item.title}</Text>
-      <Text   style={styles.textTitle}>{item.price}  </Text>
+      <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item?.Name}</Text>
+      <Text   style={styles.textTitle}>${item?.Price?.Amount}  </Text>
       </View>
-      <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(No Extensions) (luxurious Shampoo & Blowout style)  </Text>
+      <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>{item?.Description} </Text>
       <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-      <Text   style={styles.mediumText}>{item.time}  </Text>
-      {!isItemAdded?<ButtonCommon title={'Add'} onPress={()=>
-          {dispatch(addToCart(item))
-          }
+      <Text   style={styles.mediumText}>{item?.TotalDuration} Min </Text>
+      {!isItemAdded?<ButtonCommon title={'Add'} onPress={ onPress}/>
+          // {
+            
+          //   dispatch(addToCart(item))
+          // }
          
-          }/> : <ButtonCommon title={'Added'} buttonstyle={{backgroundColor:COLOR.PrimaryColor}} textstyle={{color:COLOR.white}} onPress={()=>dispatch(removeFromCart(item.id)) }/> }
+           : <ButtonCommon title={'Added'} buttonstyle={{backgroundColor:COLOR.PrimaryColor}} textstyle={{color:COLOR.white}} onPress={()=>dispatch(removeFromCart(item.id)) }/> }
       </View>
     </View>
   )

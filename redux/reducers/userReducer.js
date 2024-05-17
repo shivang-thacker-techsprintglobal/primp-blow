@@ -4,7 +4,8 @@ const initialState = {
   items: [],
   loading:false,
   homeaddress: 'Austin -  Prime and Blow Austin Tri',
-  access_token:''
+  access_token:'',
+  
 };
 
 export const customerReducer = createReducer({}, builder => {
@@ -46,6 +47,8 @@ export const customerReducer = createReducer({}, builder => {
   .addCase('TOAST_VISIBLE', (state,action) => {
     state.toast_visible = action.payload;
   })
+
+  
   
   
 
@@ -67,6 +70,9 @@ export const tokenReducer = createReducer({}, builder => {
   })
   .addCase('CUSTOMER_ID', (state, action) => {
     state.customer_id = action.payload;
+  })
+  .addCase('FIND_TREATMENTS', (state,action) => {
+    state.find_treatments = action.payload;
   })
 });
 

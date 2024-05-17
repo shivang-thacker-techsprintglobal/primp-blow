@@ -7,51 +7,40 @@ import { useDispatch } from 'react-redux';
 
 const SplashScreen = ({ navigation }) => {
 
-  const dispatch = useDispatch()
-
-  useEffect(()=>
-{
-  dispatch(fetchaccessToken())
-  
-},[])
-
-  
-
-  const {navigation_path,access_token} = useSelector((state) => state.token);
-
-    useEffect(() => {
+    // useEffect(() => {
 
 
-      console.log('accesstoken in sign in',access_token)
+    //   console.log('accesstoken in sign in',access_token)
        
-        const timer = setTimeout(() => {
+    //     const timer = setTimeout(() => {
 
 
-          if(access_token === undefined)
-          {
+    //       if(access_token === undefined)
+    //       {
           
           
-         if(navigation_path === 'three')
+    //      if(navigation_path === 'three')
           
-           { navigation.replace('OnboardingThree') }
+    //        { navigation.replace('OnboardingThree') }
 
-           else if(navigation_path === 'Register')
-           {
-            navigation.replace('Signin')
-           }
-           else{navigation.replace('OnboardingScreen');}
-          }
-          else{
-            navigation.replace('Bottomnavigation');
-          }
+    //        else if(navigation_path === 'Register')
+    //        {
+    //         navigation.replace('Signin')
+    //        }
+    //        else{navigation.replace('OnboardingScreen');}
+    //       }
+    //       else{
+    //         navigation.replace('Bottomnavigation');
+    //       }
            
            
           
-        }, 1500); 
+    //     }, 1500); 
     
-        return () => clearTimeout(timer);
-      }, [navigation]);
-  return (
+    //     return () => clearTimeout(timer);
+    //   }, [navigation]);
+ 
+    return (
     <View style={styles.container}>
       {/* Background image with black overlay */}
       <ImageBackground
@@ -82,7 +71,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', // black overlay with 70% opacity
+    backgroundColor: '#061010CC', // black overlay with 70% opacity
   },
   
 });
