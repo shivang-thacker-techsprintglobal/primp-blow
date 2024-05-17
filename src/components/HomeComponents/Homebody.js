@@ -1,12 +1,13 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState,useEffect } from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../../constants/Colors'
 import BlowOut from './BlowOut'
 import Makeup from './Makeup'
 import { useDispatch, useSelector } from 'react-redux'
-import { FindTreatments } from '../../../redux/actions/userActions'
+import { FindTreatments, showAddOns } from '../../../redux/actions/userActions'
 import { useNavigation } from '@react-navigation/native'
+import Addonsmodal from './Addonsmodal'
 
 const Homebody = () => {
 
@@ -15,13 +16,23 @@ const Homebody = () => {
   const navigation = useNavigation()
 
   const {access_token,find_treatments} = useSelector(state=>state.token)
+  const {addons_modal_visible} = useSelector(state => state.customer)
 
 
 
 
   const blowupTreatments = find_treatments && find_treatments.filter(treatment => treatment.Category.ID === 52);
   const makeupTreatments = find_treatments && find_treatments.filter(treatment => treatment.Category.ID === 104);
- 
+  const renderModal =()=>
+  {
+    return(
+      <Modal visible={addons_modal_visible} animationType='slide' transparent={true} >
+         <Addonsmodal onPress={()=>dispatch(showAddOns(false))}/>
+  
+      </Modal>
+    )
+  
+  }
     
   
 
@@ -50,6 +61,7 @@ const Homebody = () => {
         { makeupTreatments && <Makeup item={makeupTreatments} key={makeupTreatments} /> }
         </>
     }
+     {renderModal()}
     </View>
   )
 }

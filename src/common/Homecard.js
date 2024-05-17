@@ -34,7 +34,7 @@ const HomeCard = ({onPress, item}) => {
       <View style={styles.c2}>
       <Text   style={styles.mediumText}>{item?.TotalDuration} Min </Text>
       {!isItemAdded?<ButtonCommon title={'Add'} onPress={ ()=> {
-            
+             dispatch(addToCart(item))
             dispatch(FetchAddOns(item,access_token))
           }}/>
           

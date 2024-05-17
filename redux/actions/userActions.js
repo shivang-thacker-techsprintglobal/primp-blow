@@ -349,10 +349,15 @@ if(response?.data?.IsSuccess ===  true)
   })
   if(response?.data?.Treatments.length > 0)
   {
-    
+       dispatch(showAddOns(true))
+
+       dispatch({
+        type: 'ADDONS_DETAILS',
+        payload: response?.data?.Treatments
+      });
   }
   else{
-      dispatch(addToCart(item))
+      
   }
 }
 
@@ -645,6 +650,15 @@ export const showSnackbar = (visible,message) => dispatch => {
 
   
 };
+
+export const showAddOns=(visible)=>dispatch=>
+{
+dispatch({
+  type :'ADDONS_MODAL_VISIBLE',
+  payload:visible
+})
+
+}
 
 
 

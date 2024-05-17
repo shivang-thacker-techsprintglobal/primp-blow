@@ -5,8 +5,12 @@ import {COLOR} from '../../constants/Colors';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Closeicon from '../../assets/svgs/close';
 import AddonsCard from '../../common/AddonsCard';
+import { useSelector } from 'react-redux';
 
 const Addonsmodal = ({onPress}) => {
+
+const {addons_details} = useSelector(state=>state.customer)
+
   return (
     <View style={styles.modalcontainer}>
       <Imagecontainer_round style={styles.iconcontainerstyle} onPress={onPress}>
@@ -16,10 +20,14 @@ const Addonsmodal = ({onPress}) => {
       <View style={styles.container}>
         <Text style={styles.titleText}>Add-ons</Text>
         <View style={{flex: 0.8, gap:12}}>
-            <AddonsCard/>
-            <AddonsCard/>
-            <AddonsCard/>
-            <AddonsCard/>
+          {addons_details.map((item,index)=>
+        {
+          return(
+<AddonsCard item={item} key={item.ID}/>
+          )
+        })}
+            
+            
         </View>
         <View style={{flex: 0.1}}>
           <TouchableOpacity style={styles.buttonStyle}>

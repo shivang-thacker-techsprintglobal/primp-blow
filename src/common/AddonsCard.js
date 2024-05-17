@@ -3,17 +3,17 @@ import React from 'react';
 import {COLOR} from '../constants/Colors';
 import Checkbox from './Checkbox';
 
-const AddonsCard = () => {
+const AddonsCard = ({item}) => {
   return (
     <View style={styles.container}>
       <Checkbox />
       <View style={styles.detailscontainer}>
         <View style={styles.c1}>
-          <Text numberOfLines={2} style={styles.textTitle}>+ Hot Tool (Add to Shampoo Blowout)</Text>
-          <Text style={styles.mediumText}>45 Min</Text>
+          <Text numberOfLines={2} style={styles.textTitle}>+{item?.Name}</Text>
+          <Text style={styles.mediumText}>{item?.TotalDuration} Min</Text>
         </View>
 
-        <Text style={styles.textTitle}>$50.00</Text>
+        <Text style={styles.textTitle}>${item?.Price?.Amount}</Text>
       </View>
     </View>
   );
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   c1: {
     gap: 8,
     width:'78%',
+    justifyContent:'space-around'
   },
   textTitle:
     {

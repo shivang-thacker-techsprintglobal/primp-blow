@@ -5,10 +5,12 @@ const initialState = {
   loading:false,
   homeaddress: 'Select Store',
   access_token:undefined,
+  addons_modal_visible:false,
+  addons_details:[]
   
 };
 
-export const customerReducer = createReducer({}, builder => {
+export const customerReducer = createReducer(initialState, builder => {
   builder
 
   
@@ -38,6 +40,14 @@ export const customerReducer = createReducer({}, builder => {
   .addCase('TOAST_VISIBLE', (state,action) => {
     state.toast_visible = action.payload;
   })
+  
+  .addCase('ADDONS_MODAL_VISIBLE', (state,action) => {
+    state.addons_modal_visible = action.payload;
+  })
+  .addCase('ADDONS_DETAILS', (state,action) => {
+    state.addons_details = action.payload;
+  })
+  
 
   
   

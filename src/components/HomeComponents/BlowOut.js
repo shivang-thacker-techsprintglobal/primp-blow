@@ -11,21 +11,6 @@ const BlowOut = ({item}) => {
   const [openModal,setOpenModal]=useState(false)
 
 
-
-
-
-
-  const renderModal =()=>
-  {
-    return(
-      <Modal visible={openModal} animationType='slide' transparent={true} >
-         <Addonsmodal onPress={()=>setOpenModal(false) }/>
-  
-      </Modal>
-    )
-  
-  }
-
   
 
 
@@ -38,7 +23,7 @@ const BlowOut = ({item}) => {
         <HomeCard  item={item} key={item?.ID}  />
       ))}
 
-      {renderModal()}
+     
       
       
     </ScrollView>
