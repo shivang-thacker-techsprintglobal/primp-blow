@@ -39,7 +39,7 @@ const AddCard = () => {
                   cvv.trim() === '' ||
                   holderName.trim() === ''
                 
-                  } onPress={()=> navigation.navigate('Pay')} mode="contained"  style={{width:'100%', borderRadius:10}} textColor={COLOR.white}> Add</Button>
+                  } onPress={()=> navigation.navigate('Pay')} mode="contained"  style={styles.buttonStyle} textColor={COLOR.white}> Add</Button>
       </View>
     </View>
 
@@ -78,9 +78,7 @@ const styles = StyleSheet.create({
         lineHeight:20,
         color:COLOR.Dark
     },
-    buttonposition:
-    {
-       
-    },
+    buttonStyle:
+    {width:'100%', borderRadius:10},
 
 })

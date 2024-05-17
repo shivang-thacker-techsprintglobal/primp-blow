@@ -24,7 +24,7 @@ const Homeheader = () => {
 
  
   
-const {homeaddress} = useSelector(state=>state.customer)
+const {homeaddress} = useSelector(state=>state.token)
     
   return (
     <View style={ styles.container}>
@@ -37,7 +37,7 @@ const {homeaddress} = useSelector(state=>state.customer)
       <Text style={styles.textTitle}>Salon</Text>
           <Dropdown size={30}/>
       </View>
-      <Text numberOfLines={1}  style={styles.mediumText}>{homeaddress}</Text>
+      <Text key={homeaddress} numberOfLines={1}  style={styles.mediumText}>{homeaddress}</Text>
       </View>
       </TouchableOpacity>
       <View style={styles.c2}>

@@ -8,8 +8,8 @@ const TimeSlots = () => {
 const [data,setData]= useState([1,2,3,4,5,6,7,8,9,10,11,12])
 
   return (
-    <View style={{height:20,  width:'100%', marginTop:16}}> 
-<View style={{flexDirection:'row', flexWrap:'wrap', justifyContent:'space-between', gap:12}}>
+    <View style={styles.container}> 
+<View style={styles.c1}>
       {data.map((item,index)=>
     {
         return(<TimeSlotcard key={index}/>)
@@ -24,6 +24,12 @@ const [data,setData]= useState([1,2,3,4,5,6,7,8,9,10,11,12])
 export default TimeSlots
 
 const styles = StyleSheet.create({
+
+  container:
+  {height:20,  width:'100%', marginTop:16},
+
+  c1:
+  {flexDirection:'row', flexWrap:'wrap', justifyContent:'space-between', gap:12}
     
 
 })

@@ -13,20 +13,18 @@ const CartCard = ({onPress, item,index}) => {
 
     const { items } = useSelector(state => state.cart);
 
-  const [itemAdded,setItemAdded] = useState(false)
-
   const dispatch = useDispatch()
 
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
        
-      <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+      <View style={styles.c1}>
       <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item.title}</Text>
       <Text   style={styles.textTitle}>{item.price}  </Text>
       </View>
       <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>(No Extensions) (luxurious Shampoo & Blowout style)  </Text>
-      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+      <View style={styles.c2}>
       <Text   style={styles.mediumText}>{item.time}  </Text>
       <TouchableOpacity onPress={()=>dispatch(removeFromCart(item.id))}>
       <Deleteicon/>
@@ -89,7 +87,12 @@ const styles = StyleSheet.create({
         borderColor:COLOR.Grey,
         marginVertical:hp(1)
 
-    }
+    },
+    c1:
+    {flexDirection:'row', justifyContent:'space-between', alignItems:'center'},
+
+    c2:
+    {flexDirection:'row', alignItems:'center', justifyContent:'space-between'}
 })
 
 

@@ -279,7 +279,7 @@ export const FindTreatments = (access_token,navigation) => async dispatch => {
 };
 
 export const GetCustomer = (id,access_token,navigation) => async dispatch => {
-  dispatch({ type: 'START_LOADING' });
+ 
   try {
     const response = await axios.get(
       `${BASE_URL}/v4.1/customer/customer/${id}?access_token=${access_token}`,
@@ -292,7 +292,7 @@ export const GetCustomer = (id,access_token,navigation) => async dispatch => {
       }
     );
     if (response?.data.ErrorCode === 0 ) {
-      dispatch({ type: 'STOP_LOADING' }); 
+     
 
    
 
@@ -314,18 +314,18 @@ export const GetCustomer = (id,access_token,navigation) => async dispatch => {
 
     else if(response?.data?.ErrorMessage=='invalid access token')
     {
-      dispatch({ type: 'STOP_LOADING' }); 
-      Alert.alert('Sign in','Session expired, please Sign in again')
+   
+      Alert.alert('Profile','Session expired, please Sign in again')
        navigation.navigate('Signin')
        console.log('error',response?.data)
     }
     else{
-      dispatch({ type: 'STOP_LOADING' }); 
+
       console.log('error',response?.data)
       
     }
   } catch (error) {
-    dispatch({ type: 'STOP_LOADING' }); 
+   
     console.error('Error fetching access token:', error);
    
   }
@@ -423,6 +423,8 @@ export const UpdateCustomerPassword = (CustomerID,Email,NewPassword,OldPassword,
         text: 'Password Chnaged SUccessfully',
         duration: Snackbar.LENGTH_SHORT,
       });
+
+      navigation.navigate('Profile')
     }
 
 

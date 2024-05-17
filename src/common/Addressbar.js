@@ -30,7 +30,7 @@ const dispatch = useDispatch()
         navigation.navigate('Bottomnavigation',{item: item})}} style={styles.container}>
         <Location/>
         <View style={styles.c1}>
-      <Text numberOfLines={2} style={styles.address}>{item?.Address?.City} - {item?.BusinessName}, {item?.Address.State}</Text>
+      <Text numberOfLines={2} style={styles.address}>{item?.Address?.City ? `${item?.Address?.City} - ${item?.BusinessName}, ${item?.Address?.State}` : '...'}</Text>
       {show?  <Text style={styles.miles}>5 Miles</Text> : null}
       </View>
       

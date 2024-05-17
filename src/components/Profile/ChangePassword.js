@@ -34,12 +34,12 @@ const ChangePassword = () => {
   const [confirmPassword, setConfirmPassword] = useState();
   const [confirmTextSecure, setConfirmTexeSecure] = useState(true);
 
-  const {get_customer, loading} = useSelector(
+  const {loading} = useSelector(
     state => state.customer,
   );
 
   
-  const {access_token,customer_id} = useSelector(state=>state.token)
+  const {access_token,customer_id,get_customer} = useSelector(state=>state.token)
   const Email = get_customer?.Email
   const validateAndSubmit = () => {
 
@@ -73,8 +73,8 @@ dispatch(UpdateCustomerPassword(customer_id,Email,newPassword,password,access_to
   return (
     <View style={[styles.container, {paddingTop: ios ? top : top + 10}]}>
       <Header navigation={navigation} title={'Change Password'} />
-      <View style={{justifyContent:'space-between', flex:1}}>
       <View style={styles.c1}>
+      <View style={styles.cc1}>
         <View>
           <TextInputcommon
             secureTextEntry={textSecure}
@@ -171,7 +171,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.white,
     padding: 16,
   },
-  c1: {
+  c1:
+  {justifyContent:'space-between', flex:1}
+  ,
+  cc1: {
     width: wp(87),
     gap: 16,
     marginTop:hp(4)

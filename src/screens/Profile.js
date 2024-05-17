@@ -17,14 +17,14 @@ import { ActivityIndicator } from 'react-native-paper';
 
 const Profile = () => {
 
-const {get_customer,loading,toast_message,toast_visible} = useSelector(state=>state.customer)
+const {loading} = useSelector(state=>state.customer)
 
-const {access_token,customer_id} = useSelector(state => state.token)
+const {access_token,customer_id,get_customer} = useSelector(state => state.token)
 
 const dispatch= useDispatch()
   useFocusEffect(
     useCallback(() => {
-      console.log('customerid', customer_id)
+     
       dispatch(GetCustomer(customer_id, access_token,navigation));
     }, [])
   );
@@ -37,13 +37,8 @@ const dispatch= useDispatch()
     <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
       <Header navigation={navigation} title={'Profile'}/>
 
-      { loading ?
-      <View style={styles.c1}>
-      <ActivityIndicator size={'small'} color={COLOR.PrimaryColor} /> 
-      </View>
-      
-      
-      :<View style={styles.c1}>
+     
+     <View style={styles.c1}>
             <ImageBackground source={require('../assets/pngs/Profile_image.png')} style={styles.imageBackground}>
               <Imagecontainer_round style={styles.iconContainer}>
                 <CameraIcon/>
@@ -52,7 +47,7 @@ const dispatch= useDispatch()
          <Text style={styles.profileName}>{get_customer?.FirstName && get_customer?.LastName
     ? `${get_customer.FirstName} ${get_customer.LastName}`
     : 'Loading...'}</Text>   
-      </View> }
+      </View> 
       
       <View style={styles.c2}
       >

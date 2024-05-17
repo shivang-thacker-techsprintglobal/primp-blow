@@ -15,8 +15,8 @@ const Alllocations = () => {
 
  
 
-  const {access_token}= useSelector(state=> state.token)
-  const { get_all_locations, loading}= useSelector(state=> state.customer)
+  const {access_token,get_all_locations}= useSelector(state=> state.token)
+  
 
   const dispatch = useDispatch()
 
@@ -31,7 +31,7 @@ const Alllocations = () => {
   return (
     <View style={styles.container}>
 
-{loading? <ActivityIndicator color={COLOR.PrimaryColor} style={{marginTop:hp(2)}}/> :<Addressbar item={get_all_locations?.Results[0]} show={false}/> }
+<Addressbar item={get_all_locations?.Results[0]} show={false}/> 
      
       
     </View>

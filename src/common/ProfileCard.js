@@ -44,13 +44,13 @@ const ProfileCard = ({navigation}) => {
       <Text style={styles.textStyle}>Personal Information</Text>
       <ArrowRight/>
     </TouchableOpacity>
-    <View style={{borderWidth:1, borderColor:COLOR.Grey}} ></View>
+    <View style={styles.separator} ></View>
     <TouchableOpacity style={styles.container} onPress={()=> navigation.navigate('ChangePassword')}>
       <LockIcon/>
       <Text style={styles.textStyle} >Change Password</Text>
       <ArrowRight/>
     </TouchableOpacity>
-    <View style={{borderWidth:1, borderColor:COLOR.Grey}}></View>
+    <View style={styles.separator}></View>
     <TouchableOpacity style={styles.container} onPress={()=> handleLogout()} >
       <LogoutIcon/>
       <Text style={styles.textStyle}>Log Out</Text>
@@ -85,13 +85,7 @@ const styles = StyleSheet.create({
        textAlign:'left',
        width:wp(64.72),
        color:COLOR.Dark
-      
-      //styleName: Body Regular;
-// font-family: Agrandir;
-// font-size: 14px;
-// font-weight: 400;
-// line-height: 20px;
-// text-align: left;
-
-    }
+    },
+    separator:
+    {borderWidth:1, borderColor:COLOR.Grey}
 })

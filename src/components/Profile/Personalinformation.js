@@ -30,10 +30,10 @@ const Personalinformation = () => {
 
   
 
-  const {get_customer, loading} = useSelector(
+  const { loading} = useSelector(
     state => state.customer,
   );
-  const {access_token,customer_id} = useSelector(state => state.token);
+  const {access_token,customer_id,get_customer} = useSelector(state => state.token);
  
 
   const dispatch = useDispatch();
@@ -65,45 +65,37 @@ const Personalinformation = () => {
               />
               <TouchableOpacity
                 onPress={() => navigation.navigate('EditProfile',{sfirstname:get_customer?.FirstName,slastname:get_customer?.LastName,sphonenumber:get_customer?.HomePhone,semail:get_customer?.Email})}
-                style={{position: 'absolute', zIndex: 100, right: 20}}>
+                style={styles.iconContainer}>
                 <EditIcon />
               </TouchableOpacity>
             </View>
 
-            {loading ? (
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <ActivityIndicator size={'small'} color={COLOR.PrimaryColor} />
-              </View>
-            ) : (
-              <>
                 <View style={styles.c1}>
                   <ImageBackground
                     source={require('../../assets/pngs/Profile_image.png')}
                     style={styles.imageBackground}>
-                    <Imagecontainer_round style={styles.iconContainer}>
+                    <Imagecontainer_round style={styles.iconContainer2}>
                       <CameraIcon />
                     </Imagecontainer_round>
                   </ImageBackground>
                   <Text style={styles.profileName}>
-                    {get_customer?.FirstName} {get_customer?.LastName}
+
+                   {get_customer?.FirstName && get_customer?.LastName
+    ? `${get_customer.FirstName} ${get_customer.LastName}`
+    : 'Loading...'}
                   </Text>
                 </View>
                 <View style={styles.c2}>
                   <TextInputcommon
                     editable={false}
                     label={'First Name'}
-                    value={ get_customer?.FirstName}
+                    value={get_customer?.FirstName? `${get_customer?.FirstName}` : `Loading...`}
                    
                   />
                   <TextInputcommon
                     editable={false}
                     label={'Last Name'}
-                    value={get_customer?.LastName}
+                    value={get_customer?.LastName ?`${get_customer?.LastName}` : `Loading...` }
                   
                   />
                   <View
@@ -114,7 +106,7 @@ const Personalinformation = () => {
                     }}>
                     <DropDown />
                     <TextInputcommon
-                      value={ get_customer?.HomePhone}
+                      value={ get_customer?.HomePhone ? `${get_customer?.HomePhone}` : `Loading...`}
                       editable={false}
                       label={'Phone Number'}
                      
@@ -122,14 +114,13 @@ const Personalinformation = () => {
                     />
                   </View>
                   <TextInputcommon
-                    value={get_customer?.Email}
+                    value={get_customer?.Email ? `${get_customer?.Email}` : `Loading...`}
                     editable={false}
                     label={'Email'}
                    
                   />
                 </View>
-              </>
-            )}
+            
           </View>
        
    
@@ -144,6 +135,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.white,
     padding: 16,
   },
+
+  iconContainer:
+  {position: 'absolute', zIndex: 100, right: 20}
+  ,
   c1: {
     height: hp(15.5),
     alignSelf: 'center',
@@ -166,7 +161,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
   },
-  iconContainer: {height: 30, width: 30, backgroundColor: COLOR.PrimaryColor},
+  iconContainer2: {height: 30, width: 30, backgroundColor: COLOR.PrimaryColor},
   c2: {
     alignSelf: 'center',
     width: wp(87.3),

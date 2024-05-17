@@ -35,10 +35,10 @@ const EditProfile = () => {
   // Access route parameters
   const { sfirstname, slastname, sphonenumber, semail } = route.params;
  
-  const {get_customer, loading} = useSelector(
+  const { loading} = useSelector(
     state => state.customer,
   );
-  const {access_token,customer_id} = useSelector(state => state.token);
+  const {access_token,customer_id,get_customer} = useSelector(state => state.token);
 
 
   const dispatch = useDispatch();
@@ -81,7 +81,7 @@ const EditProfile = () => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: COLOR.white}}>
+    <View style={styles.scrollContainer}>
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <KeyboardAvoidingView
           behavior="position"
@@ -228,4 +228,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginVertical: hp(1),
   },
+  scrollContainer:
+  {flex: 1, backgroundColor: COLOR.white}
 });

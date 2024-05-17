@@ -3,8 +3,8 @@ import {createReducer} from '@reduxjs/toolkit';
 const initialState = {
   items: [],
   loading:false,
-  homeaddress: 'Austin -  Prime and Blow Austin Tri',
-  access_token:'',
+  homeaddress: 'Select Store',
+  access_token:undefined,
   
 };
 
@@ -24,22 +24,13 @@ export const customerReducer = createReducer({}, builder => {
     state.loading = false;
   })
   
-  .addCase('HOME_ADDRESS', (state,action) => {
-    state.homeaddress = action.payload;
-  })
+  
   .addCase('CURRENT_LOCATION', (state,action) => {
     state.currentlocation = action.payload;
   })
   
   
-  .addCase('GET_ALL_LOCATIONS', (state,action) => {
-    state.get_all_locations = action.payload;
-  })
-
   
-  .addCase('GET_CUSTOMER', (state,action) => {
-    state.get_customer = action.payload;
-  })
 
   .addCase('TOAST_MESSAGE', (state,action) => {
     state.toast_message = action.payload;
@@ -55,13 +46,13 @@ export const customerReducer = createReducer({}, builder => {
   
 });
 
-export const tokenReducer = createReducer({}, builder => {
+export const tokenReducer = createReducer(initialState, builder => {
   builder
   
   .addCase('NAVIGATION_PATH', (state, action) => {
     state.navigation_path = action.payload;
   })
-
+  
   .addCase('TOKEN_FETCH', (state, action) => {
     state.token_fetch = action.payload;
   })
@@ -73,6 +64,17 @@ export const tokenReducer = createReducer({}, builder => {
   })
   .addCase('FIND_TREATMENTS', (state,action) => {
     state.find_treatments = action.payload;
+  })
+  .addCase('GET_ALL_LOCATIONS', (state,action) => {
+    state.get_all_locations = action.payload;
+  })
+
+  
+  .addCase('GET_CUSTOMER', (state,action) => {
+    state.get_customer = action.payload;
+  })
+  .addCase('HOME_ADDRESS', (state,action) => {
+    state.homeaddress = action.payload;
   })
 });
 

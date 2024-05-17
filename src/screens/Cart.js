@@ -66,7 +66,7 @@ const Cart = () => {
 
       <View style={styles.promocodeContainer}>
       <TextInputcommon numberOfLines={6} label={'Promo Code'} style={{width:'70%'}} value={promoCode} setValue={setpromoCode} />
-      <ButtonCommon title={'Apply'} buttonstyle={{backgroundColor:COLOR.PrimaryColor, height:hp(6.3), width:'25%'}} textstyle={{color:COLOR.white, fontSize:16}}/>
+      <ButtonCommon title={'Apply'} buttonstyle={styles.buttonStyle} textstyle={{color:COLOR.white, fontSize:16}}/>
       </View>
       </View>
 
@@ -152,5 +152,8 @@ color:COLOR.DarkGrey
     alignItems:'center',
     height:hp(10),
   },
+
+  buttonStyle:
+  {backgroundColor:COLOR.PrimaryColor, height:hp(6.3), width:'25%'}
 
 })

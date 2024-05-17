@@ -33,7 +33,7 @@ const DateandTime = () => {
       height={400}
       selectedDayColor={COLOR.PrimaryColor}
       selectedDayTextColor={COLOR.white}
-      selectedDayStyle={{height:32,width:34, borderRadius:10, backgroundColor:COLOR.PrimaryColor, padding:5,gap:10}}
+      selectedDayStyle={styles.selectedDayStyle}
       todayBackgroundColor={COLOR.white}
         // Create a moment object from the date parameter
         disabledDates={(date) => {
@@ -148,12 +148,6 @@ const styles = StyleSheet.create({
         fontWeight:'400',
         lineHeight:22,
         textAlign:'center'
-        //styleName: Sub-headline Regular;
-// font-family: Agrandir;
-// font-size: 16px;
-// font-weight: 400;
-// line-height: 22px;
-// text-align: center;
 
     },
     textStyle:
@@ -163,5 +157,7 @@ const styles = StyleSheet.create({
     lineHeight:22,
     textAlign:'center'
 
-    }
+    },
+    selectedDayStyle:
+    {height:32,width:34, borderRadius:10, backgroundColor:COLOR.PrimaryColor, padding:5,gap:10}
 })
