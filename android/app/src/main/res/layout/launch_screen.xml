@@ -15,7 +15,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#66101010" /> <!-- Use the desired color and opacity -->
+        android:background="#CC061010" /> <!-- Use the desired color and opacity -->
 
     <!-- Progress bar -->
     <ImageView
