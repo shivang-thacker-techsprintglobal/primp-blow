@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Platform,
   ScrollView,
+  Alert,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {removeFromCart} from '../../redux/actions/userActions';
@@ -86,6 +87,17 @@ const Cart = () => {
           title={'Add Guest'}
           buttonstyle={{width: '42%', height: 50}}
           textstyle={{fontSize: 16, lineHeight: 22}}
+          onPress={()=>{
+
+            if(items?.length >1 || items?.subItems && items?.subItems.length>0)
+            {
+                Alert.alert('Add Guest','To add guests, it is necessary to remove the add-on service from your cart!')
+            }
+            else
+            {
+Alert.alert('no warnings')
+            }
+          }}
         />
         <ButtonCommon
           onPress={() => navigation.navigate('DateandTime')}
