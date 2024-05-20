@@ -30,7 +30,7 @@ const Navigation = () => {
   }, []);
 
   const initialRouteName = () => {
-    console.log('accesstoken in sign in', access_token);
+    console.log('accesstoken in sign in navigation', access_token);
 
     if (access_token === undefined) {
       if (navigation_path === 'three') {

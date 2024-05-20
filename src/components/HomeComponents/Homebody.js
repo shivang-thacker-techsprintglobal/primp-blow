@@ -39,6 +39,7 @@ const Homebody = () => {
   
   useEffect(()=>
   {
+    console.log('ACCESSTOKEN before find treatments', access_token)
      dispatch(FindTreatments(access_token,navigation))
   },[])
   return (

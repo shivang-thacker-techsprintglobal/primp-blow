@@ -131,19 +131,11 @@ export const Login = (Email,Password,navigation) => async dispatch => {
     if (response?.data.error === null ) {
       dispatch({ type: 'STOP_LOADING' }); 
 
-    
-
-     
-       
-        
-
-        
-
       dispatch({
         type: 'CUSTOMER_DETAILS',
         payload: response?.data?.Customer
       });
-      dispatch({
+      await dispatch({
         type: 'ACCESS_TOKEN',
         payload: response?.data?.access_token
       });
@@ -317,7 +309,7 @@ export const GetCustomer = (id,access_token,navigation) => async dispatch => {
    
       Alert.alert('Profile','Session expired, please Sign in again')
        navigation.navigate('Signin')
-       console.log('error',response?.data)
+       console.log('error in getcustomers',response?.data)
     }
     else{
 
@@ -516,7 +508,7 @@ export const Logout = (access_token,navigation) => async dispatch => {
     if (response?.data?.IsSuccess === true ) {
       dispatch({ type: 'STOP_LOADING' }); 
 
-      dispatch({
+      await dispatch({
         type: 'ACCESS_TOKEN',
         payload: undefined
       });

@@ -6,7 +6,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import HomeSearchBar from '../components/HomeComponents/HomeSearchBar'
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Homebody from '../components/HomeComponents/Homebody';
-
 import { GetCurrentLocation } from '../../redux/actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 

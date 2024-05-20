@@ -3,11 +3,20 @@ import {createReducer} from '@reduxjs/toolkit';
 const initialState = {
   items: [],
   loading:false,
-  homeaddress: 'Select Store',
-  access_token:undefined,
   addons_modal_visible:false,
   addons_details:[]
   
+};
+
+const initialTokenState = {
+  access_token: undefined,
+  navigation_path: '',
+  token_fetch: false,
+  customer_id: null,
+  find_treatments: [],
+  get_all_locations: [],
+  get_customer: null,
+  homeaddress: 'Select Store',
 };
 
 export const customerReducer = createReducer(initialState, builder => {
@@ -56,7 +65,7 @@ export const customerReducer = createReducer(initialState, builder => {
   
 });
 
-export const tokenReducer = createReducer(initialState, builder => {
+export const tokenReducer = createReducer(initialTokenState, builder => {
   builder
   
   .addCase('NAVIGATION_PATH', (state, action) => {

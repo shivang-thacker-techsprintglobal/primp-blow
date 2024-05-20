@@ -24,9 +24,14 @@ const {access_token,customer_id,get_customer} = useSelector(state => state.token
 const dispatch= useDispatch()
   useFocusEffect(
     useCallback(() => {
-     
-      dispatch(GetCustomer(customer_id, access_token,navigation));
-    }, [])
+
+      if(access_token !== undefined)
+      {
+        console.log('ACCESSTOKEN before getcustomer', access_token)
+        dispatch(GetCustomer(customer_id, access_token,navigation));
+      }
+    
+    }, [access_token, customer_id, dispatch, navigation])
   );
   const ios = Platform.OS == "ios";
   const { top } = useSafeAreaInsets();
