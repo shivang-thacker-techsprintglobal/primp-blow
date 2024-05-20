@@ -41,6 +41,7 @@ const CartCard = ({onPress, item,index}) => {
       {
         return(
           <>
+          <View style={styles.greyLine} />
         <View style={styles.c1}>
       <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item?.Name}</Text>
       <Text   style={styles.textTitle}>${item?.Price?.Amount}  </Text>
@@ -60,7 +61,7 @@ const CartCard = ({onPress, item,index}) => {
         </> : null
       }
     
-      {index !== items.length - 1 && <View style={styles.greyLine} />}
+      
     </View>
   )
 }
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
         padding:16,
         gap:12,
         borderColor:COLOR.Grey,
+        marginVertical: hp(1)
     },
 
     textTitle:
