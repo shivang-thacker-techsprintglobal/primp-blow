@@ -2,17 +2,13 @@ import { StyleSheet, View} from 'react-native'
 import React, { useState } from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../constants/Colors'
-import { Button,Text } from 'react-native-paper'
-import { useNavigation } from '@react-navigation/native'
+import { Text } from 'react-native-paper'
 import { useDispatch, useSelector } from 'react-redux'
 import { FetchAddOns, addToCart, removeFromCart } from '../../redux/actions/userActions'
 import ButtonCommon from './ButtonCommon'
 
 
-const HomeCard = ({onPress, item}) => {
-
-  
-
+const HomeCard = ({ item,isLastItem}) => {
 
   const {items} = useSelector(state => state.cart);
 
@@ -24,11 +20,10 @@ const HomeCard = ({onPress, item}) => {
 
  
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, isLastItem && styles.lastItemStyle]}>
       <View style={styles.c1}>
       <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item?.Name}</Text>
       <Text   style={styles.textTitle}>${item?.Price?.Amount}  </Text>
-     
       </View>
       <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>{item?.Description} </Text>
       <View style={styles.c2}>
@@ -105,8 +100,10 @@ const styles = StyleSheet.create({
         fontSize:12,
         lineHeight:15.6
 
+    },
+
+    lastItemStyle:
+    {
+      marginBottom: hp(14)
     }
 })
-
-
-// npm i react-native-animated-pagination-dots

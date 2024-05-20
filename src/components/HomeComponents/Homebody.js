@@ -55,11 +55,11 @@ const Homebody = () => {
 
       {activeTab === 'Blow Out' ?
       <>
-        { blowupTreatments && <BlowOut item={blowupTreatments} key={blowupTreatments}/> } 
+        { blowupTreatments && <BlowOut items={blowupTreatments} key={blowupTreatments}/> } 
         </>
         :
        <>
-        { makeupTreatments && <Makeup item={makeupTreatments} key={makeupTreatments} /> }
+        { makeupTreatments && <Makeup items={makeupTreatments} key={makeupTreatments} /> }
         </>
     }
      {renderModal()}

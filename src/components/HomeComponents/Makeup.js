@@ -2,9 +2,9 @@ import { StyleSheet, Text, View,Modal,ScrollView } from 'react-native'
 import React,{useState} from 'react'
 import HomeCard from '../../common/Homecard'
 import Addonsmodal from './Addonsmodal'
-import { Dummyitems } from '../../assets/Dummyitems'
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
-const Makeup = ({item}) => {
+const Makeup = ({items}) => {
   const [openModal,setOpenModal]=useState(false)
 
 const renderModal =()=>
@@ -22,8 +22,8 @@ const renderModal =()=>
     showsVerticalScrollIndicator={false}
     >
        
-      {item.map((item,index)=>(
-        <HomeCard  item={item} key={item?.ID} onPress={()=>setOpenModal(true)}  />
+      {items.map((item,index)=>(
+        <HomeCard  item={item} key={item?.ID} onPress={()=>setOpenModal(true)} isLastItem={index === items.length - 1}  />
       ))}
 
       {renderModal()}
