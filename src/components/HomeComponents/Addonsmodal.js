@@ -5,10 +5,13 @@ import {COLOR} from '../../constants/Colors';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Closeicon from '../../assets/svgs/close';
 import AddonsCard from '../../common/AddonsCard';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { showAddOns } from '../../../redux/actions/userActions';
 
-const Addonsmodal = ({onPress}) => {
 
+const Addonsmodal = ({onPress,navigation}) => {
+
+  const dispatch = useDispatch()
 const {addons_details} = useSelector(state=>state.customer)
 
   return (
@@ -30,7 +33,8 @@ const {addons_details} = useSelector(state=>state.customer)
             
         </View>
         <View style={{flex: 0.1}}>
-          <TouchableOpacity style={styles.buttonStyle}>
+          <TouchableOpacity style={styles.buttonStyle} onPress={()=> {navigation.navigate('Cart')
+        dispatch(showAddOns(false))}}>
             <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>
         </View>

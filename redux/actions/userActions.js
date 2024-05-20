@@ -28,6 +28,20 @@ export const removeFromCart = (itemId) => ({
   type: 'REMOVE_FROM_CART',
   payload: itemId,
 });
+export const addSubItemToCart = (parentItemId, subItem) => ({
+  type: 'ADD_SUBITEM_TO_CART',
+  payload: { parentItemId, subItem },
+});
+
+export const removeSubItemFromCart = (parentItemId, subItemId) => ({
+  type: 'REMOVE_SUBITEM_FROM_CART',
+  payload: { parentItemId, subItemId },
+});
+
+// dispatch(addSubItemToCart(parentItemId, subItem));
+
+// // Removing sub-item
+// dispatch(removeSubItemFromCart(parentItemId, subItemId));
 
 //API's
 
@@ -346,6 +360,10 @@ if(response?.data?.IsSuccess ===  true)
        dispatch({
         type: 'ADDONS_DETAILS',
         payload: response?.data?.Treatments
+      });
+      dispatch({
+        type: 'PARENT_ITEM_ID',
+        payload: item?.ID
       });
   }
   else{

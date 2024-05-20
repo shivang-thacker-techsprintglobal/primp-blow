@@ -19,6 +19,7 @@ const Cart = () => {
   
   const {items} = useSelector(state => state.cart);
   console.log(items)
+  console.log(items[0]?.subItems)
   const dispatch = useDispatch();
   const navigation = useNavigation()
 
@@ -46,13 +47,13 @@ const Cart = () => {
       {items.length === 0 ? (
         <Text>Your cart is empty.</Text>
       ) : (
-        <View style={styles.itemsContainer}>
+    
         <FlatList
           data={items}
           renderItem={renderItem}
           keyExtractor={(item,index)=> index.toString()}
         />
-        </View>
+       
        
       )}
       </>
@@ -105,14 +106,7 @@ const styles = StyleSheet.create({
         width:'100%', 
     },
 
-  itemsContainer:
-  {
-     borderRadius:10,
-     borderWidth:1,
-     padding:16,
-     gap:12,
-     borderColor:COLOR.Grey
-  },
+ 
 
   notecontainer:
   {

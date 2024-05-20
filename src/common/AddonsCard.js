@@ -4,9 +4,11 @@ import {COLOR} from '../constants/Colors';
 import Checkbox from './Checkbox';
 
 const AddonsCard = ({item}) => {
+
+ 
   return (
     <View style={styles.container}>
-      <Checkbox />
+      <Checkbox item={item} />
       <View style={styles.detailscontainer}>
         <View style={styles.c1}>
           <Text numberOfLines={2} style={styles.textTitle}>+{item?.Name}</Text>

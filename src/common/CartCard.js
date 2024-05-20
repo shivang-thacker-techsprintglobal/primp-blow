@@ -5,13 +5,14 @@ import { COLOR } from '../constants/Colors'
 import { Text } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch,useSelector } from 'react-redux'
-import { removeFromCart } from '../../redux/actions/userActions'
+import { removeFromCart, removeSubItemFromCart } from '../../redux/actions/userActions'
 import Deleteicon from '../assets/svgs/delete'
 
 
 const CartCard = ({onPress, item,index}) => {
 
     const { items } = useSelector(state => state.cart);
+    const {parent_item_id} = useSelector(state=> state.customer)
 
   const dispatch = useDispatch()
 
@@ -32,6 +33,32 @@ const CartCard = ({onPress, item,index}) => {
       <Deleteicon/>
       </TouchableOpacity>
       </View>
+
+      {
+        item?.subItems.length >0 ?
+        <>
+        {item?.subItems.map((item,index)=>
+      {
+        return(
+          <>
+        <View style={styles.c1}>
+      <Text  numberOfLines={2}  style={[styles.textTitle, {width:'70%'}]}>{item?.Name}</Text>
+      <Text   style={styles.textTitle}>${item?.Price?.Amount}  </Text>
+      </View>
+      {item?.Description && <Text  numberOfLines={3}  style={[styles.mediumText,{marginTop:hp(0.5)}]}>{item?.Description} </Text>}
+      
+      <View style={styles.c2}>
+      <Text   style={styles.mediumText}>{item?.TotalDuration} Min</Text>
+      <TouchableOpacity onPress={()=>dispatch(removeSubItemFromCart(parent_item_id,item?.ID))}>
+      <Deleteicon/>
+      </TouchableOpacity>
+      </View>
+      </>)
+
+      })}
+        
+        </> : null
+      }
     
       {index !== items.length - 1 && <View style={styles.greyLine} />}
     </View>
@@ -44,7 +71,12 @@ const styles = StyleSheet.create({
 
     container:
     {
-        gap:8
+        gap:8,
+        borderRadius:10,
+        borderWidth:1,
+        padding:16,
+        gap:12,
+        borderColor:COLOR.Grey,
     },
 
     textTitle:

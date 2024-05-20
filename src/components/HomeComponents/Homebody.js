@@ -18,16 +18,13 @@ const Homebody = () => {
   const {access_token,find_treatments} = useSelector(state=>state.token)
   const {addons_modal_visible} = useSelector(state => state.customer)
 
-
-
-
   const blowupTreatments = find_treatments && find_treatments.filter(treatment => treatment.Category.ID === 52);
   const makeupTreatments = find_treatments && find_treatments.filter(treatment => treatment.Category.ID === 104);
   const renderModal =()=>
   {
     return(
       <Modal visible={addons_modal_visible} animationType='slide' transparent={true} >
-         <Addonsmodal onPress={()=>dispatch(showAddOns(false))}/>
+         <Addonsmodal navigation={navigation} onPress={()=>dispatch(showAddOns(false))}/>
   
       </Modal>
     )

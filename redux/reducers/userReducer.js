@@ -57,6 +57,10 @@ export const customerReducer = createReducer(initialState, builder => {
     state.addons_details = action.payload;
   })
   
+  .addCase('PARENT_ITEM_ID', (state,action) => {
+    state.parent_item_id = action.payload;
+  })
+  
 
   
   
@@ -99,10 +103,24 @@ export const tokenReducer = createReducer(initialTokenState, builder => {
 
 export const cartReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase('ADD_TO_CART', (state, action) => {
-      state.items.push(action.payload);
-    })
+  .addCase('ADD_TO_CART', (state, action) => {
+    state.items.push({ ...action.payload, subItems: [] });
+  })
     .addCase('REMOVE_FROM_CART', (state, action) => {
       state.items = state.items.filter(item => item.ID !== action.payload);
+    })
+    .addCase('ADD_SUBITEM_TO_CART', (state, action) => {
+      const { parentItemId, subItem } = action.payload;
+      const parentItemIndex = state.items.findIndex(item => item.ID === parentItemId);
+      if (parentItemIndex !== -1) {
+        state.items[parentItemIndex].subItems.push(subItem);
+      }
+    })
+    .addCase('REMOVE_SUBITEM_FROM_CART', (state, action) => {
+      const { parentItemId, subItemId } = action.payload;
+      const parentItemIndex = state.items.findIndex(item => item.ID === parentItemId);
+      if (parentItemIndex !== -1) {
+        state.items[parentItemIndex].subItems = state.items[parentItemIndex].subItems.filter(subItem => subItem.ID !== subItemId);
+      }
     });
 });

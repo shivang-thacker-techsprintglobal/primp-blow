@@ -1,41 +1,53 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React,{useState} from 'react'
-import { COLOR } from '../constants/Colors'
-import Checkicon from '../assets/svgs/check'
+import { Alert, StyleSheet, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { COLOR } from '../constants/Colors';
+import Checkicon from '../assets/svgs/check';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSubItemToCart, removeSubItemFromCart } from '../../redux/actions/userActions';
 
-const Checkbox = () => {
-const [ischecked,setIschecked] = useState(false)
+const Checkbox = ({ item }) => {
+
+  const {parent_item_id} = useSelector(state=> state.customer)
+  const [isChecked, setIsChecked] = useState(false);
+  const dispatch = useDispatch();
+
+  const handlePress = () => {
+    if (isChecked) {
+     
+      dispatch(removeSubItemFromCart(parent_item_id,item.ID));
+    } else {
+     
+      dispatch(addSubItemToCart(parent_item_id,item));
+    }
+    setIsChecked(!isChecked);
+  };
 
   return (
-    <>
-    <TouchableOpacity onPress={()=> setIschecked(!ischecked)} style={ ischecked? styles.checkboxactivecontainer :styles.checkboxcontainer}>
-
-        {ischecked? <Checkicon/>: null}
-        
-    
+    <TouchableOpacity
+      onPress={handlePress}
+      style={isChecked ? styles.checkboxActiveContainer : styles.checkboxContainer}
+    >
+      {isChecked ? <Checkicon /> : null}
     </TouchableOpacity>
+  );
+};
 
-   
-    </>
-)}
-
-export default Checkbox
+export default Checkbox;
 
 const styles = StyleSheet.create({
-
-    checkboxcontainer: {
-        height: 20,
-        width: 20,
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: COLOR.CheckboxColor,
-      },
-      checkboxactivecontainer: {
-        height: 20,
-        width: 20,
-        borderRadius: 5,
-        backgroundColor:COLOR.PrimaryColor,
-        alignItems:'center',
-        justifyContent:'center'
-      },
-})
+  checkboxContainer: {
+    height: 20,
+    width: 20,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: COLOR.CheckboxColor,
+  },
+  checkboxActiveContainer: {
+    height: 20,
+    width: 20,
+    borderRadius: 5,
+    backgroundColor: COLOR.PrimaryColor,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
