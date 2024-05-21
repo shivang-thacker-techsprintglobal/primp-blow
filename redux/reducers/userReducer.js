@@ -61,6 +61,10 @@ export const customerReducer = createReducer(initialState, builder => {
     state.parent_item_id = action.payload;
   })
   
+  .addCase('TIME_SLOTS', (state,action) => {
+    state.time_slots = action.payload;
+  })
+  
 
   
   

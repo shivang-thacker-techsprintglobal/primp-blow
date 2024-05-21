@@ -6,9 +6,11 @@ const TimeSlotcard = () => {
 const [selected, setSelected] = useState(false)
 
   return (
+    <View style={{width:'33%', alignItems:'center'}}>
     <TouchableOpacity style={ selected? styles.activetimecontainer : styles.timecontainer} onPress={()=>setSelected(!selected) }>
          <Text style={[styles.timetext,{color: selected? COLOR.white : COLOR.Dark}]}>08:00 AM</Text>
       </TouchableOpacity>
+      </View>
   )
 }
 
@@ -17,7 +19,7 @@ export default TimeSlotcard
 const styles = StyleSheet.create({
     timecontainer:
     {
-        width:'30%',
+        width:'90%',
         backgroundColor:COLOR.white,
         height:36,
         borderWidth:1,
@@ -28,7 +30,8 @@ const styles = StyleSheet.create({
         alignItems:'center',
         gap:10,
         paddingVertical:10,
-        paddingHorizontal:10
+        paddingHorizontal:10,
+        marginVertical:6
     },
 
     timetext:

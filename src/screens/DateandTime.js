@@ -4,21 +4,14 @@ import Header from '../common/Header'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { COLOR } from '../constants/Colors'
 import { useNavigation } from '@react-navigation/native'
-
 import TimeTab from '../components/DateandTime/TimeTab'
-import CalendarPicker from "react-native-calendar-picker";
 import { Button } from 'react-native-paper'
-import moment from 'moment';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import CalenderComponent from '../components/DateandTime/CalendarComponent'
 
 
 const DateandTime = () => {
-    const disabledDatesArray = [
-        '2024-05-10', // Example disabled date in format 'YYYY-MM-DD'
-        '2024-05-15',
-        '2024-05-13'
-        // Add more disabled dates as needed
-      ];
+    
     const navigation = useNavigation()
     const ios = Platform.OS == "ios";
   const { top } = useSafeAreaInsets();
@@ -27,27 +20,7 @@ const DateandTime = () => {
     <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
       <Header title={'Pick a Date & Time'} navigation={navigation}/>
       <View style={styles.c1}>
-        <View style={{flex:1}}>
-             <CalendarPicker 
-      textStyle={styles.textStyle}
-      height={400}
-      selectedDayColor={COLOR.PrimaryColor}
-      selectedDayTextColor={COLOR.white}
-      selectedDayStyle={styles.selectedDayStyle}
-      todayBackgroundColor={COLOR.white}
-        // Create a moment object from the date parameter
-        disabledDates={(date) => {
-            // Create a moment object from the date parameter
-            const momentDate = moment(date);
-            // Format the moment object to match the format of disabled dates
-            const formattedDate = momentDate.format('YYYY-MM-DD');
-            // Check if the formatted date is in the disabledDatesArray
-            return disabledDatesArray.includes(formattedDate);
-          }}
-          selectedDayTextStyle={styles.selectedDayTextStyle}
-    
-
-      /></View>
+     <CalenderComponent/>
      
       {/* <Calendar
       style={{height:330}}
@@ -137,8 +110,8 @@ const styles = StyleSheet.create({
         position:'absolute', bottom:0,width:'100%', 
         justifyContent:'center',
         alignItems:'center',
-        height:80,
-        alignSelf:'center'
+        height:hp(10),
+        alignSelf:'center',
     },
     selectedDayTextStyle:
     {

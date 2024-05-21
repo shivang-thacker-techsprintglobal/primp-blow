@@ -350,9 +350,7 @@ try{
 if(response?.data?.IsSuccess ===  true)
 {
 
-  Snackbar.show({
-    text:'api working'
-  })
+
   if(response?.data?.Treatments.length > 0)
   {
        dispatch(showAddOns(true))
@@ -500,6 +498,85 @@ export const UpdateCustomerPassword = (CustomerID,Email,NewPassword,OldPassword,
         duration: Snackbar.LENGTH_SHORT,
       });
       console.log(response?.data)
+      
+      
+    }
+  } catch (error) {
+    dispatch({ type: 'STOP_LOADING' }); 
+    console.error('Error fetching access token:', error);
+   
+  }
+};
+
+export const Finditinerary1day = (fetch_token,date,formattedItineraries) => async dispatch => {
+  dispatch({ type: 'START_LOADING' });
+  try {
+    console.log('api try')
+    const response = await axios.post(
+      `${BASE_URL}/v5/realtime_availability/itinerary/1day/`,
+      {
+
+        
+          locationId: 3749,
+          fromDateTime: `${date}T00:00:00-04:00`,
+          includeEmployees: true,
+          itineraries: [
+            {
+              itineraryGuid: "842f319c-f7d2-483d-be55-ab433a5ae00b",
+              packageId: null,
+              itineraryItems:  formattedItineraries
+            }
+          ],
+          
+        
+      
+      },
+     
+      
+      {
+        headers: {
+          'Content-Type':'application/json',
+          'Ocp-Apim-Subscription-Key': '180ce46c75d942b0a46bb8a5e8a92275',
+          'Authorization': `Bearer ${fetch_token}`
+        },
+      }
+    );
+    if (response?.status === 401 ) {
+      dispatch({ type: 'STOP_LOADING' }); 
+
+      Snackbar.show({
+        text: 'unAuthorised',
+        duration: Snackbar.LENGTH_SHORT,
+      });
+    }
+
+
+    else if(response?.data?.itineraryList.length > 0)
+    {
+      Snackbar.show({
+        text: 'time slots fetched',
+        duration: Snackbar.LENGTH_SHORT,
+      });
+      dispatch({ type: 'STOP_LOADING' }); 
+    await dispatch({
+      type: 'TIME_SLOTS',
+      payload: response?.data?.itineraryList[0]?.availabilities
+    });
+   
+  
+  }
+    
+    else{
+      
+      console.log(response?.data)
+        Snackbar.show({
+          text: 'No timeslot found for this item',
+          duration: Snackbar.LENGTH_SHORT,
+        });
+        await dispatch({
+          type: 'TIME_SLOTS',
+          payload: []
+        });
       
       
     }
