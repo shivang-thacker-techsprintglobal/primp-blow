@@ -22,7 +22,7 @@ const Homeheader = () => {
 
   const navigation= useNavigation()
 
- 
+  const {items} = useSelector(state => state.cart);
   
 const {homeaddress} = useSelector(state=>state.token)
     
@@ -47,9 +47,17 @@ const {homeaddress} = useSelector(state=>state.token)
        
         <Imagecontainer_round  onPress={()=> navigation.navigate('Cart')}>
          <Cart/>
-         <Imagecontainer_round style={{height:14, width:14, backgroundColor:COLOR.PrimaryColor,position:'absolute', top:5,right:5, justifyContent:'center', alignItems:'center'}}>
-       <Text style={{color:COLOR.white, bottom:2}}>1</Text>
-         </Imagecontainer_round>
+         {items.length > 0 && <Imagecontainer_round style={{height:14, width:14, backgroundColor:COLOR.PrimaryColor,position:'absolute', top:5,right:5, justifyContent:'center', alignItems:'center',borderWidth:0}}>
+       <Text style={{color:COLOR.white,
+
+       fontFamily:'Agrandir-Regular',
+       fontSize:10,
+       lineHeight:10,
+       textAlign:'center'
+      
+
+}}>{items.length}</Text>
+         </Imagecontainer_round>}
          
         </Imagecontainer_round>
       </View>
