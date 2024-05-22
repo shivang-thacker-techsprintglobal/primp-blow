@@ -3,7 +3,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import {COLOR} from '../constants/Colors';
-
+import Homeicon from '../assets/svgs/homegrey'
+import CalenderIcon from '../assets/svgs/Calendargrey'
+import InformationIcon from '../assets/svgs/informationgrey'
+import UserIcon from '../assets/svgs/Usergrey'
 import About from '../screens/About';
 import Profile from '../screens/Profile';
 import {
@@ -28,10 +31,7 @@ const Bottomnavigation = () => {
           tabBarActiveTintColor: COLOR.PrimaryColor,
          tabBarLabelStyle: styles.labelStyle,
           tabBarIcon: ({color, size}) => (
-            <Image
-              source={require('../assets/pngs/home.png')} // Adjust the path to your PNG icon
-              style={{width: size, height: size, tintColor: color}}
-            />
+            <Homeicon color={color}/>
           ),
         }}
       />
@@ -44,10 +44,7 @@ const Bottomnavigation = () => {
           tabBarInactiveTintColor: COLOR.LightGrey,
           tabBarActiveTintColor: COLOR.PrimaryColor,
           tabBarIcon: ({color, size}) => (
-            <Image
-              source={require('../assets/pngs/calendar.png')} // Adjust the path to your PNG icon
-              style={{width: size, height: size, tintColor: color}}
-            />
+            <CalenderIcon color={color}/>
           ),
         }}
       />
@@ -60,10 +57,7 @@ const Bottomnavigation = () => {
           tabBarInactiveTintColor: COLOR.LightGrey,
           tabBarActiveTintColor: COLOR.PrimaryColor,
           tabBarIcon: ({color, size}) => (
-            <Image
-              source={require('../assets/pngs/information.png')} // Adjust the path to your PNG icon
-              style={{width: size, height: size, tintColor: color}}
-            />
+            <InformationIcon color={color}/>
           ),
         }}
       />
@@ -76,10 +70,7 @@ const Bottomnavigation = () => {
           tabBarInactiveTintColor: COLOR.LightGrey,
           tabBarActiveTintColor: COLOR.PrimaryColor,
           tabBarIcon: ({color, size}) => (
-            <Image
-              source={require('../assets/pngs/user.png')} // Adjust the path to your PNG icon
-              style={{width: size, height: size, tintColor: color}}
-            />
+            <UserIcon color={color}/>
           ),
         }}
       />

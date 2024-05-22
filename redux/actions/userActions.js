@@ -747,6 +747,24 @@ dispatch({
 
 }
 
+export const getdateAppoinment=(date)=>dispatch=>
+{
+dispatch({
+  type :'GET_DATE_APPOINTMENT',
+  payload: date
+})
+
+}
+
+export const gettimeAppointment=(time)=>dispatch=>
+{
+dispatch({
+  type :'GET_TIME_APPOINTMENT',
+  payload:time
+})
+
+}
+
 
 
 

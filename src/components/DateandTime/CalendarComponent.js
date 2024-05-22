@@ -4,18 +4,18 @@ import {COLOR} from '../../constants/Colors';
 import moment from 'moment';
 import CalendarPicker from 'react-native-calendar-picker';
 import {useSelector, useDispatch} from 'react-redux';
-import { fetchaccessToken, Finditinerary1day } from '../../../redux/actions/userActions';
+import { fetchaccessToken, Finditinerary1day, getdateAppoinment } from '../../../redux/actions/userActions';
 
 const CalenderComponent = () => {
   const {items} = useSelector(state => state.cart);
 const dispatch = useDispatch()
 const {token_fetch}=useSelector(state => state.token)
-  // const disabledDatesArray = [
-  //   '2024-05-10', // Example disabled date in format 'YYYY-MM-DD'
-  //   '2024-05-15',
-  //   '2024-05-13'
-  //   // Add more disabled dates as needed
-  // ];
+  const disabledDatesArray = [
+    '2024-05-10', // Example disabled date in format 'YYYY-MM-DD'
+    '2024-05-15',
+    '2024-05-13'
+    // Add more disabled dates as needed
+  ];
 
  
 
@@ -27,15 +27,17 @@ const {token_fetch}=useSelector(state => state.token)
         selectedDayColor={COLOR.PrimaryColor}
         selectedDayTextColor={COLOR.white}
         selectedDayStyle={styles.selectedDayStyle}
-        todayBackgroundColor={COLOR.Grey}
-        todayTextStyle={{color: COLOR.black}}
+        todayBackgroundColor={COLOR.black}
+        minDate={'2024-05-22'}
+       
+        
         onDateChange={async(date) => {
           try{
             console.log('in try')
             const momentDate =  moment(date);
 
           const formattedDate =  momentDate.format('YYYY-MM-DD');
-          
+          dispatch(getdateAppoinment(formattedDate))
           const formattedItineraries = await items.map(item => ({
             serviceId: item.ID,
             employeeId: null,
@@ -43,7 +45,7 @@ const {token_fetch}=useSelector(state => state.token)
           }));
 
             dispatch(fetchaccessToken)
-     
+    
           dispatch(Finditinerary1day(token_fetch,formattedDate,formattedItineraries))
 
           }
@@ -53,15 +55,15 @@ const {token_fetch}=useSelector(state => state.token)
 
           
         }}
-        // Create a moment object from the date parameter
-        // disabledDates={(date) => {
-        //     // Create a moment object from the date parameter
-        //     const momentDate = moment(date);
-        //     // Format the moment object to match the format of disabled dates
-        //     const formattedDate = momentDate.format('YYYY-MM-DD');
-        //     // Check if the formatted date is in the disabledDatesArray
-        //     return disabledDatesArray.includes(formattedDate);
-        //   }}
+        Create a moment object from the date parameter
+        disabledDates={(date) => {
+            // Create a moment object from the date parameter
+            const momentDate = moment(date);
+            // Format the moment object to match the format of disabled dates
+            const formattedDate = momentDate.format('YYYY-MM-DD');
+            // Check if the formatted date is in the disabledDatesArray
+            return disabledDatesArray.includes(formattedDate);
+          }}
         selectedDayTextStyle={styles.selectedDayTextStyle}
       />
     </View>

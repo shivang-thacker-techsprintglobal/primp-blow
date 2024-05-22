@@ -6,6 +6,7 @@ import {Provider, useSelector} from 'react-redux';
 import { persistor, store} from './redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import SplashScreen from 'react-native-splash-screen'
+import { COLOR } from './src/constants/Colors';
 
 
 
@@ -20,7 +21,9 @@ const App = () => {
     <Provider store={store}>
     <PersistGate persistor={persistor} loading={null}>
     <PaperProvider>
+      <View style={{flex:1, backgroundColor:COLOR.white}}>
      <Navigation/>
+     </View>
     </PaperProvider>
     </PersistGate>
     </Provider>

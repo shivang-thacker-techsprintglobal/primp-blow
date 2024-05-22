@@ -48,6 +48,10 @@ dispatch(navigationPath('Register'))
       {dispatch(Login(email,password,navigation))}
     };
 return(
+  <View style={{flex:1, backgroundColor:COLOR.white,}}>
+  <ScrollView style = {{flex:1, backgroundColor: COLOR.white}} >
+     
+    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: COLOR.white, flex: 1}}>
     <View style={styles.container} >
       <Logo/>
       <View style={styles.container1}> 
@@ -81,11 +85,19 @@ return(
         </View>
 
       
-    <Text style={styles.account} >Don’t have an account? <Text onPress={()=> navigation.navigate('Register')}    style={styles.signup}>  Sign Up</Text></Text>
+   
         
        
        
       </View>
+    </View>
+  
+    </KeyboardAvoidingView>
+    <View>
+    <Text style={styles.account} >Don’t have an account? <Text onPress={()=> navigation.navigate('Register')}    style={styles.signup}>  Sign Up</Text></Text>
+    </View>
+    </ScrollView>
+    
     </View>
 
 
@@ -104,10 +116,11 @@ const styles = StyleSheet.create({
         alignItems:'center',
         paddingHorizontal: wp(4),
         paddingVertical:hp(8),
-        backgroundColor:COLOR.white
+        backgroundColor:COLOR.white,
+        justifyContent:'space-between'
   },
   container1:
-  {width:'100%', justifyContent:'space-between', height:'100%'},
+  {width:'100%', justifyContent:'space-between', height:'100%', backgroundColor:COLOR.white},
 
   c1:{width:'100%', gap:32, marginTop: hp(5)},
   cc1:
@@ -147,6 +160,9 @@ const styles = StyleSheet.create({
     lineHeight:20,
     textAlign:'center',
     color:COLOR.Dark,
+    alignSelf:'center',
+    zIndex:0,
+    paddingBottom:hp(5)
     
 
   },

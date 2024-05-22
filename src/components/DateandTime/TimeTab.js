@@ -1,8 +1,13 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { COLOR } from '../../constants/Colors'
-import TimeSlots from './TimeSlots'
+
+import Afternooon from './Afternooon'
+import Morning from './Morning'
+import { useSelector } from 'react-redux'
+import Evening from './Evening'
+import moment from 'moment'
 
 
 
@@ -10,7 +15,44 @@ import TimeSlots from './TimeSlots'
 
 const TimeTab = () => {
 
+  const {get_date_appointment, time_slots} = useSelector(state=>state.customer)
+
   const [activeTab,setActiveTab]=useState('Morning')
+  const [morningslots,setMorningSlots]=useState([])
+  const [afternoonslots,setAfternoonSlots]=useState([])
+  const [eveningslots,setEveningSlots]=useState([])
+
+  useEffect(() => {
+    const morning = [];
+    const afternoon = [];
+    const evening = [];
+
+    time_slots?.forEach(async(item) => {
+      const dateTimeWithoutOffset = item?.startDateTime.slice(0, -6);
+      const parsedDateTime = moment(dateTimeWithoutOffset, 'YYYY-MM-DDTHH:mm:ss');
+      const time =  parsedDateTime.format('hh:mm A');
+
+      if (parsedDateTime.isBefore(parsedDateTime.clone().set({ hour: 12, minute: 0, second: 0, millisecond: 0 }))) {
+        morning.push(time);
+      } else if (parsedDateTime.isBetween(
+        parsedDateTime.clone().set({ hour: 12, minute: 0, second: 0, millisecond: 0 }),
+        parsedDateTime.clone().set({ hour: 16, minute: 0, second: 0, millisecond: 0 })
+      )) {
+        afternoon.push(time);
+      } else {
+        evening.push(time);
+      }
+    });
+
+    setMorningSlots(morning);
+    setAfternoonSlots(afternoon);
+    setEveningSlots(evening);
+  }, [time_slots]);
+
+  console.log("morning",morningslots)
+  console.log("afternoon",afternoonslots)
+  console.log("evening",eveningslots)
+
   return (
     <View style={styles.bodycontainer}>
       <View style={styles.tabBar}>
@@ -25,7 +67,16 @@ const TimeTab = () => {
         </TouchableOpacity>
       </View>
 
-     <TimeSlots/>
+      {activeTab === 'Morning' ?
+      <>
+        {  <Morning item={morningslots} /> } 
+        </>
+        :
+       <>
+        { activeTab === 'Afternoon'? <Afternooon item={afternoonslots}  /> : <Evening item={eveningslots}/> }
+        </>
+    }
+   
 
       
     </View>

@@ -8,7 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {removeFromCart} from '../../redux/actions/userActions';
+import {gettimeAppointment, removeFromCart} from '../../redux/actions/userActions';
 import Header from '../common/Header';
 import {useNavigation} from '@react-navigation/native';
 import {COLOR} from '../constants/Colors';
@@ -22,10 +22,15 @@ import ButtonCommon from '../common/ButtonCommon';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const Cart = () => {
+
+  
+
+
   const ios = Platform.OS == 'ios';
   const {top} = useSafeAreaInsets();
 
   const {items} = useSelector(state => state.cart);
+  const {get_date_appointment,get_time_appointment } = useSelector(state=>state.customer)
   console.log(items);
   console.log(items[0]?.subItems);
   const dispatch = useDispatch();
@@ -33,6 +38,8 @@ const Cart = () => {
 
   const [note, setNote] = useState('');
   const [promoCode, setpromoCode] = useState();
+
+  console.log(get_date_appointment)
 
   return (
     <View style={[styles.container, {paddingTop: ios ? top : top + 10}]}>
@@ -45,6 +52,7 @@ const Cart = () => {
               <Text>Your cart is empty.</Text>
             ) : (
               <>
+            
                 {items?.map((item, index) => {
                   return <CartCard item={item} index={index} key={index} />;
                 })}
@@ -81,7 +89,8 @@ const Cart = () => {
         </View>
       </ScrollView>
 
-      <View style={styles.bottombuttoncontainer}>
+{get_date_appointment == '' || get_time_appointment == '' ?
+<View style={styles.bottombuttoncontainer}>
         <ButtonCommon
           title={'Add Guest'}
           buttonstyle={{width: '42%', height: 50}}
@@ -100,7 +109,7 @@ Alert.alert('no warnings')
         />
         <ButtonCommon
           onPress={() => navigation.navigate('DateandTime')}
-          title={'Book a Slot'}
+          title={ 'Book a Slot' }
           buttonstyle={{
             width: '42%',
             height: 50,
@@ -108,7 +117,24 @@ Alert.alert('no warnings')
           }}
           textstyle={{color: COLOR.white, fontSize: 16, lineHeight: 22}}
         />
+      </View> :
+      
+      <View style={styles.bottombuttoncontainer}>
+
+<ButtonCommon
+          onPress={() => navigation.navigate('Pay')}
+          title={ 'Proceed to Pay' }
+          buttonstyle={{
+            width: 343,
+            height: 50,
+            backgroundColor: COLOR.PrimaryColor,
+          }}
+          textstyle={{color: COLOR.white, fontSize: 16, lineHeight: 22}}
+        />
       </View>
+      
+      }
+      
     </View>
   );
 };

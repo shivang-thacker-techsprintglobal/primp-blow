@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Platform } from 'react-native'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Header from '../common/Header'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { COLOR } from '../constants/Colors'
@@ -8,14 +8,24 @@ import TimeTab from '../components/DateandTime/TimeTab'
 import { Button } from 'react-native-paper'
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import CalenderComponent from '../components/DateandTime/CalendarComponent'
+import { useDispatch, useSelector } from 'react-redux'
+import { getdateAppoinment, gettimeAppointment } from '../../redux/actions/userActions'
+
 
 
 const DateandTime = () => {
+const dispatch = useDispatch()
+  useEffect(()=>
+{ 
+  dispatch(getdateAppoinment(''))
+  dispatch(gettimeAppointment(''))
+
+},[])
     
     const navigation = useNavigation()
     const ios = Platform.OS == "ios";
   const { top } = useSafeAreaInsets();
-  const [selected, setSelected] = useState('');
+  const {get_date_appointment,get_time_appointment } = useSelector(state=>state.customer)
   return (
     <View style={[ styles.container,{paddingTop: ios ? top : top + 10}]}> 
       <Header title={'Pick a Date & Time'} navigation={navigation}/>
@@ -69,7 +79,8 @@ const DateandTime = () => {
       
       </View>
       <View style={styles.buttonposition}>
-      <Button onPress={()=> navigation.navigate('Cart')} mode="contained"  style={{width:'100%', borderRadius:10, backgroundColor:COLOR.PrimaryColor}}> Continue</Button>
+        
+      <Button disabled={get_date_appointment == '' || get_time_appointment == '' } onPress={()=> navigation.navigate('Cart')} mode="contained"  style={{width:'100%', borderRadius:10, backgroundColor:COLOR.PrimaryColor}}> Continue</Button>
       </View>
     </View>
   )

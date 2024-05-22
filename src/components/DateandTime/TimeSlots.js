@@ -4,11 +4,10 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import TimeSlotcard from '../../common/TimeSlotcard'
 import { useSelector } from 'react-redux'
 
-const TimeSlots = () => {
+const TimeSlots = ({item}) => {
 
   const {time_slots} = useSelector(state=> state.customer)
 
-const [data,setData]= useState([1,2,3,4,5,6,7,8,9,10,11,12])
 
   return (
     <View style={styles.container}> 
@@ -18,10 +17,10 @@ const [data,setData]= useState([1,2,3,4,5,6,7,8,9,10,11,12])
     showsVerticalScrollIndicator={true}
     contentContainerStyle={{width:'100%'}}
     numColumns={3}
-    data={time_slots}
+    data={item}
     renderItem={({item,index})=>
   {
-    return(<TimeSlotcard key={index}/>)
+    return(<TimeSlotcard item={item} key={index} />)
   }}
 
   keyExtractor={(item,index)=> index.toString()}

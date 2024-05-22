@@ -31,7 +31,13 @@ const Alllocations = () => {
   return (
     <View style={styles.container}>
 
-<Addressbar item={get_all_locations?.Results[0]} show={false}/> 
+{get_all_locations?.Results?.map((item,index)=>
+      {
+        return(
+          <Addressbar key={get_all_locations} item={item} show={false} />
+        )
+
+      })}
      
       
     </View>

@@ -1,19 +1,28 @@
 import {StyleSheet, Text, View, PermissionsAndroid} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import Homeheader from '../components/HomeComponents/Homeheader';
 import {COLOR} from '../constants/Colors';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import HomeSearchBar from '../components/HomeComponents/HomeSearchBar';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Homebody from '../components/HomeComponents/Homebody';
-import {GetCurrentLocation} from '../../redux/actions/userActions';
+import {GetCurrentLocation, getdateAppoinment, gettimeAppointment} from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Home = () => {
   const dispatch = useDispatch();
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getdateAppoinment(''));
+    dispatch(gettimeAppointment(''));
+    }, [])
+  );
 
   useEffect(() => {
     dispatch(GetCurrentLocation());
+
+   
   }, []);
 
   const {currentlocation} = useSelector(state => state.customer);

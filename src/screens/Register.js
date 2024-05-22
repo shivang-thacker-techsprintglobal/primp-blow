@@ -80,9 +80,9 @@ const Register = () => {
   };
   return (
     
-    <ScrollView style = {{flex:1, backgroundColor: 'white'}} >
+    <ScrollView style = {{flex:1, backgroundColor: COLOR.white}} >
      
-    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: 'white', flex: 1}}>
+    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: COLOR.white, flex: 1}}>
       <View style={styles.container}>
         
         <Logo />

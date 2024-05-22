@@ -4,7 +4,9 @@ const initialState = {
   items: [],
   loading:false,
   addons_modal_visible:false,
-  addons_details:[]
+  addons_details:[],
+  get_date_appointment:'',
+  get_time_appointment:''
   
 };
 
@@ -64,6 +66,12 @@ export const customerReducer = createReducer(initialState, builder => {
   .addCase('TIME_SLOTS', (state,action) => {
     state.time_slots = action.payload;
   })
+  .addCase('GET_DATE_APPOINTMENT', (state,action) => {
+    state.get_date_appointment = action.payload;
+  })
+  .addCase('GET_TIME_APPOINTMENT', (state,action) => {
+    state.get_time_appointment = action.payload;
+  })
   
 
   
@@ -103,6 +111,8 @@ export const tokenReducer = createReducer(initialTokenState, builder => {
   .addCase('HOME_ADDRESS', (state,action) => {
     state.homeaddress = action.payload;
   })
+  
+ 
 });
 
 export const cartReducer = createReducer(initialState, (builder) => {
