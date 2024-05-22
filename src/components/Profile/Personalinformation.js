@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   },
 
   iconContainer:
-  {position: 'absolute', zIndex: 100, right: 20}
+  {position: 'absolute', zIndex: 100, right: 20, top:hp(1)}
   ,
   c1: {
     height: hp(15.5),

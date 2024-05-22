@@ -22,7 +22,7 @@ const isItemselected= item === get_time_appointment
         <TouchableOpacity
           style={isItemselected ? styles.activetimecontainer : styles.timecontainer}
           onPress={() => {
-            setSelected(!selected);
+            isItemselected ?dispatch(gettimeAppointment('')) :
             // setSelectedTime(formatTime(item?.startDateTime))
             dispatch(gettimeAppointment(item));
           }}>

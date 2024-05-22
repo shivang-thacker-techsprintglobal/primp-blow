@@ -49,7 +49,7 @@ dispatch(navigationPath('Register'))
     };
 return(
   <View style={{flex:1, backgroundColor:COLOR.white,}}>
-  <ScrollView style = {{flex:1, backgroundColor: COLOR.white}} >
+  <ScrollView style = {{flex:1, backgroundColor: COLOR.white}} contentContainerStyle={{flexGrow:1}} >
      
     <KeyboardAvoidingView behavior='position' style = {{backgroundColor: COLOR.white, flex: 1}}>
     <View style={styles.container} >
@@ -161,8 +161,8 @@ const styles = StyleSheet.create({
     textAlign:'center',
     color:COLOR.Dark,
     alignSelf:'center',
-    zIndex:0,
-    paddingBottom:hp(5)
+    position:'absolute',
+    bottom:hp(4)
     
 
   },

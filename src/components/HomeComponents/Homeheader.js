@@ -1,7 +1,7 @@
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, TouchableOpacity,Text } from 'react-native'
 import React, { useEffect } from 'react'
 import { COLOR } from '../../constants/Colors';
-import { Text } from 'react-native-paper';
+
 import Imagecontainer_round from '../../common/Imagecontainer_round';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Notification from '../../assets/svgs/notification'
@@ -45,7 +45,13 @@ const {homeaddress} = useSelector(state=>state.token)
        
         <Imagecontainer_round children={<Notification/>} />
        
-        <Imagecontainer_round children={<Cart/>} onPress={()=> navigation.navigate('Cart')}/>
+        <Imagecontainer_round  onPress={()=> navigation.navigate('Cart')}>
+         <Cart/>
+         <Imagecontainer_round style={{height:14, width:14, backgroundColor:COLOR.PrimaryColor,position:'absolute', top:5,right:5, justifyContent:'center', alignItems:'center'}}>
+       <Text style={{color:COLOR.white, bottom:2}}>1</Text>
+         </Imagecontainer_round>
+         
+        </Imagecontainer_round>
       </View>
     </View>
   )

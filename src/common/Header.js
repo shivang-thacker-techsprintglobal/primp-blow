@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
     container:
     {
        backgroundColor:COLOR.white,
+       paddingTop:hp(1)
+       
 
     },
     iconContainer:
@@ -35,7 +37,9 @@ const styles = StyleSheet.create({
         left:10,
         width:wp(6),
         height:hp(3),
-        justifyContent:'center'
+        justifyContent:'center',
+        top:hp(1)
+        
         
 
     },

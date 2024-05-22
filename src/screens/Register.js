@@ -79,10 +79,10 @@ const Register = () => {
     {dispatch(createCustomerAndUserAccount(firstName,lastName,email,password,phoneNumber,token_fetch,navigation))}
   };
   return (
-    
-    <ScrollView style = {{flex:1, backgroundColor: COLOR.white}} >
+    <View style={{flex:1, backgroundColor:COLOR.white,}}>
+    <ScrollView style = {{flex:1, backgroundColor: COLOR.white}} contentContainerStyle={{flexGrow:1}} >
      
-    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: COLOR.white, flex: 1}}>
+     <KeyboardAvoidingView behavior='position' style = {{backgroundColor: COLOR.white, flex: 1}}>
       <View style={styles.container}>
         
         <Logo />
@@ -163,21 +163,22 @@ const Register = () => {
           </View>
 
          
-          <Text style={styles.account}
-             >
-              Have an account?  <Text style={styles.signup} onPress={()=> navigation.navigate('Signin')}
-             >
-               Sign In
-            </Text>
-            </Text>
+          
        
         </View>
        
             
       </View>
       </KeyboardAvoidingView>
-      
+      <Text style={styles.account}
+             >
+              Have an account?  <Text style={styles.signup} onPress={()=> navigation.navigate('Signin')}
+             >
+               Sign In
+            </Text>
+            </Text>
             </ScrollView>
+            </View>
            
     
      
@@ -239,6 +240,10 @@ const styles = StyleSheet.create({
     lineHeight:20,
     textAlign:'center',
     color:COLOR.Dark,
+    alignSelf:'center',
+    position:'absolute',
+    bottom:hp(4)
+    
 
   },
   signup:{
