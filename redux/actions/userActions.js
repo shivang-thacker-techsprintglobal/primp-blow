@@ -577,6 +577,8 @@ export const Finditinerary1day = (fetch_token,date,formattedItineraries) => asyn
           type: 'TIME_SLOTS',
           payload: []
         });
+
+       
       
       
     }

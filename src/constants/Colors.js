@@ -15,6 +15,8 @@ export const COLOR =
     Primaryiconcontainer:' rgba(102, 204, 204, 0.7)',
     CheckboxColor:'#8B9191',
     fontGrey:'#8B9191'
+   
+
 
 
 

@@ -80,7 +80,7 @@ const dispatch = useDispatch()
       </View>
       <View style={styles.buttonposition}>
         
-      <Button disabled={get_date_appointment == '' || get_time_appointment == '' } onPress={()=> navigation.navigate('Cart')} mode="contained"  style={{width:'100%', borderRadius:10, backgroundColor:COLOR.PrimaryColor}}> Continue</Button>
+      <Button buttonColor={COLOR.PrimaryColor} disabled={get_date_appointment == '' || get_time_appointment == '' } onPress={()=> navigation.navigate('Cart')} mode="contained"  style={{width:'100%', borderRadius:10}}> Continue</Button>
       </View>
     </View>
   )

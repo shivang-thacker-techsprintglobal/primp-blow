@@ -32,11 +32,11 @@ const TimeTab = () => {
       const parsedDateTime = moment(dateTimeWithoutOffset, 'YYYY-MM-DDTHH:mm:ss');
       const time =  parsedDateTime.format('hh:mm A');
 
-      if (parsedDateTime.isBefore(parsedDateTime.clone().set({ hour: 12, minute: 0, second: 0, millisecond: 0 }))) {
+      if (parsedDateTime.isBefore(parsedDateTime.clone().set({ hour: 12, minute: 1, second: 0, millisecond: 0 }))) {
         morning.push(time);
       } else if (parsedDateTime.isBetween(
-        parsedDateTime.clone().set({ hour: 12, minute: 0, second: 0, millisecond: 0 }),
-        parsedDateTime.clone().set({ hour: 16, minute: 0, second: 0, millisecond: 0 })
+        parsedDateTime.clone().set({ hour: 12, minute: 1, second: 0, millisecond: 0 }),
+        parsedDateTime.clone().set({ hour: 16, minute: 1, second: 0, millisecond: 0 })
       )) {
         afternoon.push(time);
       } else {

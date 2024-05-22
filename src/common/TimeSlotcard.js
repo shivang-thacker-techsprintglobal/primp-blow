@@ -2,16 +2,17 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {COLOR} from '../constants/Colors';
 import moment from 'moment';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {gettimeAppointment} from '../../redux/actions/userActions';
 
 const TimeSlotcard = ({item}) => {
   const [selected, setSelected] = useState(false);
   const [selectedTime, setSelectedTime] = useState('');
   const dispatch = useDispatch();
+  const {get_date_appointment,get_time_appointment } = useSelector(state=>state.customer)
   
 
-
+const isItemselected= item === get_time_appointment
 
   // If formattedTime is null, return null to avoid rendering the component
 
@@ -19,7 +20,7 @@ const TimeSlotcard = ({item}) => {
     <View style={{width: '33%', alignItems: 'center'}}>
       
         <TouchableOpacity
-          style={selected ? styles.activetimecontainer : styles.timecontainer}
+          style={isItemselected ? styles.activetimecontainer : styles.timecontainer}
           onPress={() => {
             setSelected(!selected);
             // setSelectedTime(formatTime(item?.startDateTime))
@@ -28,7 +29,7 @@ const TimeSlotcard = ({item}) => {
           <Text
             style={[
               styles.timetext,
-              {color: selected ? COLOR.white : COLOR.Dark},
+              {color: isItemselected ? COLOR.white : COLOR.Dark},
             ]}>
             {item}
           </Text>

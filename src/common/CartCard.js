@@ -61,7 +61,7 @@ function formatTime(dateTimeString) {
               <View style={{borderColor:COLOR.Grey, borderWidth:1, height:hp(1.9)}}></View>
               <View style={{width:'45%', flexDirection:'row', gap:4}}>
                 <TimerIcon/>
-              <Text style={styles.datetext}>{formatTime(get_time_appointment)}</Text>
+              <Text style={styles.datetext}>{get_time_appointment}</Text>
               </View>
             
               </View>
@@ -185,12 +185,6 @@ const styles = StyleSheet.create({
       fontWeight:'700',
       lineHeight:16.9,
       textAlign:'left',
-      //styleName: Footnote Bold;
-// font-family: Agrandir;
-// font-size: 13px;
-// font-weight: 700;
-// line-height: 16.9px;
-// text-align: left;
 
     }
 })

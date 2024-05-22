@@ -43,7 +43,7 @@ const Cart = () => {
 
   return (
     <View style={[styles.container, {paddingTop: ios ? top : top + 10}]}>
-      <ScrollView style={styles.c}>
+      <ScrollView style={styles.c} contentContainerStyle={{justifyContent:'space-between'}}>
         <Header title={'Cart'} navigation={navigation} />
 
         <View style={styles.c1}>
@@ -87,14 +87,13 @@ const Cart = () => {
             />
           </View>
         </View>
-      </ScrollView>
-
-{get_date_appointment == '' || get_time_appointment == '' ?
+        {get_date_appointment == '' || get_time_appointment == '' ?
 <View style={styles.bottombuttoncontainer}>
         <ButtonCommon
           title={'Add Guest'}
           buttonstyle={{width: '42%', height: 50}}
           textstyle={{fontSize: 16, lineHeight: 22}}
+          disable={items.length === 0? true : false}
           onPress={()=>{
 
             if(items?.length >1 || items?.subItems && items?.subItems.length>0)
@@ -113,9 +112,10 @@ Alert.alert('no warnings')
           buttonstyle={{
             width: '42%',
             height: 50,
-            backgroundColor: COLOR.PrimaryColor,
+            backgroundColor: items.length === 0? COLOR.Grey: COLOR.PrimaryColor,
           }}
-          textstyle={{color: COLOR.white, fontSize: 16, lineHeight: 22}}
+          disable={items.length === 0? true : false}
+          textstyle={{color:items.length === 0? COLOR.fontGrey: COLOR.white, fontSize: 16, lineHeight: 22}}
         />
       </View> :
       
@@ -134,6 +134,9 @@ Alert.alert('no warnings')
       </View>
       
       }
+      </ScrollView>
+
+
       
     </View>
   );
@@ -145,9 +148,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLOR.white,
+    padding:16
   },
 
-  c: {flex: 1, backgroundColor: COLOR.white, padding: 16},
+  c: {flex: 1, backgroundColor: COLOR.white},
 
   c1: {
     gap: 24,

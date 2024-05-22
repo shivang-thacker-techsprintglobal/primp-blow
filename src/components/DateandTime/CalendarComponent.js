@@ -28,7 +28,7 @@ const {token_fetch}=useSelector(state => state.token)
         selectedDayTextColor={COLOR.white}
         selectedDayStyle={styles.selectedDayStyle}
         todayBackgroundColor={COLOR.black}
-        minDate={'2024-05-22'}
+        minDate={moment().format('YYYY-MM-DD')}
        
         
         onDateChange={async(date) => {
